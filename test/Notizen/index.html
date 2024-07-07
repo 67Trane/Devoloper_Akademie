@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script rel="stylesheet" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Notizen</title>
+</head>
+
+<body onload="render()">
+    <header class="header">
+        <div class="notizblock">
+            <h1>NotizBlock</h1>
+        </div>
+        <div class="navbar">
+        </div>
+    </header>
+    <div class="all">
+        <div class="notice main">
+            <input id="title" class="title" placeholder="Title..."> <br>
+            <input class="message" id="message" placeholder="Message..."> <br>
+            <div class="buttomMenu">
+                <button onclick="addContent()">Hinzufügen</button>
+            </div>
+        </div>
+
+        <div class="deltedSection">
+            <div id="deltedcontent"></div>
+        </div>
+    </div>
+    <div id="content"></div>
+    <footer>footer hier</footer>
+</body>
+
+</html>

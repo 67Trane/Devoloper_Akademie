@@ -1,0 +1,28 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #403b3b;
+}
+.footer-logo-kochwelt {
+  padding-left: 16px;
+  filter: invert(1);
+}
+.footer-social-media {
+  padding: 16px;
+}
+.footer-social-media img {
+  width: 48px;
+  padding: 16px;
+  
+}
+@media (max-width: 680px) {
+  footer {
+    flex-direction: column;
+  }
+}
+@media (max-width: 420px) {
+  .footer-logo-kochwelt {
+    width: 200px;
+  }
+}

@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  background-color: grey;
+}
+
+.title {
+  width: 50%;
+  height: 5vh;
+  font-size: 28px;
+  border-bottom:2px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  border-left: 2px solid;
+  border-right: 2px solid;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.header {
+  background-color: red;
+  display: flex;
+  height: 100px;
+  align-items: center;
+  font-size: 32px;
+  padding: 0px 20px 0px;
+}
+
+.navbar {
+  background-color: green;
+  height: 50px;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50px;
+}
+
+.message {
+  width: 50%;
+  padding: 10px;
+  height: auto;
+  font-size: 18px;
+  border-top: none;
+  border-bottom: none;
+  border-left: 2px solid;
+  border-right: 2px solid;
+}
+
+.message:focus {
+  outline: none;
+}
+
+.buttomMenu {
+  width: 50%;
+  height: 2vh;
+  border: 2px solid;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.notice {
+  margin: 10px;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+}
+
+.deltedSection {
+  display: flex;
+  width: 50%;
+  height: auto;
+  border: 2px solid black;
+}
+
+.all {
+  display: flex;
+}

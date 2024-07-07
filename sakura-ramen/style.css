@@ -1,0 +1,353 @@
+html {
+  scroll-behavior: smooth;
+}
+
+td:last-child {
+  padding-left: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: #000000;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 96px;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 80px;
+  color: #9f0908;
+}
+
+h3 {
+  font-family: "Economica", sans-serif;
+  font-weight: bold;
+  font-size: 56px;
+  color: black;
+  margin-bottom: 16px;
+}
+
+td {
+  padding-bottom: 8px;
+}
+
+.navbar {
+  display: flex;
+  height: 112px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sakura-logo {
+  width: 64px;
+  height: 64px;
+  justify-content: flex-start;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  width: 50%;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  color: orange;
+  text-decoration: underline;
+}
+
+.tel-btn {
+  text-decoration: none;
+  background-color: #9f0908;
+  border-radius: 10px;
+  border: solid 2px;
+  border-color: white;
+  color: white;
+  align-content: center;
+  padding: 10px;
+}
+
+.tel-btn:hover {
+  background-color: #a02e2e;
+}
+
+.tel-image {
+  width: 24px;
+  height: 24px;
+}
+
+.header {
+  display: flex;
+  background-image: url("./assets/img/1_hero/JPG/hero_bg.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: bottom;
+  flex-direction: column;
+  padding-right: 160px;
+  padding-left: 160px;
+}
+
+.title-container {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.how-to-order {
+  display: flex;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  margin-left: 160px;
+  margin-right: 160px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.h2o {
+  /* h2o steht für how-to-order*/
+  font-size: 80px;
+  color: #9f0908;
+  justify-content: center;
+  display: flex;
+  padding: 0px;
+  height: 120px;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 64px;
+  font-size: 56px;
+  font-family: "Economica", sans-serif;
+  font-weight: bold;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+
+.noodle {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+.broth {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+.egg {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+.icon-label {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 0px;
+}
+
+.icons {
+  width: 128px;
+}
+
+/* Menü bereich */
+.menu {
+  display: flex;
+  margin-top: 120px;
+  padding-top: 120px;
+  padding-bottom: 0px;
+  padding-left: 160px;
+  padding-right: 160px;
+  background-image: url("./assets/img/3_section_our_menu/JPG/section_our_menu_bg.jpg");
+  background-size: cover;
+  background-position: bottom;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-title {
+  font-size: 80px;
+  color: #9f0908;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 64px;
+}
+
+.menu-content {
+  display: flex;
+  margin-top: 0px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #675e54;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.menu-item-reverse {
+  flex-direction: row-reverse;
+}
+
+.menu-text {
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.menu-item-reverse .menu-text {
+  margin-right: 80px;
+  margin-left: 0;
+}
+
+.tonkotsu-ramen {
+  display: flex;
+  margin-bottom: 56px;
+}
+
+.spicy-miso-ramen {
+  display: flex;
+  margin-bottom: 56px;
+}
+
+.shio-ramen {
+  display: flex;
+  margin-bottom: 120px;
+}
+
+.menu-img {
+  width: 352px;
+  height: 352px;
+  object-fit: cover;
+}
+
+.location {
+  display: flex;
+  margin-top: 120px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  background-color: #000000;
+  height: 144px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 160px;
+  padding-right: 160px;
+  margin-top: 12px;
+}
+
+.footer-icons {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding-right: 160px;
+}
+
+.icon {
+  width:8%;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1000px) {
+  .link {
+    display: none;
+  }
+
+  .navbar {
+    margin-left: 48px;
+    width: 90%;
+  }
+
+  .options {
+    width: 40%;
+  }
+
+  .header {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .title-container {
+    text-align: center;
+  }
+
+  .icons-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .menu-title {
+    font-size: 52px;
+  }
+
+  .menu {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .menu-img {
+    width: 40%;
+    height: 40%;
+  }
+
+  td:last-child {
+    padding-left: 10%;
+  }
+
+  .menu-item-reverse {
+    flex-direction: row;
+  }
+
+  .menu-item-reverse .menu-text {
+    margin-right: 0px;
+    margin-left: 80px;
+  }
+
+.footer {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+}

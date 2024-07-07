@@ -1,0 +1,239 @@
+<html>
+
+<head>
+	<title>Mein Restaurant</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+
+
+		.mybody {
+			margin: 0px;
+			font-family: "Open Sans", sans-serif;
+		}
+
+		.atf-image {
+			width: 100%;
+			height: 500px;
+			object-fit: cover;
+		}
+
+		.paci {
+			font-family: "Calligraffitti", cursive;
+		}
+
+		.main-container {
+			background-color: rgba(0, 0, 0, 0.4);
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 500px;
+			color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		.container {
+			padding-left: 100px;
+			padding-right: 100px;
+			margin-bottom: 64px;
+		}
+
+		.footer {
+			background-color: rgb(35, 38, 41);
+			color: white;
+			padding: 100px;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0px;
+		}
+
+		.googlemaps {
+			height: 350px;
+			width: 100%;
+		}
+
+
+		.footer-link {
+			color: white;
+			text-decoration: none;
+			cursor: pointer;
+
+		}
+
+		.footer-link:hover {
+			text-decoration: underline;
+			color: orange;
+		}
+
+		.headline {
+			color: #d6d945;
+			font-size: 54px;
+			filter: drop-shadow(11px 13px 6px black);
+		}
+
+		.menu {
+			position: absolute;
+			top: 32;
+			right: 100px;
+
+		}
+
+		.menu a {
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+			margin-left: 32px;
+			filter: drop-shadow(11px 13px 6px black);
+		}
+
+		.menu a:hover {
+			color: orange;
+		}
+
+		.order-btn {
+			background-color: orange;
+			padding: 16px;
+			color: black !important;
+		}
+
+
+		.order-btn:hover {
+			background-color: yellow;
+		}
+
+
+		a {
+			color: orange;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
+
+</head>
+
+
+
+<body class="mybody">
+
+
+	<img class="atf-image" src="./img/aot.jpg">
+
+
+
+
+
+	<div class="main-container">
+		<h1 class="headline">Herzlich Wilkommen</h1>
+		Hier findest du einen Überblick über unsere Speisen
+	</div>
+
+	<div class="menu">
+		<a href="#contact">RESERVIEREN</a>
+		<a class="order-btn" href="#">BESTELL ONLINE</a>
+		<a href="#contact">KONTAKT</a>
+		<a href="#adress">ANFAHRT</a>
+	</div>
+
+
+	<div class="container">
+		<h2 class="paci">Unsere Öffnungszeiten</h2>
+
+		<table>
+			<tr>
+				<td>Mo - Fr:</td>
+				<td>12:00 - 23:00 Uhr</td>
+			</tr>
+			<tr>
+				<td>Sa:</td>
+				<td>11:00 - 24:00 Uhr</td>
+			</tr>
+			<tr>
+				<td>So:</td>
+				<td>11:00 - 24:00 Uhr</td>
+			</tr>
+		</table>
+	</div>
+	<div class="container" id="adress">
+		<h2 class="paci">Anfahrt</h2>
+		Unsere Adresse lautet: Rosenheimer Str.139, 91379 München
+		<br>
+
+		<iframe class="googlemaps"
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.273770277792!2d11.599414076422331!3d48.12424357124204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf8378e729b3%3A0x597089178dfbfc81!2sRosenheimer%20Str.%20139%2C%2081671%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1715450003438!5m2!1sde!2sde"
+			style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+
+	<div class="container">
+		<h2 class="paci">Tageskarte:</h2>
+		<table>
+			<tr>
+				<td>1</td>
+				<td>Pizza</td>
+				<td>8,99€</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Pilzpfanne</td>
+				<td>11,99€</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Bauernsalat</td>
+				<td>5,99€</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Mousse au chacolat</td>
+				<td>7,99€</td>
+			</tr>
+		</table>
+
+		Jetzt die Tageskarte <a href="./downloads/tageskarte.pdf" target="_blank">herunterladen</a>.
+	</div>
+
+
+
+	<div class="container" id="contact">
+		<h2 class="paci">Kontakt:</h2>
+		So kannst du uns kontaktieren: <br>
+		Telefon: <a href="tel:0157214359">0157214359</a> <br>
+		E-Mail: <a href="mailto:info@devoloperakademie.com">info@devoloperakademie.com</a> <br>
+		<br>
+	</div>
+
+
+	<div class="container footer">
+		<div>
+			(c) Copyright 2023 Devoloper Akademie GmbH <br>
+		</div>
+
+		<div>
+			<a href="impressum.html" class="footer-link">Impressum</a> | <a href="datenschutz.html"
+				class="footer-link">Datenschutz</a>
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+.wrapper {
+    position: absolute;
+    overflow-x: hidden;
+}
+
+.show-wrapper {
+    position: static;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 160px 0px;
+    height: 142px;
+    box-shadow: 0px 20px 24px -24px #111;
+
+}
+
+.logo-header-small {
+    display: none;
+    height: 96px;
+    padding-bottom: 16px;
+}
+
+.d-none { /* Im pirmären Style definieren? */
+    display: none;
+}
+
+
+.menu-desktop {
+    display: flex;
+    align-self: flex-end;
+    gap: 24px;
+}
+
+.menu-mobile {
+    display: none;
+}
+
+.menu-btn {
+    height: 48px;
+    object-fit: scale-down;
+}
+
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-bottom: 8px solid rgba(54, 125, 33, 0);
+    
+}
+
+nav a:hover {
+    color: rgb(54 125 33);
+    border-bottom: 8px solid rgb(54 125 33);
+}
+
+
+.nav-mobile {
+    position: absolute;
+    background: url('../img/header/burger-menu-bg.webp');
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 34px 11px #111;
+    gap: 16px;
+    width: 120px;
+    right: -170px;
+    top: 100px;
+    padding: 16px 16px 16px 32px;
+    border: 1px solid rgb(56, 132, 33);
+    border-radius: 16px 0px 0px 16px;
+    transform: translateX(0px);
+    opacity: 0;
+    transition: all 225ms ease-in-out;
+    text-align: right;
+}
+
+.show-nav {
+    transform: translateX(-170px);
+    opacity: 1;
+}
+
+.nav-mobile a {
+    color: black;
+    font-weight: bold;
+    border: none;
+
+}
+
+.nav-mobile a:hover {
+    color: rgb(54 125 33);
+    border: none;
+    color: white;
+}
+
+/* Burger/Mobile Menue till 1120px max width */
+
+@media(max-width: 1120px) {
+    header {
+        padding: 8px 32px 0px 48px;
+    }
+
+}
+
+@media(max-width: 850px) {
+    header {
+        padding: 8px 16px 0px 24px;
+    }
+
+    .menu-desktop {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media(max-width: 560px) {
+    .logo-header-small {
+        display: flex;
+    }
+
+    .logo-header {
+        display: none;
+    }
+}

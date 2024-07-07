@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 50%;
+        }
+    </style>
+    <script>
+
+        let images = ['./Bilder/höle.jpg', './Bilder/washingontmonument.jpg', './Bilder/ballon.jpg']
+        let currentimage = 0;
+
+        function start() {
+            let speed = +document.getElementById("input").value * 1000;
+
+            if (speed > 10000) {
+                alert("Bitte kleinere Zahl eingeben");
+
+            } else {
+
+
+                if (speed < 1000) {
+                    alert("Bitte mindestens eine Sekunde als Zeit angeben!")
+
+                } else {
+                    showimage(currentimage);
+                    currentimage++;
+                    if (currentimage == 3) {
+                        currentimage = 0;
+                    }
+
+                    setTimeout(start, speed);
+
+                }
+            }
+        }
+
+        function showimage(i) {
+            document.getElementById("image").src = images[i];
+        }
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <input type="number" id="input" min="1"><button onclick="start()">Start!</button>
+
+    <img id="image" src="./Bilder/ballon.jpg">
+
+
+</body>
+
+</html>

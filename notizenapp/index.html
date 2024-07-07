@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script rel="stylesheet" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./img/notizapp.webp">
+    <title>NotizenBlock</title>
+</head>
+
+<body onload="render()">
+    <header class="header">
+        <div class="notizblock">
+            <h1>NotizBlock</h1>
+            
+        </div>
+        <div class="navbar">
+        </div>
+    </header>
+    <div class="wholeContent">
+        <div class="all">
+            <div class="notice main">
+                <input id="title" class="title" placeholder="Title..."> <br>
+                <textarea name="message" id="message" placeholder="Message..." maxlength="500" ></textarea> <br>
+                <div class="buttomMenu">
+                    <button onclick="addContent()">Hinzufügen</button>
+                    <span><p id="limit">0</p><p>/500</p></span>
+                </div>
+            </div>
+
+            <div class="deltedSection">
+                <div><h3>Papierkorb</h3></div>
+                
+                <div id="deltedcontent">
+                </div>
+
+            </div>
+        </div>
+        <div id="content"></div>
+    </div>
+    <footer class="footer">Created by Mehmet Deliaci</footer>
+</body>
+
+</html>
+

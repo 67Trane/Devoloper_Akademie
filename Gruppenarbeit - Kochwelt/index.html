@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kochwelt</title>
+    
+    <script src="js/script.js"></script>
+    <script src="./js/headerscript.js"></script>
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/footer-style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    
+
+
+</head>
+
+<body onload="includeHTML()">
+    <header w3-include-html="./templates/header.html"></header>
+
+    <section class="start-site">
+        <section class="featured-recipe-container">
+            <div class="image-container">
+                <img src="img/recipes_images/croissant.jpg" alt="">
+            </div>
+            <div class="featured-recipe-text">
+
+                <h2>Französische Croissants</h2>
+                <p>Schmackhafte Croissants können auch zu Hause sehr einfach gebacken werden. Mit ca. 30 Minuten Aufwand
+                    kannst
+                    du ein wundervolles Frühstück zaubern.</p>
+                <button class="btn">Rezept öffnen</button>
+            </div>
+
+        </section>
+
+        <section class="news-section">
+            <h2>Lust auf was Neues?</h2>
+            <div class="news-images-container">
+                <a href="mehmet-rezept.html" class="images">
+                    <img src="img/recipes_images/coban-salat.webp" alt="">
+                    <span>Coban Salat</span>
+            </a>
+                <a href="#" class="images">
+                    <img src="./img/recipes_images/croissant.jpg" alt="">
+                    <span>Frische Croissants</span>
+                </a>
+                <a href="#" class="images">
+                    <img src="./img/recipes_images/croissant.jpg" alt="">
+                    <span>Frische Croissants</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="survey-section">
+            <h2>Pfanne vs. WOK - Was ist besser?</h2>
+            <div class="survey">
+
+                <span class="left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias et dicta in est
+                    deserunt?
+                    Perspiciatis
+                    incidunt illo doloremque tenetur saepe aliquam voluptatem distinctio obcaecati quia nostrum! Atque
+                    omnis
+                    ullam unde.</span>
+                <img src="img/recipes_images/wok.jpg" alt="" class="right">
+            </div>
+        </section>
+    </section>
+
+    <footer w3-include-html="./templates/footer.html"></footer>
+</body>
+
+</html>

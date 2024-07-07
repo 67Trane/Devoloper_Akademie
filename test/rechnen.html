@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function calc() {
+            let number = +document.getElementById("input").value;
+            let resultext = `The result of ${number} is ${powerof2(number)}`;
+            
+            alert(getresulttext(number, powerof2(number)))
+        }
+
+        function powerof2(x) {
+            return x * x
+        }
+
+
+        function getresulttext(number, result) {
+            return `the result of ${number} is ${result}`
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="input"> <button onclick="calc()">Calc</button>
+</body>
+
+</html>

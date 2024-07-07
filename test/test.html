@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout mit fixiertem Header und Footer</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            flex: 0 0 auto;
+        }
+
+        .content {
+            flex: 1 0 auto;
+            padding: 20px;
+            background: #f1f1f1;
+            overflow: auto; /* Optional, falls der Inhalt scrollbar sein soll */
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Dies ist der Header, der immer oben bleibt.
+    </header>
+    <div class="content">
+        <!-- Hauptinhalt deiner Seite -->
+        <p>Hier kommt dein Inhalt hin...</p>
+        <p>Hier kommt noch mehr Inhalt hin...</p>
+        <p>Hier kommt noch mehr Inhalt hin...</p>
+        <p>Hier kommt noch mehr Inhalt hin...</p>
+        <p>Hier kommt noch mehr Inhalt hin...</p>
+    </div>
+    <footer>
+        Dies ist der Footer, der immer unten bleibt.
+    </footer>
+</body>
+</html>

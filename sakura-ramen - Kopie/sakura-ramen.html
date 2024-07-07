@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Ramen</title>
+    <style>
+        html {
+			scroll-behavior: smooth;
+		}
+        
+        body {
+            margin: 0;
+            font-family: "Raleway", sans-serif;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        h1 {
+            font-family: "Raleway", sans-serif;
+            font-weight: bold;
+            font-size: 96px;
+        }
+
+        h2 {
+            font-family: "Raleway", sans-serif;
+            font-weight: bold;
+            font-size: 80px;
+            color: #9F0908;
+        }
+
+        h3 {
+            font-family: "Economica", sans-serif;
+            font-weight: bold;
+            font-size: 56px;
+            color: black;
+            margin-bottom: 16px;
+        }
+
+        td {
+            padding-bottom: 8px;
+        }
+
+        .navbar {
+            display: flex;
+            height: 112px;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .sakura-logo {
+            width: 64px;
+            height: 64px;
+            justify-content: flex-start;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 24px;
+            width: 50%;
+            align-items: center;
+        }
+
+        .link {
+            text-decoration: none;
+            color: white;
+        }
+
+        .link:hover {
+            color: orange;
+            text-decoration: underline;
+        }
+
+        .tel-btn {
+            text-decoration: none;
+            background-color: #9F0908;
+            border-radius: 10px;
+            border: solid 2px;
+            border-color: white;
+            color: white;
+            align-content: center;
+            padding: 10px;
+        }
+
+        .tel-btn:hover {
+            background-color: #a02e2e;
+        }
+
+        .tel-image {
+            width: 24px;
+            height: 24px;
+        }
+
+
+        .header {
+            display: flex;
+            background-image: url("./assets/img/1_hero/JPG/hero_bg.jpg");
+            height: 100vh;
+            background-size: cover;
+            background-position: bottom;
+            flex-direction: column;
+            padding-right: 160px;
+            padding-left: 160px;
+        }
+
+        .title-container {
+            display: flex;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+
+        .how-to-order {
+            display: flex;
+            margin-top: 120px;
+            margin-bottom: 120px;
+            margin-left: 160px;
+            margin-right: 160px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .h2o {
+            /* h2o steht für how-to-order*/
+            font-size: 80px;
+            color: #9F0908;
+            justify-content: center;
+            display: flex;
+            padding: 0px;
+            height: 120px;
+            align-items: center;
+            margin-bottom: 64px;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 64px;
+            font-size: 56px;
+            font-family: "Economica", sans-serif;
+            font-weight: bold;
+            margin-left: 160px;
+            margin-right: 160px;
+        }
+
+        .noodle {
+            display: flex;
+            padding-left: 50px;
+            padding-right: 50px;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0px;
+        }
+
+        .broth {
+            display: flex;
+            padding-left: 50px;
+            padding-right: 50px;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0px;
+        }
+
+        .egg {
+            display: flex;
+            padding-left: 50px;
+            padding-right: 50px;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 0px;
+        }
+
+        .icon-label {
+            text-align: center;
+            margin-top: 16px;
+            margin-bottom: 0px;
+
+        }
+
+        .icons {
+            width: 128px;
+        }
+
+        .menu {
+            display: flex;
+            margin-top: 120px;
+            padding-top: 120px;
+            padding-bottom: 0px;
+            padding-left: 160px;
+            padding-right: 160px;
+            background-image: url("./assets/img/3_section_our_menu/JPG/section_our_menu_bg.jpg");
+            background-size: cover;
+            background-position: bottom;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .menu-title {
+            font-size: 80px;
+            color: #9F0908;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 64px;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 0px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #675E54;
+        }
+
+        .tonkotsu-ramen {
+            display: flex;
+            width: 911px;
+            height: 352px;
+            margin-left: 80px;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: start;
+            margin-bottom: 56px;
+        }
+
+        .spicy-miso-ramen {
+            display: flex;
+            width: 911px;
+            height: 352px;
+            justify-content: flex-end;
+            text-align: start;
+            margin-right: 80px;
+            margin-bottom: 56px;
+        }
+
+        .shio-ramen {
+            display: flex;
+            width: 911px;
+            height: 352px;
+            margin-left: 80px;
+            text-align: start;
+            margin-bottom: 120px;
+        }
+
+        .menu-img {
+            width: 352px;
+            height: 352px;
+        }
+
+
+        .location {
+            display: flex;
+            margin-top: 120px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .footer {
+            display: flex;
+            background-color: #000000;
+            height: 144px;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 160px;
+            padding-right: 160px;
+            margin-top: 12px;
+        }
+
+        .footer-icons {
+            display: flex;
+            width: 40px;
+            height: 40px;
+            padding-right: 160px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div class="navbar">
+            <img src="./assets/img/1_hero/PNG/sakura_logo.png" class="sakura-logo">
+
+            <div class="options">
+                <a href="#menu" class="link">MENU</a>
+                <a href="#location" class="link">LOCATIONS</a>
+                <a href="#footer" class="link">ABOUT</a>
+                <a href="tel:017654564534" class="tel-btn"><img src="./assets/img/1_hero/PNG/phone.png"
+                        class="tel-image">017654564534</a>
+            </div>
+        </div>
+
+        <div class="title-container">
+            <h1 style="font-size: 96px; font-weight: bold;">SAKURA RAMEN</h1>
+            <span style="font-size: 24px;">THE BEST RAMEN IN TOWN</span>
+        </div>
+
+    </div>
+
+
+
+    <div class="how-to-order">
+        <div class="h2o">
+            <h2>HOW TO ORDER</h2>
+        </div>
+        <div class="icons-container">
+            <div class="noodle">
+                <img src="./assets/img/2_section_how_to_order/PNG/noodle.png" class="icons">
+                <p class="icon-label">Pick your <br> noddle</p>
+            </div>
+
+            <div class="broth">
+                <img src="./assets/img/2_section_how_to_order/PNG/broth.png" class="icons">
+                <p class="icon-label">Pick your <br> broth</p>
+            </div>
+
+            <div class="egg">
+                <img src="./assets/img/2_section_how_to_order/PNG/egg.png" class="icons">
+                <p class="icon-label">Add your <br> toppings</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <h2 class="menu-title">OUR MENU</h2>
+        <div class="menu-content">
+
+
+            <table class="tonkotsu-ramen">
+                <img class="menu-img" src="./assets/img/3_section_our_menu/Png/R1.png">
+                <tr>
+                    <td>
+                        <h3>Tonkotsu Ramen</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>CHICKEN</td>
+                    <td>11.95€</td>
+                </tr>
+                <tr>
+                    <td>BEEF</td>
+                    <td>12.95€</td>
+                </tr>
+                <tr>
+                    <td>SHRIMP</td>
+                    <td>13.95€</td>
+                </tr>
+            </table>
+
+            <table class="spicy-miso-ramen">
+
+                <tr>
+                    <td>
+                        <h3>Spicy Miso Ramen</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>CHICKEN</td>
+                    <td>11.95€</td>
+                </tr>
+                <tr>
+                    <td>BEEF</td>
+                    <td>12.95€</td>
+                </tr>
+                <tr>
+                    <td>SHRIMP</td>
+                    <td>13.95€</td>
+                </tr>
+
+            </table>
+
+            <table class="shio-ramen">
+                <img class="menu-img" src="./assets/img/3_section_our_menu/Png/R2.png">
+                <img class="menu-img" src="./assets/img/3_section_our_menu/Png/R3.png">
+                <tr>
+                    <td>
+                        <h3>Shio Ramen</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>CHICKEN</td>
+                    <td>11.95€</td>
+                </tr>
+                <tr>
+                    <td>BEEF</td>
+                    <td>12.95€</td>
+                </tr>
+                <tr>
+                    <td>SHRIMP</td>
+                    <td>13.95€</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="location" id="location">
+        <h2 style="margin: 0px;">FIND US AT</h2>
+
+        <p style="margin-top: 8px; margin-bottom: 64px;"><img src="./assets/img/4_section_find_us_at/PNG/map_marker.png"
+                style="width: 24px; height: 24px;"> Kapuzinerstraße 31, München, 80337</p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.207967591086!2d11.558628376722906!3d48.12551265200032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf44d01affc5%3A0xe7a07e0710be63e8!2sKapuzinerstra%C3%9Fe%2031%2C%2080337%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1715624881281!5m2!1sde!2sde"
+            width="100%" height="800" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="footer" id="footer">
+        <img style="height: 44px" src="./assets/img/5_section_footer/PNG/sakura_ramen_logo_and_text.png">
+        <div class="footer-icons">
+            <img src="./assets/img/5_section_footer/PNG/tripadvisor_logo.png">
+            <img style="padding-left: 20px;" src="./assets/img/5_section_footer/PNG/facebook_logo.png">
+            <img style="padding-left: 20px;" src="./assets/img/5_section_footer/PNG/instagrram_logo.png">
+        </div>
+
+    </div>
+
+</body>
+
+</html>
