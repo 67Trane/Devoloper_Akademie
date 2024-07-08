@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html {
+    background-color: rgb(3, 3, 49);
+}
+
+.separator {
+    width: 100%;
+    height: 2px;
+    background-color: blue;
+}
+
+header {
+    background-color: rgb(4, 4, 139);
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.headline {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.headline img {
+    width: 10%;
+}
+
+.content-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.contentbox {
+    background-color: red;
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.booktitle {
+    display: flex;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bookimg {
+    width: 40%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.likesection img {
+    width: 10%;
+}
+
+.likesection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: green;
+    height: 50px;
+}
+
