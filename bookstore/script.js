@@ -194,18 +194,22 @@ let books = [
 ];
 
 function render() {
-    let contentbox = document.getElementById("contentbox")
+    let contentbox = document.getElementById("content-area")
 
   for (let i = 0; i < books.length; i++) {
     contentbox.innerHTML += `
+    <div class="contentbox" id="contentbox${i}">
     ${renderTitle(books[i].name)}
     <div class="separator"></div>
     ${renderImage()}
     <div class="separator"></div>
-    ${renderInfos(books[i].author, books[i].year, books[i].genre, books[i].price)}
+    ${renderInfos(books[i].author, books[i].publishedYear, books[i].genre, books[i].price, books[i].likes)}
     <div class="separator"></div>
+    ${renderCommentSection()}
     ${renderComments(books[i].comments)}
+    </div>
     ${renderInput(i)}
+    </div>
     `
   }
 }
@@ -218,38 +222,56 @@ function renderImage() {
   return `<img src="./icons/book .png" alt="" class="bookimg">`;
 }
 
-function renderInfos(author, year, genre, price) {
+function renderInfos(author, year, genre, price, likes) {
   return `
     <div class="likesection">
-        <h2>${price}€</h2><div>likes<img src="icons/whiteheart.png" alt="" class="whiteheart"></div>
+        <h2>${price}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart" onclick="toogleLike()"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike()" id="redheart"></div>
     </div>
-    <div id="infotitle">
-        <p>Author</p><p>Erscheinungsjahr</p><p>Genre</p>
+    <div class="infosection">
+      <div id="infotitle" class="infotitle">
+          <p>Author</p><p>Erscheinungsjahr</p><p>Genre</p>
+      </div>
+      <div id="renderinfos" class="renderinfos">
+          <p>: ${author}</p><p>: ${year}</p><p>: ${genre}</p>
+      </div>
     </div>
-    <div id="renderinfos">
-        <p>:${author}</p><p>:${year}</p><p>:${genre}</p>
-    </div>`;
+    `;
 }
 
-function renderComments(allcomments) {
-    user = "tester"
-    comment = "commenttest"
-
+function renderCommentSection() {
   return ` 
-    <h2>Kommentare:</h2>
-    <div id="users" class="users">
-        <p>${user}</p>
-    </div>
-    <div id="commentsection">
-        <p>: ${comment}</p>
-    </div>`;
+  <div class="commentheadline"><h2>Kommentare:</h2></div>
+  <div class="commentsection" id="commentsection">
+  `;
+}
+
+
+function renderComments(allcomments) {
+  let commentarray = []
+  for (let i = 0; i < allcomments.length; i++) {
+    let user = allcomments[i].name;
+    let comment = allcomments[i].comment;
+    
+    commentarray.push(`<div id="users" class="users">
+          <p>[${user}]</p>
+      </div>
+      <div id="comments" class="comments">
+          <p>: ${comment}</p>
+      </div>`)
+  }
+  combi = commentarray.join("");
+  return combi;
 }
 
 function renderInput(i) {
-  return `<input type="text" name="" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="">`;
+  return `<input type="text" name="" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="" class="sendimg">`;
 }
 
-//   for (let i = 0; i < allcomments.length; i++) {
-//    let comments = allcomments[i];
-//   let user = comments["name"];
-//   let comment = comments["comment"];
+
+function toogleLike() {
+  let whiteheart = document.getElementById("whiteheart")
+  let redheart = document.getElementById("redheart")
+
+  whiteheart.classList.toggle("d-none")
+  redheart.classList.toggle("d-none")
+}
