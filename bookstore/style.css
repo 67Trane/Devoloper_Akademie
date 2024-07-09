@@ -1,166 +1,197 @@
 * {
-    margin: 0;
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 html {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 html {
-    background-color: rgb(3, 3, 49);
+  background-color: rgb(3, 3, 49);
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
 
 .separator {
-    width: 100%;
-    height: 2px;
-    background-color: blue;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(115, 193, 221);
 }
 
 header {
-    background-color: rgb(4, 4, 139);
-    height: 100px;
-    width: 100vw;
-    display: flex;
-    align-items: center;
+  background-color: rgb(8, 32, 41);
+  height: 100px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
 }
 
 .headline {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .headline img {
-    width: 10%;
+  width: 10%;
 }
 
 .content-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .contentbox {
-    background-color: rgb(4, 4, 139);
-    width: 50%;
-    height: auto;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+  background-color: rgb(13, 50, 64);
+  width: 50%;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
-
 .booktitle {
-    display: flex;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  display: flex;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .bookimg {
-    width: 40%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  width: 40%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-
 .likesection img {
-    width: 8%;
-    height: fit-content;
+  width: 8%;
+  height: fit-content;
+}
+
+.likesection img:hover {
+  cursor: pointer;
+  scale: 1.1;
 }
 
 .likesection {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40px;
-    align-items: center;
-
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
 }
 
 .likesection h2 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .likes {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-    margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  margin-right: 10px;
 }
 
-.infosection{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.infosection {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .infotitle {
-    width: 50%;
-    margin-left: 10px;
+  width: 50%;
+  margin-left: 10px;
 }
 
 .renderinfos {
-    width: 50%;
-}
-
-.sendimg {
-    width: 10%;
+  width: 50%;
 }
 
 .commentheadline {
-    display: flex;
-    width: 100%;
-    padding-left: 20px;
-    padding-top: 10px;
+  display: flex;
+  width: 100%;
+  padding-left: 20px;
+  padding-top: 10px;
 }
 
 .commentsection {
-    display: flex;
-    width: 98%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-height: 200px;
-    overflow: scroll;
-    overflow-x: hidden;
+  display: flex;
+  width: 98%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .users {
-    width: 45%;
-    margin-top: 10px;
-    padding-left: 10px;
+  width: 45%;
+  margin-top: 10px;
+  padding-left: 10px;
 }
 
 .comments {
-    width: 45%;
-    margin-top: 10px;
+  width: 45%;
+  margin-top: 10px;
 }
 
-
 .commentsection::-webkit-scrollbar {
-    width: 0.5em;
+  width: 0.5em;
 }
 
 .commentsection::-webkit-scrollbar-track {
-    background: rgb(1, 1, 59);
-    border-radius: 100vw;
+  background: rgb(1, 1, 59);
+  border-radius: 100vw;
 }
 
 .commentsection::-webkit-scrollbar-thumb {
-    border-radius: 100vw;
-    background: blue;
+  border-radius: 100vw;
+  background: rgb(115, 193, 221);
+}
+
+.inputsection {
+  display: flex;
+  align-items: center;
+}
+
+.comment-input {
+  width: 80%;
+  height: 30px;
+  margin: 10px;
+  background-color: rgb(17, 71, 88);
+  border: none;
+  border-bottom: rgb(115, 193, 221) solid;
+  border-radius: 2px;
+}
+
+.comment-input::placeholder {
+  color: rgb(115, 193, 221);
+}
+
+.sendimg {
+  width: 7%;
+  height: fit-content;
+  margin-left: 5px;
+}
+
+.sendimg:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.comment-input:focus {
+  outline: none;
 }

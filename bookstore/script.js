@@ -194,7 +194,7 @@ let books = [
 ];
 
 function render() {
-    let contentbox = document.getElementById("content-area")
+  let contentbox = document.getElementById("content-area");
 
   for (let i = 0; i < books.length; i++) {
     contentbox.innerHTML += `
@@ -203,14 +203,21 @@ function render() {
     <div class="separator"></div>
     ${renderImage()}
     <div class="separator"></div>
-    ${renderInfos(books[i].author, books[i].publishedYear, books[i].genre, books[i].price, books[i].likes)}
+    ${renderInfos(
+      books[i].author,
+      books[i].publishedYear,
+      books[i].genre,
+      books[i].price,
+      books[i].likes,
+      i
+    )}
     <div class="separator"></div>
     ${renderCommentSection()}
     ${renderComments(books[i].comments)}
     </div>
     ${renderInput(i)}
     </div>
-    `
+    `;
   }
 }
 
@@ -222,10 +229,10 @@ function renderImage() {
   return `<img src="./icons/book .png" alt="" class="bookimg">`;
 }
 
-function renderInfos(author, year, genre, price, likes) {
+function renderInfos(author, year, genre, price, likes, i) {
   return `
     <div class="likesection">
-        <h2>${price}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart" onclick="toogleLike()"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike()" id="redheart"></div>
+        <h2>${price}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart${i}" onclick="toogleLike(${i})"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike(${i})" id="redheart${i}"></div>
     </div>
     <div class="infosection">
       <div id="infotitle" class="infotitle">
@@ -245,33 +252,31 @@ function renderCommentSection() {
   `;
 }
 
-
 function renderComments(allcomments) {
-  let commentarray = []
+  let commentarray = [];
   for (let i = 0; i < allcomments.length; i++) {
     let user = allcomments[i].name;
     let comment = allcomments[i].comment;
-    
+
     commentarray.push(`<div id="users" class="users">
           <p>[${user}]</p>
       </div>
       <div id="comments" class="comments">
           <p>: ${comment}</p>
-      </div>`)
+      </div>`);
   }
   combi = commentarray.join("");
   return combi;
 }
 
 function renderInput(i) {
-  return `<input type="text" name="" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="" class="sendimg">`;
+  return `<div class="inputsection"><input type="text" name="" class="comment-input" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="" class="sendimg"></div>`;
 }
 
+function toogleLike(i) {
+  let whiteheart = document.getElementById(`whiteheart${i}`);
+  let redheart = document.getElementById(`redheart${i}`);
 
-function toogleLike() {
-  let whiteheart = document.getElementById("whiteheart")
-  let redheart = document.getElementById("redheart")
-
-  whiteheart.classList.toggle("d-none")
-  redheart.classList.toggle("d-none")
+  whiteheart.classList.toggle("d-none");
+  redheart.classList.toggle("d-none");
 }
