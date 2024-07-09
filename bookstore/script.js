@@ -203,14 +203,8 @@ function render() {
     <div class="separator"></div>
     ${renderImage()}
     <div class="separator"></div>
-    ${renderInfos(
-      books[i].author,
-      books[i].publishedYear,
-      books[i].genre,
-      books[i].price,
-      books[i].likes,
-      i
-    )}
+    ${renderPriceLike(books[i].price, books[i].likes, i)}
+    ${renderInfos(books[i].author, books[i].publishedYear, books[i].genre)}
     <div class="separator"></div>
     ${renderCommentSection()}
     ${renderComments(books[i].comments)}
@@ -229,11 +223,17 @@ function renderImage() {
   return `<img src="./icons/book .png" alt="" class="bookimg">`;
 }
 
-function renderInfos(author, year, genre, price, likes, i) {
+function renderPriceLike(price, likes, i) {
+  let newprice = price.toFixed(2);
+  let realynewprice = newprice.toString().replace(".", ",");
   return `
     <div class="likesection">
-        <h2>${price}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart${i}" onclick="toogleLike(${i})"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike(${i})" id="redheart${i}"></div>
-    </div>
+        <h2>${realynewprice}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart${i}" onclick="toogleLike(${i})"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike(${i})" id="redheart${i}"></div>
+    </div>`;
+}
+
+function renderInfos(author, year, genre) {
+  return `
     <div class="infosection">
       <div id="infotitle" class="infotitle">
           <p>Author</p><p>Erscheinungsjahr</p><p>Genre</p>
