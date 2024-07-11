@@ -193,6 +193,7 @@ let books = [
   },
 ];
 
+load();
 function render() {
   let contentbox = document.getElementById("content-area");
 
@@ -206,10 +207,11 @@ function render() {
     ${renderPriceLike(books[i].price, books[i].likes, i)}
     ${renderInfos(books[i].author, books[i].publishedYear, books[i].genre)}
     <div class="separator"></div>
-    ${renderCommentSection()}
+    ${renderCommentSection(i)}
     ${renderComments(books[i].comments)}
     </div>
     ${renderInput(i)}
+    
     </div>
     `;
   }
@@ -226,9 +228,16 @@ function renderImage() {
 function renderPriceLike(price, likes, i) {
   let newprice = price.toFixed(2);
   let realynewprice = newprice.toString().replace(".", ",");
+  let liked = "";
+  let notliked = "";
+  if (books[i].liked == true) {
+    liked = " d-none";
+  } else {
+    notliked = " d-none";
+  }
   return `
     <div class="likesection">
-        <h2>${realynewprice}€</h2><div class="likes">${likes}<img src="icons/whiteheart.png" alt="" class="whiteheart" id="whiteheart${i}" onclick="toogleLike(${i})"><img src="icons/redheart.png" alt="" class="redheart d-none" onclick="toogleLike(${i})" id="redheart${i}"></div>
+        <h2 class="price">${realynewprice}€</h2><div class="likes"><h3 class="likecount" id="likecount${i}">${likes}</h3><img src="icons/whiteheart.png" alt="" class="whiteheart${liked}" id="whiteheart${i}" onclick="toogleLike(${i})"><img src="icons/redheart.png" alt="" class="redheart${notliked}" onclick="toogleLike(${i})" id="redheart${i}"></div>
     </div>`;
 }
 
@@ -245,10 +254,10 @@ function renderInfos(author, year, genre) {
     `;
 }
 
-function renderCommentSection() {
+function renderCommentSection(i) {
   return ` 
   <div class="commentheadline"><h2>Kommentare:</h2></div>
-  <div class="commentsection" id="commentsection">
+  <div class="commentsection" id="commentsection${i}">
   `;
 }
 
@@ -257,26 +266,73 @@ function renderComments(allcomments) {
   for (let i = 0; i < allcomments.length; i++) {
     let user = allcomments[i].name;
     let comment = allcomments[i].comment;
-
-    commentarray.push(`<div id="users" class="users">
-          <p>[${user}]</p>
-      </div>
-      <div id="comments" class="comments">
-          <p>: ${comment}</p>
-      </div>`);
+    commentarray.push(renderComment(user, comment));
   }
   combi = commentarray.join("");
   return combi;
 }
 
 function renderInput(i) {
-  return `<div class="inputsection"><input type="text" name="" class="comment-input" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="" class="sendimg"></div>`;
+  return `<div class="inputsection"><input type="text" name="" class="comment-input" id="comment-input${i}" placeholder="Schreibe dein Kommentar ..."><img src="./icons/send.png" alt="" class="sendimg" id="sendimg${i}" onclick="writeComment(${i})"></div>`;
 }
 
 function toogleLike(i) {
   let whiteheart = document.getElementById(`whiteheart${i}`);
   let redheart = document.getElementById(`redheart${i}`);
+  let likecount = document.getElementById(`likecount${i}`);
 
   whiteheart.classList.toggle("d-none");
   redheart.classList.toggle("d-none");
+  if (books[i].liked == true) {
+    books[i].likes--;
+  } else {
+    books[i].likes++;
+  }
+  likecount.innerHTML = books[i].likes;
+  books[i].liked = !books[i].liked;
+  save();
+}
+
+function ifLiked(i) {
+  if ((books[i].liked = true)) {
+    toogleLike(i);
+  }
+}
+
+function save() {
+  let allbooks = JSON.stringify(books);
+  localStorage.setItem("Bücher", allbooks);
+}
+
+function load() {
+  let allbooks = localStorage.getItem("Bücher");
+  let parsedbooks = JSON.parse(allbooks);
+
+  if (parsedbooks == null) {
+    books = books;
+  } else {
+    books = parsedbooks;
+  }
+}
+
+function writeComment(i) {
+  let inputfield = document.getElementById(`comment-input${i}`);
+
+  if (!inputfield) {
+    alert("Kommentar eingeben");
+  }
+  let test = JSON.parse(`{"name": "Du", "comment": "${inputfield.value}"}`);
+  books[i].comments.push(test);
+  document.getElementById(`commentsection${i}`).innerHTML += renderComment("[Du]", inputfield.value);
+      inputfield.value = ""
+  save();
+}
+
+function renderComment(user, comment) {
+  return `<div id="users" class="users">
+          <p>${user}</p>
+      </div>
+      <div id="comments" class="comments">
+          <p>: ${comment}</p>
+      </div>`
 }

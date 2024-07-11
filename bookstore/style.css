@@ -57,6 +57,7 @@ header {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  box-shadow: inset -3px -16px 300px -45px rgba(0,0,0,0.75);
 }
 
 .booktitle {
@@ -89,6 +90,7 @@ header {
   justify-content: space-between;
   height: 40px;
   align-items: center;
+  margin-top:10px;
 }
 
 .likesection h2 {
@@ -194,4 +196,12 @@ header {
 
 .comment-input:focus {
   outline: none;
+}
+
+.price {
+  color: rgb(177, 12, 12);
+}
+
+.likecount {
+  font-weight: 400;
 }
