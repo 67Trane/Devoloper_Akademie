@@ -321,7 +321,7 @@ function writeComment(i) {
   if (!inputfield) {
     alert("Kommentar eingeben");
   }
-  let test = JSON.parse(`{"name": "Du", "comment": "${inputfield.value}"}`);
+  let test = JSON.parse(`{"name": "[Du]", "comment": "${inputfield.value}"}`);
   books[i].comments.push(test);
   document.getElementById(`commentsection${i}`).innerHTML += renderComment("[Du]", inputfield.value);
       inputfield.value = ""

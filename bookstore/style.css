@@ -114,12 +114,12 @@ header {
 }
 
 .infotitle {
-  width: 50%;
+  width: 45%;
   margin-left: 10px;
 }
 
 .renderinfos {
-  width: 50%;
+  width: 54%;
 }
 
 .commentheadline {
@@ -204,4 +204,32 @@ header {
 
 .likecount {
   font-weight: 400;
+}
+
+@media (max-width:760px) {
+
+  .contentbox {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 430px) {
+
+  .likesection img {
+    width: 16%;
+  }
+
+  .contentbox {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  header {
+    justify-content: center;
+  }
+
+  .contentbox {
+    width: 800px;
+  }
 }
