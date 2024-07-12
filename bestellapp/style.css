@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+}
+
+header { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: red;
+}
+
+footer {
+    background-color: green;
+    height: 80px;
+}
+
+.content {
+    min-height: 81.7vh
+}
+

@@ -209,10 +209,7 @@ function render() {
     <div class="separator"></div>
     ${renderCommentSection(i)}
     ${renderComments(books[i].comments)}
-    </div>
-    ${renderInput(i)}
-    
-    </div>
+    </div>${renderInput(i)}</div>
     `;
   }
 }
