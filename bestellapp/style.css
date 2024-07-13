@@ -1,27 +1,55 @@
 * {
-    margin: 0;
-    scroll-behavior: smooth;
+  margin: 0;
+  scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    display: grid;
+  min-height: 100vh;
+  display: grid;
 }
 
-header { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+}
+
+header img {
+  width: 8%;
+}
+
+.logo {
+  width: 20%;
+}
+
+.logodiv {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.headerimg {
+    background: url(./imgs/tükischesgericht.jpg);
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80%;
     background-color: red;
 }
 
 footer {
-    background-color: green;
-    height: 80px;
+  height: 80px;
 }
 
 .content {
-    min-height: 81.7vh
+  min-height: 81.7vh;
 }
-
