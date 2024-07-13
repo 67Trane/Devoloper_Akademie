@@ -1,11 +1,17 @@
 * {
   margin: 0;
   scroll-behavior: smooth;
+  font-family: JETSansDigital, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 body {
   min-height: 100vh;
   display: grid;
+}
+
+.d-none {
+  display: none;
 }
 
 header {
@@ -14,6 +20,8 @@ header {
   align-items: center;
   height: 80px;
   width: 100%;
+  box-shadow: 0px 26px 13px -4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 header img {
@@ -38,12 +46,12 @@ header img {
 }
 
 .headerimg {
-    background: url(./imgs/tükischesgericht.jpg);
-    height: 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 80%;
-    background-color: red;
+  background: url(./imgs/tükischesgericht.jpg);
+  height: 340px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 70%;
 }
 
 footer {
@@ -52,4 +60,174 @@ footer {
 
 .content {
   min-height: 81.7vh;
+  background-color: green;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  height: 2000px;
 }
+
+.basket-section {
+  position: sticky;
+  background-color: red;
+  width: 30%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  right: 0;
+  left: 100%;
+  box-sizing: border-box;
+}
+
+.basket-header {
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+/* einstellungen für den switch bereich */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 54px;
+  width: 50%;
+  left: 4px;
+  opacity: 0.7;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider-text-left,
+.slider-text-right {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+input:checked + .slider {
+  background-color: #ccc;
+}
+
+input:checked + .slider:before {
+  transform: translateX(95%);
+}
+
+.slider img {
+  width: 30px;
+  height: auto;
+}
+
+/* ende vom switch bereich*/
+
+.basket-logo {
+  width: 10%;
+}
+
+.basketempty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 0px 40px 0px;
+  text-align: center;
+}
+
+.headbar {
+  height: 200px;
+  width: 70%;
+  background-color: yellow;
+  display: flex;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.headsection {
+    height: 0px;
+    width: 100%;
+    position: relative;
+}
+
+.sitelogo {
+    width: 40px;
+    background-color: green;
+    height: 40px;
+    border-radius: 50%;
+    background: url(./Logo/man.png);
+    background-size: contain;
+}
+
+.bordersitelogo {
+    background-color: white;
+    border: 0.5 solid grey;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 120px;
+    margin-top: -50px;
+}
+
+.title-like {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 120px 0px;
+    align-items: center;
+}
+
+.rating {
+    margin: 20px 120px 20px;
+}
+
+.category {
+    background-color: red;
+    height: 80px;
+}
+
