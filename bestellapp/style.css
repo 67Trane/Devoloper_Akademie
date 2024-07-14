@@ -10,8 +10,10 @@ body {
   display: grid;
 }
 
+
+
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 header {
@@ -51,7 +53,7 @@ header img {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 70%;
+  width: 100%;
 }
 
 footer {
@@ -59,18 +61,19 @@ footer {
 }
 
 .content {
-  min-height: 81.7vh;
-  background-color: green;
   flex-wrap: wrap;
-  flex-grow: 1;
-  height: 2000px;
+  display: flex;
+  height: auto;
+}
+
+.leftside {
+  width: 70%;
 }
 
 .basket-section {
   position: sticky;
-  background-color: red;
   width: 30%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +81,8 @@ footer {
   right: 0;
   left: 100%;
   box-sizing: border-box;
+  border-left: 1px solid rgba(128, 128, 128, 0.274);
+  box-shadow: -13px 0px 18px 0px rgba(0, 0, 0, 0.1);
 }
 
 .basket-header {
@@ -177,9 +182,7 @@ input:checked + .slider:before {
 }
 
 .headbar {
-  height: 200px;
-  width: 70%;
-  background-color: yellow;
+  width: 100%;
   display: flex;
   box-sizing: border-box;
   display: flex;
@@ -188,46 +191,173 @@ input:checked + .slider:before {
 }
 
 .headsection {
-    height: 0px;
-    width: 100%;
-    position: relative;
+  height: fit-content;
+  width: 100%;
+  position: relative;
 }
 
 .sitelogo {
-    width: 40px;
-    background-color: green;
-    height: 40px;
-    border-radius: 50%;
-    background: url(./Logo/man.png);
-    background-size: contain;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(./Logo/man.png);
+  background-size: contain;
 }
 
 .bordersitelogo {
-    background-color: white;
-    border: 0.5 solid grey;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    margin-left: 120px;
-    margin-top: -50px;
+  background-color: white;
+  border: 0.5px solid rgba(128, 128, 128, 0.459);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 120px;
+  margin-top: -50px;
 }
 
 .title-like {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 120px 0px;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 120px 0px;
+  align-items: center;
 }
 
 .rating {
-    margin: 20px 120px 20px;
+  margin: 20px 120px 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
 }
 
 .category {
-    background-color: red;
-    height: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 79%;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.274);
+  box-shadow: 0px 13px 18px 0px rgba(0, 0, 0, 0.1);
+  padding: 0px 120px 0px;
 }
 
+.minprice {
+  margin: 0px 120px 20px;
+}
+
+.btn img {
+  width: 80%;
+}
+
+.btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(245, 245, 245);
+  border: none;
+}
+
+.categorylist {
+  width: 80%;
+  height: 40px;
+}
+
+.btn-long {
+  border-radius: 40px;
+  height: 100%;
+  padding: 0px 10px 0px;
+  font-weight: 700;
+  border: none;
+  background-color: white;
+}
+
+.btn-long:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.btn-long:focus {
+  background-color: black;
+  color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(235, 233, 232);
+}
+
+.long {
+  border-radius: 40px;
+  width: 120px;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.long img {
+  width: 15%;
+}
+
+.about-like {
+  display: flex;
+  gap: 10px;
+}
+
+.heart {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  border: none;
+  justify-content: center;
+}
+
+.heart:hover {
+  background-color: rgb(235, 233, 232);
+  cursor: pointer;
+}
+
+.heart img {
+  width: 70%;
+}
+
+.infoicon {
+  width: 50px;
+}
+
+.test {
+  background-color: red;
+  height: 200px;
+  width: 200px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menus {
+  width: 100%;
+  margin:0
+}
+
+.minimumvalue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.minimumvalue img {
+  width: 2%;
+}

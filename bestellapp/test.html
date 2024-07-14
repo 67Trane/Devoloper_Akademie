@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Example</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+
+        .rectangle {
+            background-color: lightgrey; /* Change this to your desired color */
+            border: 1px solid #000; /* Optional: for better visibility */
+        }
+
+        .left {
+            height: 50%;
+        }
+
+        .right {
+            width: 30%; /* Adjust the width as needed */
+            height: 100%; /* This ensures the right rectangle covers the entire height */
+        }
+
+        .bottom {
+            height: 50%; /* Should match the remaining height below left */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="rectangle left"></div>
+            <div class="rectangle bottom"></div>
+        </div>
+        <div class="rectangle right"></div>
+    </div>
+</body>
+</html>
