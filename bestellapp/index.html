@@ -10,7 +10,7 @@
     <title>BestellApp</title>
 </head>
 
-<body>
+<body onload="render()">
     <header>
         <div class="logodiv">
             <img src="./Favicon/android-chrome-192x192.png" alt="">
@@ -51,7 +51,6 @@
 
 
             </div>
-
             <div class="category">
                 <button class="btn"><img src="./Logo/search.png" alt=""></button>
                 <button class="btn"><img src="./Logo/left-arrow.png" alt=""></button>
@@ -63,8 +62,8 @@
                 <button class="btn"><img src="./Logo/bullet-list.png" alt=""></button>
             </div>
             <div class="menus">
-                <div class="dishes">
-                    <div class="dishesimg"></div>
+                <div id="dishes" class="dishes">
+                    <!-- <div class="dishesimg"></div>
                     <div class="dishestitle">
                         <h2>Salat</h2>
                     </div>
@@ -87,10 +86,10 @@
                         <div class="addbtn">
                             <button></button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
-                <div class="dishes">
+                <!-- <div class="dishes">
                     <div class="dishesimg"></div>
                     <h2>Salat</h2>
                     <div class="dish">
@@ -105,7 +104,7 @@
                         <h2>Salat3</h2>
                         <p>mit Gurken, Tomaten</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="basket-section">
