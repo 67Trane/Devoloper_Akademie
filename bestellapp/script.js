@@ -8,18 +8,21 @@ let alldishes = [
         ingredients: "mit Gurken, Tomaten",
         price: 6.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Tomaten Salat",
         ingredients: "mit Zwiebeln, Tomaten",
         price: 6.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Caesar Salat",
         ingredients: "mit Hähnchen, Parmesan, Croutons",
         price: 8.0,
         img: "./asd.png",
+amount: 1,
       },
     ],
   },
@@ -32,18 +35,21 @@ let alldishes = [
         ingredients: "mit Schinken, Salami und Champignons",
         price: 10.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Pizza Margherita",
         ingredients: "mit Tomatensauce und Mozzarella",
         price: 8.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Pizza Funghi",
         ingredients: "mit Champignons und Mozzarella",
         price: 9.0,
         img: "./asd.png",
+amount: 1,
       },
     ],
   },
@@ -56,12 +62,14 @@ let alldishes = [
         ingredients: "mit Hackfleischsauce",
         price: 12.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Penne Arrabbiata",
         ingredients: "mit scharfer Tomatensauce",
         price: 10.0,
         img: "./asd.png",
+amount: 1,
       },
     ],
   },
@@ -74,16 +82,19 @@ let alldishes = [
         ingredients: "klassisches italienisches Dessert",
         price: 6.0,
         img: "./asd.png",
+amount: 1,
       },
       {
         name: "Panna Cotta",
         ingredients: "mit Beeren",
         price: 5.0,
         img: "./asd.png",
+amount: 1,
       },
     ],
   },
 ];
+
 
 function render() {
   let content = document.getElementById("dishes");
@@ -124,19 +135,11 @@ function renderdishes(j) {
 }
 
 function addbasket(j, i) {
-  let clicked = 0
-  
-  if (clicked == 0) {
-    alert("test")
-    clicked = 2
-  } 
-
-  console.log(clicked)
   let basket = document.getElementById("basket-section")
   switchBasketInfo();
-  let amount = 1;
+  
 
-  basket.innerHTML += renderBasketInfos(j, i, amount);
+  basket.innerHTML += renderBasketInfos(j, i, alldishes[i].dishes[j].amount);
  
 
 }
