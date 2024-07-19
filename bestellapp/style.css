@@ -88,6 +88,10 @@ footer {
   overflow-y: scroll;
 }
 
+.basket-container {
+  width: 100%;
+}
+
 .basket-header {
   margin-top: 40px;
   font-weight: 700;
@@ -436,6 +440,7 @@ input:checked + .slider:before {
   background-position: center;
 }
 
+
 .add {
   background: url(./Logo/plus.png);
   border-radius: 50%;
@@ -444,6 +449,11 @@ input:checked + .slider:before {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.add:hover, .remove:hover {
+  cursor: pointer;
+  background-color: rgb(235,233,232);
 }
 
 .basket-infos {

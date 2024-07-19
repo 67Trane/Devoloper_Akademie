@@ -8,21 +8,21 @@ let alldishes = [
         ingredients: "mit Gurken, Tomaten",
         price: 6.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Tomaten Salat",
         ingredients: "mit Zwiebeln, Tomaten",
         price: 6.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Caesar Salat",
         ingredients: "mit Hähnchen, Parmesan, Croutons",
         price: 8.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
     ],
   },
@@ -35,21 +35,21 @@ amount: 1,
         ingredients: "mit Schinken, Salami und Champignons",
         price: 10.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Pizza Margherita",
         ingredients: "mit Tomatensauce und Mozzarella",
         price: 8.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Pizza Funghi",
         ingredients: "mit Champignons und Mozzarella",
         price: 9.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
     ],
   },
@@ -62,14 +62,14 @@ amount: 1,
         ingredients: "mit Hackfleischsauce",
         price: 12.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Penne Arrabbiata",
         ingredients: "mit scharfer Tomatensauce",
         price: 10.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
     ],
   },
@@ -82,19 +82,18 @@ amount: 1,
         ingredients: "klassisches italienisches Dessert",
         price: 6.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
       {
         name: "Panna Cotta",
         ingredients: "mit Beeren",
         price: 5.0,
         img: "./asd.png",
-amount: 1,
+        amount: 1,
       },
     ],
   },
 ];
-
 
 function render() {
   let content = document.getElementById("dishes");
@@ -135,24 +134,29 @@ function renderdishes(j) {
 }
 
 function addbasket(j, i) {
-  let basket = document.getElementById("basket-section")
+  let basket = document.getElementById("basket-section");
   switchBasketInfo();
-  
-
-  basket.innerHTML += renderBasketInfos(j, i, alldishes[i].dishes[j].amount);
- 
-
+  if (alldishes[i].dishes[j].amount == 1) {
+    basket.innerHTML += renderBasketInfos(j, i, alldishes[i].dishes[j].amount);
+  } else {
+    addAmount(i,j);
+  }
 }
 
 function renderBasketInfos(j, i, amount) {
+  alldishes[i].dishes[j].amount++;
   return ` <div id="basket-container" class="basket-container">
                 <div class="basket-infos">
                     <div class="amount-price">
                         <div class="amount-name">
-                            <h3>${amount}</h3>
-                            <h3 class="dishname">${alldishes[j].dishes[i].name}</h3>
+                            <h3 id="amount1${i}${j}">${amount}</h3>
+                            <h3 class="dishname">${
+                              alldishes[j].dishes[i].name
+                            }</h3>
                         </div>
-                        <h3 class="price">${parseFloat(alldishes[j].dishes[i].price)
+                        <h3 class="price">${parseFloat(
+                          alldishes[j].dishes[i].price
+                        )
                           .toFixed(2)
                           .replace(".", ",")}€</h3>
                     </div>
@@ -163,9 +167,9 @@ function renderBasketInfos(j, i, amount) {
                     <div class="add-amount">
                         <a href="#">Anmerkung<br> hinzufügen</a>
                         <div class="add-remove">
-                            <button class="remove"></button>
-                            <h3>${amount}</h3>
-                            <button class="add"></button>
+                            <button class="remove" onclick="removeButton(${i},${j})"></button>
+                            <h3 id="amount2${i}${j}">${amount}</h3>
+                            <button class="add" onclick="addButton(${i},${j})"></button>
                         </div>
                     </div>
                 </div>
@@ -177,3 +181,26 @@ function switchBasketInfo() {
   let basket = document.getElementById("basketempty");
   basket.classList.add("d-none");
 }
+
+function addAmount(i, j) {
+  let amounts = document.getElementById(`amount1${i}${j}`);
+  let amounts2 = document.getElementById(`amount2${i}${j}`);
+  amounts.innerHTML++;
+  amounts2.innerHTML++;
+}
+
+function removeAmount(i, j) {
+  let amounts = document.getElementById(`amount1${i}${j}`);
+  let amounts2 = document.getElementById(`amount2${i}${j}`);
+  amounts.innerHTML--;
+  amounts2.innerHTML--;
+}
+
+function addButton(i,j) {
+  addAmount(i,j);
+}
+
+function removeButton(i,j) {
+  removeAmount(i,j);
+}
+
