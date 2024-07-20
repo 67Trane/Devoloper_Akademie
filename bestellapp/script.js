@@ -140,15 +140,21 @@ function addbasket(j, i) {
   let basket = document.getElementById(`basket-section`);
   let basketcontainer = document.getElementById(`basket-container${i}${j}`);
   alldishes[i].dishes[j].amount = 1;
+  let price = alldishes[i].dishes[j].price;
 
   if (!basketcontainer) {
-    basket.innerHTML += renderBasketInfos(j, i, alldishes[i].dishes[j].amount);
+    basket.innerHTML += renderBasketInfos(
+      j,
+      i,
+      alldishes[i].dishes[j].amount,
+      price
+    );
     switchBasketInfo();
   } else {
     addAmount(i, j);
   }
   if (allempty == true) {
-    checkBasektIsEmpty();
+    checkBasektIsEmpty(j, i);
     console.log(allempty);
   }
 }
@@ -158,7 +164,7 @@ function makeitempty() {
   empty.innerHTML = "";
 }
 
-function renderBasketInfos(j, i, amount) {
+function renderBasketInfos(j, i, amount, price) {
   alldishes[i].dishes[j].amount++;
   return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
@@ -169,9 +175,7 @@ function renderBasketInfos(j, i, amount) {
                               alldishes[j].dishes[i].name
                             }</h3>
                         </div>
-                        <h3 class="price">${parseFloat(
-                          alldishes[j].dishes[i].price
-                        )
+                        <h3 class="price" id="price">${parseFloat(price)
                           .toFixed(2)
                           .replace(".", ",")}€</h3>
                     </div>
@@ -209,8 +213,10 @@ function switchBasketInfo() {
 function addAmount(i, j) {
   let amounts = document.getElementById(`amount1${i}${j}`);
   let amounts2 = document.getElementById(`amount2${i}${j}`);
+
   amounts.innerHTML++;
   amounts2.innerHTML++;
+  calculateAmount(amounts.innerHTML);
 }
 
 function removeAmount(i, j) {
@@ -223,6 +229,7 @@ function removeAmount(i, j) {
   } else {
     amounts.innerHTML--;
     amounts2.innerHTML--;
+    calculateAmountDecrese(amounts.innerHTML);
   }
 }
 
@@ -241,7 +248,7 @@ function checkAmount(amount) {
   }
 }
 
-function renderCosts() {
+function renderCosts(j, i) {
   let costs = document.getElementById("costs");
 
   return (costs.innerHTML += `
@@ -260,12 +267,27 @@ function renderCosts() {
             `);
 }
 
-function checkBasektIsEmpty() {
-
+function checkBasektIsEmpty(j, i) {
   if (allempty == true) {
-    renderCosts();
-    allempty = false
+    renderCosts(j, i);
+    allempty = false;
   } else {
     console.log("nothere");
   }
+}
+
+
+function calculateAmount(amount) {
+  let cost = alldishes[0].dishes[0].price;
+  let res = cost * amount;
+  document.getElementById("price").innerHTML = `${parseFloat(res).toFixed(2).replace(".",",")}€`;
+  return res;
+}
+
+function calculateAmountDecrese(amount) {
+  let price = document.getElementById("price").innerHTML;
+  let cost = alldishes[0].dishes[0].price;
+  let res = parseInt(price) - cost;
+  document.getElementById("price").innerHTML = `${parseFloat(res).toFixed(2).replace(".",",")}€`;
+  return res;
 }
