@@ -95,6 +95,8 @@ let alldishes = [
   },
 ];
 
+let allempty = true;
+
 function render() {
   let content = document.getElementById("dishes");
 
@@ -107,6 +109,7 @@ function render() {
     renderdishes(i);
     renderCategoryImg(i);
   }
+  makeitempty();
 }
 
 function renderCategoryImg(i) {
@@ -134,18 +137,30 @@ function renderdishes(j) {
 }
 
 function addbasket(j, i) {
-  let basket = document.getElementById("basket-section");
-  switchBasketInfo();
-  if (alldishes[i].dishes[j].amount == 1) {
+  let basket = document.getElementById(`basket-section`);
+  let basketcontainer = document.getElementById(`basket-container${i}${j}`);
+  alldishes[i].dishes[j].amount = 1;
+
+  if (!basketcontainer) {
     basket.innerHTML += renderBasketInfos(j, i, alldishes[i].dishes[j].amount);
+    switchBasketInfo();
   } else {
-    addAmount(i,j);
+    addAmount(i, j);
   }
+  if (allempty == true) {
+    checkBasektIsEmpty();
+    console.log(allempty);
+  }
+}
+
+function makeitempty() {
+  let empty = document.getElementById("costs");
+  empty.innerHTML = "";
 }
 
 function renderBasketInfos(j, i, amount) {
   alldishes[i].dishes[j].amount++;
-  return ` <div id="basket-container" class="basket-container">
+  return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
                     <div class="amount-price">
                         <div class="amount-name">
@@ -178,8 +193,17 @@ function renderBasketInfos(j, i, amount) {
 }
 
 function switchBasketInfo() {
+  let basketisempty = document.getElementsByName("basket-container");
   let basket = document.getElementById("basketempty");
-  basket.classList.add("d-none");
+  let empty = document.getElementById("costs");
+
+  if (basketisempty.length >= 1) {
+    basket.classList.add("d-none");
+    empty.classList.remove("d-none");
+  } else {
+    basket.classList.toggle("d-none");
+    empty.classList.add("d-none");
+  }
 }
 
 function addAmount(i, j) {
@@ -192,15 +216,56 @@ function addAmount(i, j) {
 function removeAmount(i, j) {
   let amounts = document.getElementById(`amount1${i}${j}`);
   let amounts2 = document.getElementById(`amount2${i}${j}`);
-  amounts.innerHTML--;
-  amounts2.innerHTML--;
+  let basket = document.getElementById(`basket-container${i}${j}`);
+
+  if (checkAmount(amounts.innerHTML)) {
+    basket.remove();
+  } else {
+    amounts.innerHTML--;
+    amounts2.innerHTML--;
+  }
 }
 
-function addButton(i,j) {
-  addAmount(i,j);
+function addButton(i, j) {
+  addAmount(i, j);
 }
 
-function removeButton(i,j) {
-  removeAmount(i,j);
+function removeButton(i, j) {
+  removeAmount(i, j);
+  switchBasketInfo();
 }
 
+function checkAmount(amount) {
+  if (amount <= 1) {
+    return true;
+  }
+}
+
+function renderCosts() {
+  let costs = document.getElementById("costs");
+
+  return (costs.innerHTML += `
+                <div class="titlecosts">
+                    <p>Zwischensumme</p>
+                    <p>Lieferkosten</p>
+                    <p>Transaktionskosten PayPal</p>
+                    <p class="overallcost">Gesamt</p>
+                </div>
+                <div class="prices">
+                    <p>21,10€</p>
+                    <p>Kostenlos</p>
+                    <p>0,29€</p>
+                    <p class="overallcost">21,39€</p>
+                </div>
+            `);
+}
+
+function checkBasektIsEmpty() {
+
+  if (allempty == true) {
+    renderCosts();
+    allempty = false
+  } else {
+    console.log("nothere");
+  }
+}

@@ -440,7 +440,6 @@ input:checked + .slider:before {
   background-position: center;
 }
 
-
 .add {
   background: url(./Logo/plus.png);
   border-radius: 50%;
@@ -451,9 +450,10 @@ input:checked + .slider:before {
   background-position: center;
 }
 
-.add:hover, .remove:hover {
+.add:hover,
+.remove:hover {
   cursor: pointer;
-  background-color: rgb(235,233,232);
+  background-color: rgb(235, 233, 232);
 }
 
 .basket-infos {
@@ -515,4 +515,31 @@ input:checked + .slider:before {
 
 a {
   color: black;
+}
+
+.costs {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px 0px;
+  gap: 30px;
+  order: 999;
+}
+
+.prices{
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.overallcost {
+  font-weight: 700;
+} 
+
+.titlecosts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
