@@ -155,7 +155,6 @@ function addbasket(j, i) {
   }
   if (allempty == true) {
     checkBasektIsEmpty(j, i);
-    console.log(allempty);
   }
 }
 
@@ -175,9 +174,9 @@ function renderBasketInfos(j, i, amount, price) {
                               alldishes[j].dishes[i].name
                             }</h3>
                         </div>
-                        <h3 class="price" id="price">${parseFloat(price)
-                          .toFixed(2)
-                          .replace(".", ",")}€</h3>
+                        <h3 class="price" id="price${i}${j}">${parseFloat(price)
+    .toFixed(2)
+    .replace(".", ",")}€</h3>
                     </div>
                     <div class="ingridients">
                         <p>${alldishes[j].dishes[i].ingredients}</p>
@@ -216,7 +215,7 @@ function addAmount(i, j) {
 
   amounts.innerHTML++;
   amounts2.innerHTML++;
-  calculateAmount(amounts.innerHTML);
+  calculateAmount(i, j);
 }
 
 function removeAmount(i, j) {
@@ -229,7 +228,7 @@ function removeAmount(i, j) {
   } else {
     amounts.innerHTML--;
     amounts2.innerHTML--;
-    calculateAmountDecrese(amounts.innerHTML);
+    calculateAmountDecrese(i, j);
   }
 }
 
@@ -271,23 +270,27 @@ function checkBasektIsEmpty(j, i) {
   if (allempty == true) {
     renderCosts(j, i);
     allempty = false;
-  } else {
-    console.log("nothere");
   }
 }
 
-
-function calculateAmount(amount) {
-  let cost = alldishes[0].dishes[0].price;
-  let res = cost * amount;
-  document.getElementById("price").innerHTML = `${parseFloat(res).toFixed(2).replace(".",",")}€`;
+function calculateAmount(i, j) {
+  let price = document.getElementById(`price${i}${j}`).innerHTML;
+  let cost = alldishes[i].dishes[j].price;
+  let res = parseInt(price) + cost;
+  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
+    .toFixed(2)
+    .replace(".", ",")}€`;
   return res;
 }
 
-function calculateAmountDecrese(amount) {
-  let price = document.getElementById("price").innerHTML;
-  let cost = alldishes[0].dishes[0].price;
+function calculateAmountDecrese(i, j) {
+  let price = document.getElementById(`price${i}${j}`).innerHTML;
+  let cost = alldishes[i].dishes[j].price;
   let res = parseInt(price) - cost;
-  document.getElementById("price").innerHTML = `${parseFloat(res).toFixed(2).replace(".",",")}€`;
+  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
+    .toFixed(2)
+    .replace(".", ",")}€`;
   return res;
 }
+
+
