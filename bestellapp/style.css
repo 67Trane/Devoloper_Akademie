@@ -405,7 +405,7 @@ input:checked + .slider:before {
 
 .dish button {
   border-radius: 100%;
-  background: url(./Logo/add.png);
+  background-image: url(./Logo/add.png);
   width: 40px;
   height: 40px;
   background-size: 50%;
@@ -448,6 +448,7 @@ input:checked + .slider:before {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
+ 
 }
 
 .add:hover,
@@ -544,3 +545,8 @@ a {
   flex-direction: column;
   gap: 5px;
 }
+
+.bg-black {
+  background-color: black;
+}
+

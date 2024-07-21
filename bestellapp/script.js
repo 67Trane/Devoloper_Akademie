@@ -130,7 +130,7 @@ function renderdishes(j) {
               .replace(".", ",")}€</h2>
         </div>
         <div class="addbtn" id="addbtn${j}${i}" onclick="addbasket(${j}, ${i})">
-                <button></button>
+                <button id="addbtn-button${j}${i}"></button>
             </div>
         </div>`;
   }
@@ -156,6 +156,9 @@ function addbasket(j, i) {
   if (allempty == true) {
     checkBasektIsEmpty(j, i);
   }
+  calculatePrice();
+  calculateAllPrices();
+  numberInCircel(j, i);
 }
 
 function makeitempty() {
@@ -165,6 +168,7 @@ function makeitempty() {
 
 function renderBasketInfos(j, i, amount, price) {
   alldishes[i].dishes[j].amount++;
+
   return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
                     <div class="amount-price">
@@ -216,6 +220,10 @@ function addAmount(i, j) {
   amounts.innerHTML++;
   amounts2.innerHTML++;
   calculateAmount(i, j);
+  calculatePrice();
+  calculateAllPrices();
+  deliveryCost();
+  numberInCircel(j, i);
 }
 
 function removeAmount(i, j) {
@@ -230,6 +238,9 @@ function removeAmount(i, j) {
     amounts2.innerHTML--;
     calculateAmountDecrese(i, j);
   }
+  calculatePrice();
+  calculateAllPrices();
+  numberInCircel(j, i);
 }
 
 function addButton(i, j) {
@@ -258,10 +269,10 @@ function renderCosts(j, i) {
                     <p class="overallcost">Gesamt</p>
                 </div>
                 <div class="prices">
-                    <p>21,10€</p>
-                    <p>Kostenlos</p>
-                    <p>0,29€</p>
-                    <p class="overallcost">21,39€</p>
+                    <p id="price"></p>
+                    <p id="deliver">4,00€</p>
+                    <p id="paypal">0,29€</p>
+                    <p class="overallcost" id="total"></p>
                 </div>
             `);
 }
@@ -293,4 +304,68 @@ function calculateAmountDecrese(i, j) {
   return res;
 }
 
+function countPriceElements() {
+  let elements = document.querySelectorAll(".price");
+  return elements;
+}
+
+function calculatePrice() {
+  let amount = countPriceElements();
+  let sum = 0;
+  let renderprice = document.getElementById("price");
+
+  amount.forEach((element) => {
+    let price = element.innerHTML;
+    let res = (sum += parseFloat(price));
+    renderprice.innerHTML = `${parseFloat(res).toFixed(2).replace(".", ",")}€`;
+  });
+}
+
+function calculateAllPrices() {
+  let subtotal = document.getElementById("price").innerHTML;
+  let deliver = document.getElementById("deliver").innerHTML;
+  let paypal = document.getElementById("paypal").innerHTML;
+  let newpaypal = paypal.replace(",", ".");
+
+  if (!parseFloat(deliver)) {
+    deliver = 0;
+  }
+  let total = document.getElementById("total");
+  let newtotal =
+    parseFloat(subtotal) + parseFloat(deliver) + parseFloat(newpaypal);
+  total.innerHTML = `${parseFloat(newtotal).toFixed(2).replace(".", ",")}€`;
+}
+
+function deliveryCost() {
+  let checkbox = document.getElementById("checkbox");
+  let deliver = document.getElementById("deliver");
+  let paypal = document.getElementById("paypal");
+
+  if (checkbox.checked) {
+    deliver.innerHTML = "Kostenlos";
+    paypal.innerHTML = "0€";
+  } else {
+    deliver.innerHTML = "4,00€";
+    paypal.innerHTML = "0,29€";
+  }
+  calculateAllPrices();
+}
+
+function numberInCircel(j, i) {
+  let amount = document.getElementById(`amount1${i}${j}`);
+  let button = document.getElementById(`addbtn-button${j}${i}`);
+  if (amount) {
+    button.style.background = "none";
+    button.style.color = "white";
+    button.style.backgroundColor = "black";
+    button.innerHTML = `<h2>${amount.innerHTML}</h2>`;
+  } else {
+    button.style.backgroundColor = "transparent";
+    button.style.backgroundImage = "url(./Logo/add.png)";
+    button.style.backgroundSize = "50%";
+    button.style.backgroundRepeat = "no-repeat";
+    button.style.backgroundPosition = "center";
+    button.innerHTML = "";
+  }
+}
 
