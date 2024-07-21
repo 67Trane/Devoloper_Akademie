@@ -369,3 +369,4 @@ function numberInCircel(j, i) {
   }
 }
 
+/*Slider anpassen springt immer zurück wen man neuen artikel hinzufügt, auserdem kategorien noch bearbeiten*/
