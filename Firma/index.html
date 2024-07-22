@@ -11,14 +11,14 @@
     <title>DGS GmbH</title>
 </head>
 
-<body>
+<body onload="loaded()">
     <div class="above">
         <div class="maschine-container">
-            <div class="maschines" id="maschine1" onclick="selectmaschine('maschine1')">SM -</div>
-            <div class="maschines" id="maschine2">SM 12</div>
-            <div class="maschines" id="maschine3">SM 11</div>
-            <div class="maschines" id="maschine4">SM 10</div>
-            <div class="maschines" id="maschine5">SM 9</div>
+            <div class="maschines" id="maschine1" onclick="selectmaschine(0)">SM -</div>
+            <div class="maschines" id="maschine2" onclick="selectmaschine(1)">SM 12</div>
+            <div class="maschines" id="maschine3" onclick="selectmaschine(2)">SM 11</div>
+            <div class="maschines" id="maschine4" onclick="selectmaschine(3)">SM 10</div>
+            <div class="maschines" id="maschine5" onclick="selectmaschine(4)">SM 9</div>
             <div class="maschines" id="maschine6">SM 8</div>
             <div class="maschines" id="maschine7">SM 101</div>
             <div class="maschines" id="maschine8">SM 22</div>
@@ -52,7 +52,8 @@
     </div>
     <div class="below">
         <div class="left">
-            <textarea name="" id="textarea" class="textarea"></textarea>
+            <h2 class="maschineheader" id="maschineheader"></h2>
+            <textarea name="" id="textarea" class="textarea" oninput="textfield()"></textarea>
         </div>
         <div class="right">
             <div class="checkbox">
