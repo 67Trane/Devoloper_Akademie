@@ -1,8 +1,7 @@
 
 
-for (let i = 0; i < arrayssss.length; i++) {
-    const element = arrayssss[i];
 
-    console.log(element)
-    
+function selectmaschine(id) {
+  maschines.maschine1.selected = true
+    console.log(maschines.maschine1.selected)
 }
