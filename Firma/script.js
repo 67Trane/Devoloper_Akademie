@@ -16,7 +16,6 @@ function selectmaschine(id) {
     }
   }
   clearTextField()
-  load()
   renderTextfield(id)
 }
 
