@@ -13,6 +13,7 @@ function selectmaschine(id) {
   renderTextfield(id);
   colorMaschine(id);
   save()
+  clearcheckbox()
 }
 
 function selectedmaschine(id) {
@@ -96,4 +97,14 @@ function renderColoursMaschines() {
   for (let i = 0; i < maschines.length; i++) {
     colorMaschine(i)
   }
+}
+
+function clearcheckbox() {
+  let green = document.getElementById("green");
+  let yellow = document.getElementById("yellow");
+  let red = document.getElementById("red");
+
+  green.checked = false;
+  yellow.checked = false;
+  red.checked = false;
 }
