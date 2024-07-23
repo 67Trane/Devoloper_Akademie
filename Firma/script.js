@@ -2,18 +2,18 @@ let selectedmaschineid = 0;
 
 function loaded() {
   load();
-  renderColoursMaschines()
+  renderColoursMaschines();
 }
 
 function selectmaschine(id) {
   renderMaschineHeader(id);
   allselectedOff();
-  selectedmaschine(id)
+  selectedmaschine(id);
   clearTextField();
   renderTextfield(id);
   colorMaschine(id);
-  save()
-  clearcheckbox()
+  save();
+  clearcheckbox();
 }
 
 function selectedmaschine(id) {
@@ -71,21 +71,13 @@ function renderTextfield(id) {
 /* Checkbox Bereich */
 
 function checkbox(colour) {
-  maschines[selectedmaschineid].color = colour
-  let green = document.getElementById("green");
-  let yellow = document.getElementById("yellow");
-  let red = document.getElementById("red");
-  
-  green.checked = false;
-  yellow.checked = false;
-  red.checked = false;
+  maschines[selectedmaschineid].color = colour;
+  clearcheckbox();
+  let checkedcolor = document.getElementById(colour);
+  checkedcolor.checked = true;
 
-  let checkedcolor = document.getElementById(colour)
-    checkedcolor.checked = true;
-
-  
-  colorMaschine(selectedmaschineid)
-  save()
+  colorMaschine(selectedmaschineid);
+  save();
 }
 
 function colorMaschine(id) {
@@ -95,7 +87,7 @@ function colorMaschine(id) {
 
 function renderColoursMaschines() {
   for (let i = 0; i < maschines.length; i++) {
-    colorMaschine(i)
+    colorMaschine(i);
   }
 }
 
