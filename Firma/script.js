@@ -68,7 +68,7 @@ function renderTextfield(id) {
   textfield.value = text;
 }
 
-/* Checkbox Bereich */
+/* Checkbox/Farben Bereich */
 
 function checkbox(colour) {
   maschines[selectedmaschineid].color = colour;
@@ -95,8 +95,10 @@ function clearcheckbox() {
   let green = document.getElementById("green");
   let yellow = document.getElementById("yellow");
   let red = document.getElementById("red");
+  let blue = document.getElementById("blue");
 
   green.checked = false;
   yellow.checked = false;
   red.checked = false;
+  blue.checked = false;
 }
