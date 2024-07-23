@@ -42,7 +42,6 @@ box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15p
   height: 50vh;
   width: 100%;
   display: flex;
-  border-top: 1px solid grey;
   box-sizing: border-box;
   padding: 20px;
 }
