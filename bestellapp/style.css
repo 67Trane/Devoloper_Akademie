@@ -280,6 +280,8 @@ input:checked + .slider:before {
 .categorylist {
   width: 80%;
   height: 40px;
+  overflow-x: scroll;
+  display: flex;
 }
 
 .btn-long {

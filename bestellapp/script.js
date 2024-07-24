@@ -110,7 +110,8 @@ function render() {
     renderCategoryImg(i);
   }
   makeitempty();
-  loadSlider()
+  loadSlider();
+  renderCategorys()
 }
 
 function renderCategoryImg(i) {
@@ -395,5 +396,15 @@ function updateSlider() {
   }
 }
 
+function renderCategorys() {
+  let categoryline = document.getElementById("categorylist")
 
-/*Slider anpassen springt immer zurück wen man neuen artikel hinzufügt, auserdem kategorien noch bearbeiten, auserdem noch alles Responsiv machen*/
+  for (let i = 0; i < alldishes.length; i++)
+  categoryline.innerHTML += `<button class="btn-long">${alldishes[i].title}</button>`
+}
+
+
+/*
+1. Kategorien hinzufügen
+2. Seite responsiv machen
+*/
