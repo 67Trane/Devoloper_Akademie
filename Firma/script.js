@@ -1,5 +1,5 @@
 let selectedmaschineid = 0;
-maschinecount = 34;
+let maschinecount = 34;
 
 function loaded() {
   load();
