@@ -1,4 +1,5 @@
 let selectedmaschineid = 0;
+maschinecount = 33
 
 function loaded() {
   load();
@@ -14,6 +15,7 @@ function selectmaschine(id) {
   colorMaschine(id);
   save();
   clearcheckbox();
+  buttonClicked(id)
 }
 
 function selectedmaschine(id) {
@@ -101,4 +103,16 @@ function clearcheckbox() {
   yellow.checked = false;
   red.checked = false;
   blue.checked = false;
+}
+
+
+function buttonClicked(id) {
+  let maschine = document.getElementById(`maschine${id+1}`)
+  
+  for (let i = 0; i < maschinecount; i++) {
+    let allmaschines = document.getElementById(`maschine${i+1}`)
+    allmaschines.classList.remove("clicked")
+  }
+  maschine.classList.toggle("clicked")
+
 }
