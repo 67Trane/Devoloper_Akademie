@@ -550,3 +550,34 @@ a {
 .bg-black {
   background-color: black;
 }
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .basket-section {
+    display: none;
+  }
+
+  .headsection {
+    width: 98vw;
+  }
+
+  .headbar {
+    width: 100%;
+  }
+
+  .category {
+    width: 98vw;
+  }
+
+  .dishes {
+    width: 100vw;
+  }
+
+  .leftside {
+    width: 100%;
+  }
+
+}
