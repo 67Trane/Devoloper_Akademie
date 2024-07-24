@@ -570,14 +570,36 @@ a {
 
   .category {
     width: 98vw;
+    padding: 10px;
   }
 
   .dishes {
     width: 100vw;
+
+  }
+
+  .dish {
+    width: 95%;
   }
 
   .leftside {
     width: 100%;
+  }
+
+  .title-like {
+    margin:10px;
+  }
+
+  .rating {
+    margin: 10px;
+  }
+
+  .minprice {
+    margin: 10px;
+  }
+
+  .dishimg {
+    margin: 0px;
   }
 
 }
