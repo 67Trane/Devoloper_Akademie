@@ -1,5 +1,5 @@
 let selectedmaschineid = 0;
-maschinecount = 33
+maschinecount = 34;
 
 function loaded() {
   load();
@@ -114,5 +114,4 @@ function buttonClicked(id) {
     allmaschines.classList.remove("clicked")
   }
   maschine.classList.toggle("clicked")
-
 }
