@@ -110,6 +110,7 @@ function render() {
     renderCategoryImg(i);
   }
   makeitempty();
+  loadslider()
 }
 
 function renderCategoryImg(i) {
@@ -158,7 +159,9 @@ function addbasket(j, i) {
   }
   calculatePrice();
   calculateAllPrices();
-  numberInCircel(j, i);
+  numberInCircel(j, i); 
+  updateSlider();
+ 
 }
 
 function makeitempty() {
@@ -349,6 +352,8 @@ function deliveryCost() {
     paypal.innerHTML = "0,29€";
   }
   calculateAllPrices();
+  renderslider()
+  updateSlider()
 }
 
 function numberInCircel(j, i) {
@@ -369,4 +374,27 @@ function numberInCircel(j, i) {
   }
 }
 
-/*Slider anpassen springt immer zurück wen man neuen artikel hinzufügt, auserdem kategorien noch bearbeiten*/
+function renderSlider() {
+  let checkbox = document.getElementById("checkbox");
+
+  if (checkbox.checked) {
+    localStorage.setItem("checkbox", "checked");
+  } else {
+    localStorage.setItem("checkbox", "notchecked");
+  }
+}
+
+function loadSlider() {
+  let checked = localStorage.getItem("checkbox")
+  return checked
+}
+
+function updateSlider() {
+  let checkbox = document.getElementById("checkbox")
+  if (loadslider() == "checked") {
+    checkbox.checked = true
+  }
+}
+
+
+/*Slider anpassen springt immer zurück wen man neuen artikel hinzufügt, auserdem kategorien noch bearbeiten, auserdem noch alles Responsiv machen*/
