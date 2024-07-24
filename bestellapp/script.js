@@ -110,7 +110,7 @@ function render() {
     renderCategoryImg(i);
   }
   makeitempty();
-  loadslider()
+  loadSlider()
 }
 
 function renderCategoryImg(i) {
@@ -161,7 +161,6 @@ function addbasket(j, i) {
   calculateAllPrices();
   numberInCircel(j, i); 
   updateSlider();
- 
 }
 
 function makeitempty() {
@@ -352,7 +351,7 @@ function deliveryCost() {
     paypal.innerHTML = "0,29€";
   }
   calculateAllPrices();
-  renderslider()
+  renderSlider()
   updateSlider()
 }
 
@@ -391,7 +390,7 @@ function loadSlider() {
 
 function updateSlider() {
   let checkbox = document.getElementById("checkbox")
-  if (loadslider() == "checked") {
+  if (loadSlider() == "checked") {
     checkbox.checked = true
   }
 }
