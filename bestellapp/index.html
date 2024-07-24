@@ -1,111 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link rel="shortcut icon" href="./Favicon/favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js"></script>
+    <script src="./jason-array.js"></script>
+    <link
+      rel="shortcut icon"
+      href="./Favicon/favicon.ico"
+      type="image/x-icon"
+    />
     <title>BestellApp</title>
-</head>
+  </head>
 
-<body onload="render()">
+  <body onload="render()">
     <header>
-        <div class="logodiv">
-            <img src="./Favicon/android-chrome-192x192.png" alt="">
-            <img src="./Logo/Bestell App- Logo.svg" alt="" class="logo">
-        </div>
+      <div class="logodiv">
+        <img src="./Favicon/android-chrome-192x192.png" alt="" />
+        <img src="./Logo/Bestell App- Logo.svg" alt="" class="logo" />
+      </div>
 
-        <div class="headline">
-            <h1>Speisekarte</h1>
-        </div>
+      <div class="headline">
+        <h1>Speisekarte</h1>
+      </div>
 
-        <div class="options">
-            <img src="./Logo/menu.png" alt="">
-        </div>
+      <div class="options">
+        <img src="./Logo/menu.png" alt="" />
+      </div>
     </header>
 
     <section class="content">
-        <div class="leftside">
-            <div class="headsection">
-                <section class="headerimg"></section>
-                <section class="headbar">
-                    <div class="bordersitelogo">
-                        <div class="sitelogo"></div>
-                    </div>
-                    <div class="title-like">
-                        <h2 class="site-title">Türkish Delights</h2>
-                        <div class="about-like"><button class="btn long"><img src="./Logo/information.png" alt="">Über
-                                uns</button><button class="heart"><img src="./Logo/heartclean.png"
-                                    alt=""></button><button class="heart d-none"><img src="./Logo/heartfull.png"
-                                    alt=""></button></div>
-                    </div>
-                    <div class="rating"><img src="./Logo/star.png" alt="" class="star"><a href="#">4.9 (203)</a></div>
-                    <div class="minprice">
-                        <p class="minimumvalue"><img src="Logo/checkout.png" alt="">- Min. 15,00€ /<img
-                                src="Logo/deliver.png" alt="">- 4,00€</p>
-                    </div>
-                </section>
-
-
-
+      <div class="leftside">
+        <div class="headsection">
+          <section class="headerimg"></section>
+          <section class="headbar">
+            <div class="bordersitelogo">
+              <div class="sitelogo"></div>
             </div>
-            <div class="category">
-                <button class="btn"><img src="./Logo/search.png" alt=""></button>
-                <button class="btn"><img src="./Logo/left-arrow.png" alt=""></button>
-                <div class="categorylist" id="categorylist">
-
-                </div>
-                <button class="btn"><img src="./Logo/right-arrow.png" alt=""></button>
-                <button class="btn"><img src="./Logo/bullet-list.png" alt=""></button>
+            <div class="title-like">
+              <h2 class="site-title">Türkish Delights</h2>
+              <div class="about-like">
+                <button class="btn long">
+                  <img src="./Logo/information.png" alt="" />Über uns</button
+                ><button class="heart">
+                  <img src="./Logo/heartclean.png" alt="" /></button
+                ><button class="heart d-none">
+                  <img src="./Logo/heartfull.png" alt="" />
+                </button>
+              </div>
             </div>
-            <div class="menus">
-                <div id="dishes" class="dishes">
-                </div>
+            <div class="rating">
+              <img src="./Logo/star.png" alt="" class="star" /><a href="#"
+                >4.9 (203)</a
+              >
             </div>
+            <div class="minprice">
+              <p class="minimumvalue">
+                <img src="Logo/checkout.png" alt="" />- Min. 15,00€ /<img
+                  src="Logo/deliver.png"
+                  alt=""
+                />- 4,00€
+              </p>
+            </div>
+          </section>
         </div>
-        <div class="basket-section" id="basket-section">
-            <h2 class="basket-header">Warenkorb</h2>
-            <label class="switch">
-                <input type="checkbox" id="checkbox" onclick="deliveryCost()">
-                <span class="slider">
-                    <div class="slider-text-left">
-                        <img src="./Logo/deliver.png" alt="">
-                        <div class="text-content">
-                            <h3>Lieferung</h3>
-                            <p>25-50 min</p>
-                        </div>
-                    </div>
-                    <div class="slider-text-right">
-                        <img src="./Logo/pickup.png" alt="">
-                        <div class="text-content">
-                            <h3>Abholung</h3>
-                            <p>15 min</p>
-                        </div>
-                    </div>
-                </span>
-            </label>
-
-            <div id="basketempty" class="basketempty">
-                <img src="./Logo/basket.png" alt="" class="basket-logo">
-                <h2>Fülle deinen Warenkorb</h2>
-                <p>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
-            </div>
-            <div class="costs" id="costs">
-            </div>
+        <div class="category">
+          <button class="btn"><img src="./Logo/search.png" alt="" /></button>
+          <button class="btn">
+            <img src="./Logo/left-arrow.png" alt="" />
+          </button>
+          <div class="categorylist" id="categorylist"></div>
+          <button class="btn">
+            <img src="./Logo/right-arrow.png" alt="" />
+          </button>
+          <button class="btn">
+            <img src="./Logo/bullet-list.png" alt="" />
+          </button>
         </div>
+        <div class="menus">
+          <div id="dishes" class="dishes"></div>
+        </div>
+      </div>
+      <div class="basket-section" id="basket-section">
+        <h2 class="basket-header">Warenkorb</h2>
+        <label class="switch">
+          <input type="checkbox" id="checkbox" onclick="deliveryCost()" />
+          <span class="slider">
+            <div class="slider-text-left">
+              <img src="./Logo/deliver.png" alt="" />
+              <div class="text-content">
+                <h3>Lieferung</h3>
+                <p>25-50 min</p>
+              </div>
+            </div>
+            <div class="slider-text-right">
+              <img src="./Logo/pickup.png" alt="" />
+              <div class="text-content">
+                <h3>Abholung</h3>
+                <p>15 min</p>
+              </div>
+            </div>
+          </span>
+        </label>
 
-
-
-
-
-
-
-
+        <div id="basketempty" class="basketempty">
+          <img src="./Logo/basket.png" alt="" class="basket-logo" />
+          <h2>Fülle deinen Warenkorb</h2>
+          <p>
+            Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle
+            dein Essen.
+          </p>
+        </div>
+        <div class="costs" id="costs"></div>
+      </div>
     </section>
     <footer></footer>
-
-</body>
-
+  </body>
 </html>

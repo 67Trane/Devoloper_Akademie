@@ -450,7 +450,6 @@ input:checked + .slider:before {
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
- 
 }
 
 .add:hover,
@@ -528,10 +527,10 @@ a {
   padding: 0px 0px 0px;
   gap: 30px;
   order: 999;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
-.prices{
+.prices {
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -540,7 +539,7 @@ a {
 
 .overallcost {
   font-weight: 700;
-} 
+}
 
 .titlecosts {
   display: flex;
@@ -551,4 +550,3 @@ a {
 .bg-black {
   background-color: black;
 }
-

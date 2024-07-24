@@ -1,100 +1,3 @@
-let alldishes = [
-  {
-    title: "Salat",
-    img: "./imgs/salad.png",
-    dishes: [
-      {
-        name: "Grüner Salat",
-        ingredients: "mit Gurken, Tomaten",
-        price: 6.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Tomaten Salat",
-        ingredients: "mit Zwiebeln, Tomaten",
-        price: 6.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Caesar Salat",
-        ingredients: "mit Hähnchen, Parmesan, Croutons",
-        price: 8.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-    ],
-  },
-  {
-    title: "Pizza",
-    img: "./imgs/pizza.jpg",
-    dishes: [
-      {
-        name: "Pizza Roma",
-        ingredients: "mit Schinken, Salami und Champignons",
-        price: 10.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Pizza Margherita",
-        ingredients: "mit Tomatensauce und Mozzarella",
-        price: 8.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Pizza Funghi",
-        ingredients: "mit Champignons und Mozzarella",
-        price: 9.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-    ],
-  },
-  {
-    title: "Pasta",
-    img: "./imgs/pasta.png",
-    dishes: [
-      {
-        name: "Spaghetti Bolognese",
-        ingredients: "mit Hackfleischsauce",
-        price: 12.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Penne Arrabbiata",
-        ingredients: "mit scharfer Tomatensauce",
-        price: 10.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-    ],
-  },
-  {
-    title: "Desserts",
-    img: "./imgs/desserts.png",
-    dishes: [
-      {
-        name: "Tiramisu",
-        ingredients: "klassisches italienisches Dessert",
-        price: 6.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-      {
-        name: "Panna Cotta",
-        ingredients: "mit Beeren",
-        price: 5.0,
-        img: "./asd.png",
-        amount: 1,
-      },
-    ],
-  },
-];
-
 let allempty = true;
 
 function render() {
@@ -111,7 +14,7 @@ function render() {
   }
   makeitempty();
   loadSlider();
-  renderCategorys()
+  renderCategorys();
 }
 
 function renderCategoryImg(i) {
@@ -160,7 +63,7 @@ function addbasket(j, i) {
   }
   calculatePrice();
   calculateAllPrices();
-  numberInCircel(j, i); 
+  numberInCircel(j, i);
   updateSlider();
 }
 
@@ -352,8 +255,8 @@ function deliveryCost() {
     paypal.innerHTML = "0,29€";
   }
   calculateAllPrices();
-  renderSlider()
-  updateSlider()
+  renderSlider();
+  updateSlider();
 }
 
 function numberInCircel(j, i) {
@@ -385,26 +288,24 @@ function renderSlider() {
 }
 
 function loadSlider() {
-  let checked = localStorage.getItem("checkbox")
-  return checked
+  let checked = localStorage.getItem("checkbox");
+  return checked;
 }
 
 function updateSlider() {
-  let checkbox = document.getElementById("checkbox")
+  let checkbox = document.getElementById("checkbox");
   if (loadSlider() == "checked") {
-    checkbox.checked = true
+    checkbox.checked = true;
   }
 }
 
 function renderCategorys() {
-  let categoryline = document.getElementById("categorylist")
+  let categoryline = document.getElementById("categorylist");
 
   for (let i = 0; i < alldishes.length; i++)
-  categoryline.innerHTML += `<button class="btn-long">${alldishes[i].title}</button>`
+    categoryline.innerHTML += `<a class="btn-long" href="#dishesimg${i}">${alldishes[i].title}</a>`;
 }
 
-
 /*
-1. Kategorien hinzufügen
 2. Seite responsiv machen
 */
