@@ -323,7 +323,7 @@ function openCloseFullscreen() {
 }
 
 /*
-1. Price am bottom basket anpassen
+1. Price am bottom basket anpassen // done (oben close logo noch ändern)
 2. Seite responsiv machen
 3. Animation einfügen (optional)
 */
