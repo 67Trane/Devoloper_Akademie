@@ -307,14 +307,15 @@ function renderCategorys() {
 }
 
 
-function bottomBasket() {
+function openCloseFullscreen() {
   let basketcontainer = document.getElementById("bottom-basket-container")
   let basketleftside = document.getElementById("basket-section")
-  
-  basketleftside.classList.add("fullscreen")
-  basketcontainer.classList.add("d-none")
-}
+  let closelogo = document.getElementById("close-logo")
 
+  closelogo.classList.toggle("d-none")
+  basketleftside.classList.toggle("fullscreen")
+  basketcontainer.classList.toggle("d-none")
+}
 
 
 /*

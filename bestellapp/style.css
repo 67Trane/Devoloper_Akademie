@@ -397,6 +397,7 @@ input:checked + .slider:before {
   gap: 6px;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .dishinfo {
@@ -565,6 +566,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .bottom-basket {
@@ -575,7 +577,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:10px
+  gap:10px;
+  box-sizing: border-box;
 }
 
 .bottom-basket:hover {
@@ -600,6 +603,18 @@ a {
   height: 100%;
   background-color: rgb(214, 214, 214);
   z-index: 999;
+  box-sizing: border-box;
+}
+
+.close-logo {
+  width: 5%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-logo:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
@@ -608,20 +623,23 @@ a {
   }
 
   .headsection {
-    width: 98vw;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .headbar {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .category {
-    width: 98vw;
+    width: 100%;
     padding: 10px;
+    box-sizing: border-box;
   }
 
   .dishes {
-    width: 100vw;
+    width: 90vw;
   }
 
   .dish {
@@ -647,5 +665,10 @@ a {
   .dishimg {
     margin: 0px;
     width: 95%;
+  }
+
+  .menus {
+    box-sizing: border-box;
+    width: 100%;
   }
 }
