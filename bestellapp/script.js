@@ -109,7 +109,7 @@ function switchBasketInfo() {
   let basketisempty = document.getElementsByName("basket-container");
   let basket = document.getElementById("basketempty");
   let empty = document.getElementById("costs");
-  let basketbottom = document.getElementById("bottom-basket-price")
+  let basketbottom = document.getElementById("bottom-basket-price");
 
   if (basketisempty.length >= 1) {
     basket.classList.add("d-none");
@@ -117,7 +117,7 @@ function switchBasketInfo() {
   } else {
     basket.classList.toggle("d-none");
     empty.classList.add("d-none");
-    basketbottom.innerHTML = ""
+    basketbottom.innerHTML = "";
   }
 }
 
@@ -327,4 +327,5 @@ function openCloseFullscreen() {
 2. Seite responsiv machen
 3. Animation einfügen (optional)
 4. Bestellen Button hinzufügen
+5. Max. bestell limit hinzufügen
 */
