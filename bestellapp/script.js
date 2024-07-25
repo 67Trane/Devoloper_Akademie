@@ -319,5 +319,7 @@ function openCloseFullscreen() {
 
 
 /*
+1. Price am bottom basket anpassen
 2. Seite responsiv machen
+3. Animation einfügen (optional)
 */
