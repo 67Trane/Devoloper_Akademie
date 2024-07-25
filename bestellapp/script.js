@@ -306,6 +306,17 @@ function renderCategorys() {
     categoryline.innerHTML += `<a class="btn-long" href="#dishesimg${i}">${alldishes[i].title}</a>`;
 }
 
+
+function bottomBasket() {
+  let basketcontainer = document.getElementById("bottom-basket-container")
+  let basketleftside = document.getElementById("basket-section")
+  
+  basketleftside.classList.add("fullscreen")
+  basketcontainer.classList.add("d-none")
+}
+
+
+
 /*
 2. Seite responsiv machen
 */
