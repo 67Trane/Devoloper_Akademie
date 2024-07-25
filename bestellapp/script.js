@@ -109,6 +109,7 @@ function switchBasketInfo() {
   let basketisempty = document.getElementsByName("basket-container");
   let basket = document.getElementById("basketempty");
   let empty = document.getElementById("costs");
+  let basketbottom = document.getElementById("bottom-basket-price")
 
   if (basketisempty.length >= 1) {
     basket.classList.add("d-none");
@@ -116,6 +117,7 @@ function switchBasketInfo() {
   } else {
     basket.classList.toggle("d-none");
     empty.classList.add("d-none");
+    basketbottom.innerHTML = ""
   }
 }
 
@@ -232,6 +234,7 @@ function calculateAllPrices() {
   let deliver = document.getElementById("deliver").innerHTML;
   let paypal = document.getElementById("paypal").innerHTML;
   let newpaypal = paypal.replace(",", ".");
+  let bottombasket = document.getElementById("bottom-basket-price");
 
   if (!parseFloat(deliver)) {
     deliver = 0;
@@ -240,6 +243,9 @@ function calculateAllPrices() {
   let newtotal =
     parseFloat(subtotal) + parseFloat(deliver) + parseFloat(newpaypal);
   total.innerHTML = `${parseFloat(newtotal).toFixed(2).replace(".", ",")}€`;
+  bottombasket.innerHTML = `(${parseFloat(newtotal)
+    .toFixed(2)
+    .replace(".", ",")}€)`;
 }
 
 function deliveryCost() {
@@ -306,17 +312,15 @@ function renderCategorys() {
     categoryline.innerHTML += `<a class="btn-long" href="#dishesimg${i}">${alldishes[i].title}</a>`;
 }
 
-
 function openCloseFullscreen() {
-  let basketcontainer = document.getElementById("bottom-basket-container")
-  let basketleftside = document.getElementById("basket-section")
-  let closelogo = document.getElementById("close-logo")
+  let basketcontainer = document.getElementById("bottom-basket-container");
+  let basketleftside = document.getElementById("basket-section");
+  let closelogo = document.getElementById("close-logo");
 
-  closelogo.classList.toggle("d-none")
-  basketleftside.classList.toggle("fullscreen")
-  basketcontainer.classList.toggle("d-none")
+  closelogo.classList.toggle("d-none");
+  basketleftside.classList.toggle("fullscreen");
+  basketcontainer.classList.toggle("d-none");
 }
-
 
 /*
 1. Price am bottom basket anpassen
