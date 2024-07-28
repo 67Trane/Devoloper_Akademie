@@ -703,6 +703,44 @@ a {
   }
 }
 
+@media (min-width: 1900px) {
+  .menus {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headsection {
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    margin: auto;
+  }
+
+  .category {
+    width: 1000px;
+    margin: auto;
+  }
+}
+
+@media (max-width:620px) {
+  .category {
+    width: 95vw;
+    box-sizing:border-box ;
+  }
+
+  .headline {
+    display: none;
+  }
+
+  .logodiv {
+    display: none;
+  }
+
+}
+
 .succsess {
   width: 100%;
   height: 100%;
@@ -715,4 +753,3 @@ a {
   font-size: 38px;
   color: orange;
 }
-
