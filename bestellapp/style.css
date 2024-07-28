@@ -706,7 +706,7 @@ a {
   }
 }
 
-@media (min-width: 1900px) {
+@media (min-width: 2000px) {
   .menus {
     width: 1000px;
     margin: auto;

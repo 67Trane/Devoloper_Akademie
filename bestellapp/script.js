@@ -5,7 +5,6 @@ let n = [];
 
 function render() {
   let content = document.getElementById("dishes");
-
   for (let i = 0; i < alldishes.length; i++) {
     content.innerHTML += `
     <div id="dishesimg${i}"class="dishesimg"></div>
@@ -38,11 +37,15 @@ function renderdishes(j) {
               .toFixed(2)
               .replace(".", ",")}€</h2>
         </div>
-        <div class="addbtn" id="addbtn${j}${i}" onclick="addbasket(${j}, ${i})">
+        ${renderAddButton(j,i)}` ;
+  }
+}
+
+function renderAddButton(j,i) {
+  return `<div class="addbtn" id="addbtn${j}${i}" onclick="addbasket(${j}, ${i})">
                 <button id="addbtn-button${j}${i}"></button>
             </div>
-        </div>`;
-  }
+        </div>`
 }
 
 function addbasket(j, i) {
@@ -50,15 +53,9 @@ function addbasket(j, i) {
   let basketcontainer = document.getElementById(`basket-container${i}${j}`);
   alldishes[j].dishes[i].amount = 1;
   let price = alldishes[j].dishes[i].price;
-
   if (tooMuch()) {
     if (!basketcontainer) {
-      basket.innerHTML += renderBasketInfos(
-        j,
-        i,
-        alldishes[j].dishes[i].amount,
-        price
-      );
+      basket.innerHTML += renderBasketInfos(j,i,alldishes[j].dishes[i].amount,price);
       switchBasketInfo();
     } else {
       addAmount(i, j);
@@ -66,7 +63,6 @@ function addbasket(j, i) {
     if (allempty == true) {
       checkBasektIsEmpty();
     }
-
     calculatePrice();
     calculateAllPrices();
     numberInCircel(j, i);
@@ -85,32 +81,37 @@ function renderBasketInfos(j, i, amount, price) {
   n.push(i);
   return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
-                    <div class="amount-price">
-                        <div class="amount-name">
-                            <h3 id="amount1${i}${j}">${amount}</h3>
-                            <h3 class="dishname">${
-                              alldishes[j].dishes[i].name
-                            }</h3>
-                        </div>
-                        <h3 class="price" id="price${i}${j}">${parseFloat(price)
-    .toFixed(2)
-    .replace(".", ",")}€</h3>
-                    </div>
-                    <div class="ingridients">
-                        <p>${alldishes[j].dishes[i].ingredients}</p>
-                    </div>
+                  ${renderAmountPrice(j,i,amount, price)}
+                  ${renderAddAmount(j,i,amount)}
+                </div>
+          </div>`;
+}
 
-                    <div class="add-amount">
+
+function renderAmountPrice(j,i,amount, price) {
+  return `<div class="amount-price">
+  <div class="amount-name">
+    <h3 id="amount1${i}${j}">${amount}</h3>
+    <h3 class="dishname">${
+      alldishes[j].dishes[i].name
+      }</h3>
+  </div>
+  <h3 class="price" id="price${i}${j}">${parseFloat(price).toFixed(2).replace(".", ",")}€</h3>
+</div>
+<div class="ingridients">
+  <p>${alldishes[j].dishes[i].ingredients}</p>
+</div>` 
+}
+
+function renderAddAmount(j,i,amount){
+  return `<div class="add-amount">
                         <a href="#">Anmerkung<br> hinzufügen</a>
                         <div class="add-remove">
                             <button class="remove" onclick="removeButton(${i},${j})"></button>
                             <h3 id="amount2${i}${j}">${amount}</h3>
                             <button class="add" onclick="addButton(${i},${j})"></button>
                         </div>
-                    </div>
-                </div>
-
-            </div>`;
+                    </div>`
 }
 
 function switchBasketInfo() {
@@ -119,7 +120,6 @@ function switchBasketInfo() {
   let empty = document.getElementById("costs");
   let basketbottom = document.getElementById("bottom-basket-price");
   let paybutton = document.getElementById("pay-button");
-
   if (basketisempty.length >= 1) {
     basket.classList.add("d-none");
     empty.classList.remove("d-none");
@@ -135,7 +135,6 @@ function switchBasketInfo() {
 function addAmount(i, j) {
   let amounts = document.getElementById(`amount1${i}${j}`);
   let amounts2 = document.getElementById(`amount2${i}${j}`);
-
   if (tooMuch()) {
     amounts.innerHTML++;
     amounts2.innerHTML++;
@@ -153,7 +152,6 @@ function removeAmount(i, j) {
   let amounts = document.getElementById(`amount1${i}${j}`);
   let amounts2 = document.getElementById(`amount2${i}${j}`);
   let basket = document.getElementById(`basket-container${i}${j}`);
-
   if (checkAmount(amounts.innerHTML)) {
     basket.remove();
   } else {
@@ -240,7 +238,6 @@ function finishDone() {
 }
 
 function tooMuch() {
-
   if (amount < 20) {
     return true;
   } else {
@@ -298,15 +295,10 @@ function calculateAllPrices() {
     deliver = 0;
   }
   let total = document.getElementById("total");
-  let newtotal =
-    parseFloat(subtotal) + parseFloat(deliver) + parseFloat(newpaypal);
+  let newtotal = parseFloat(subtotal) + parseFloat(deliver) + parseFloat(newpaypal);
   total.innerHTML = `${parseFloat(newtotal).toFixed(2).replace(".", ",")}€`;
-  bottombasket.innerHTML = `(${parseFloat(newtotal)
-    .toFixed(2)
-    .replace(".", ",")}€)`;
-  paybutton.innerHTML = `Bezahlen (${parseFloat(newtotal)
-    .toFixed(2)
-    .replace(".", ",")}€)`;
+  bottombasket.innerHTML = `(${parseFloat(newtotal).toFixed(2).replace(".", ",")}€)`;
+  paybutton.innerHTML = `Bezahlen (${parseFloat(newtotal).toFixed(2).replace(".", ",")}€)`;
 }
 
 function deliveryCost() {
