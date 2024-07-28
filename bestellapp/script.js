@@ -1,4 +1,7 @@
 let allempty = true;
+let amount = 1;
+let m = [];
+let n = [];
 
 function render() {
   let content = document.getElementById("dishes");
@@ -15,6 +18,7 @@ function render() {
   makeitempty();
   loadSlider();
   renderCategorys();
+  renderpayButton();
 }
 
 function renderCategoryImg(i) {
@@ -44,27 +48,30 @@ function renderdishes(j) {
 function addbasket(j, i) {
   let basket = document.getElementById(`basket-section`);
   let basketcontainer = document.getElementById(`basket-container${i}${j}`);
-  alldishes[i].dishes[j].amount = 1;
-  let price = alldishes[i].dishes[j].price;
+  alldishes[j].dishes[i].amount = 1;
+  let price = alldishes[j].dishes[i].price;
 
-  if (!basketcontainer) {
-    basket.innerHTML += renderBasketInfos(
-      j,
-      i,
-      alldishes[i].dishes[j].amount,
-      price
-    );
-    switchBasketInfo();
-  } else {
-    addAmount(i, j);
+  if (tooMuch()) {
+    if (!basketcontainer) {
+      basket.innerHTML += renderBasketInfos(
+        j,
+        i,
+        alldishes[j].dishes[i].amount,
+        price
+      );
+      switchBasketInfo();
+    } else {
+      addAmount(i, j);
+    }
+    if (allempty == true) {
+      checkBasektIsEmpty();
+    }
+
+    calculatePrice();
+    calculateAllPrices();
+    numberInCircel(j, i);
+    updateSlider();
   }
-  if (allempty == true) {
-    checkBasektIsEmpty(j, i);
-  }
-  calculatePrice();
-  calculateAllPrices();
-  numberInCircel(j, i);
-  updateSlider();
 }
 
 function makeitempty() {
@@ -73,8 +80,9 @@ function makeitempty() {
 }
 
 function renderBasketInfos(j, i, amount, price) {
-  alldishes[i].dishes[j].amount++;
-
+  alldishes[j].dishes[i].amount++;
+  m.push(j);
+  n.push(i);
   return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
                     <div class="amount-price">
@@ -110,14 +118,17 @@ function switchBasketInfo() {
   let basket = document.getElementById("basketempty");
   let empty = document.getElementById("costs");
   let basketbottom = document.getElementById("bottom-basket-price");
+  let paybutton = document.getElementById("pay-button");
 
   if (basketisempty.length >= 1) {
     basket.classList.add("d-none");
     empty.classList.remove("d-none");
+    paybutton.classList.remove("d-none");
   } else {
     basket.classList.toggle("d-none");
     empty.classList.add("d-none");
     basketbottom.innerHTML = "";
+    paybutton.classList.add("d-none");
   }
 }
 
@@ -125,13 +136,17 @@ function addAmount(i, j) {
   let amounts = document.getElementById(`amount1${i}${j}`);
   let amounts2 = document.getElementById(`amount2${i}${j}`);
 
-  amounts.innerHTML++;
-  amounts2.innerHTML++;
-  calculateAmount(i, j);
-  calculatePrice();
-  calculateAllPrices();
-  deliveryCost();
-  numberInCircel(j, i);
+  if (tooMuch()) {
+    amounts.innerHTML++;
+    amounts2.innerHTML++;
+    amount++;
+    calculateAmount(i, j);
+    calculatePrice();
+    calculateAllPrices();
+    deliveryCost();
+    numberInCircel(j, i);
+    tooMuch();
+  }
 }
 
 function removeAmount(i, j) {
@@ -145,6 +160,7 @@ function removeAmount(i, j) {
     amounts.innerHTML--;
     amounts2.innerHTML--;
     calculateAmountDecrese(i, j);
+    amount--
   }
   calculatePrice();
   calculateAllPrices();
@@ -166,7 +182,7 @@ function checkAmount(amount) {
   }
 }
 
-function renderCosts(j, i) {
+function renderCosts() {
   let costs = document.getElementById("costs");
 
   return (costs.innerHTML += `
@@ -185,16 +201,57 @@ function renderCosts(j, i) {
             `);
 }
 
-function checkBasektIsEmpty(j, i) {
+function renderpayButton() {
+  let costs = document.getElementById("basket-section");
+  return (costs.innerHTML += `<div class="pay-button d-none" id="pay-button" onclick="pay()">Bezahlen </div>`);
+}
+
+function checkBasektIsEmpty() {
   if (allempty == true) {
-    renderCosts(j, i);
+    renderCosts();
     allempty = false;
+  }
+}
+
+function pay() {
+  for (let i = 0; i < m.length; i++) {
+    let first = m[i];
+    let second = n[i];
+    let dish = document.getElementById(`amount1${second}${first}`);
+    let count = dish.innerHTML;
+    for (let j = 0; j < count; j++) {
+      removeAmount(second, first);
+    }
+  }
+  m = [];
+  n = [];
+  switchBasketInfo();
+  succsess();
+}
+
+function succsess() {
+  let finish = document.getElementById("succsess");
+  finish.classList.remove("d-none");
+}
+
+function finishDone() {
+  let finish = document.getElementById("succsess");
+  finish.classList.add("d-none");
+}
+
+function tooMuch() {
+
+  if (amount < 20) {
+    return true;
+  } else {
+    alert("Zu viel")
+    return false;
   }
 }
 
 function calculateAmount(i, j) {
   let price = document.getElementById(`price${i}${j}`).innerHTML;
-  let cost = alldishes[i].dishes[j].price;
+  let cost = alldishes[j].dishes[i].price;
   let res = parseInt(price) + cost;
   document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
     .toFixed(2)
@@ -204,7 +261,7 @@ function calculateAmount(i, j) {
 
 function calculateAmountDecrese(i, j) {
   let price = document.getElementById(`price${i}${j}`).innerHTML;
-  let cost = alldishes[i].dishes[j].price;
+  let cost = alldishes[j].dishes[i].price;
   let res = parseInt(price) - cost;
   document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
     .toFixed(2)
@@ -235,6 +292,7 @@ function calculateAllPrices() {
   let paypal = document.getElementById("paypal").innerHTML;
   let newpaypal = paypal.replace(",", ".");
   let bottombasket = document.getElementById("bottom-basket-price");
+  let paybutton = document.getElementById("pay-button");
 
   if (!parseFloat(deliver)) {
     deliver = 0;
@@ -244,6 +302,9 @@ function calculateAllPrices() {
     parseFloat(subtotal) + parseFloat(deliver) + parseFloat(newpaypal);
   total.innerHTML = `${parseFloat(newtotal).toFixed(2).replace(".", ",")}€`;
   bottombasket.innerHTML = `(${parseFloat(newtotal)
+    .toFixed(2)
+    .replace(".", ",")}€)`;
+  paybutton.innerHTML = `Bezahlen (${parseFloat(newtotal)
     .toFixed(2)
     .replace(".", ",")}€)`;
 }
