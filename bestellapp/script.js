@@ -386,7 +386,6 @@ function openCloseFullscreen() {
 /*
 1. Price am bottom basket anpassen // done (oben close logo noch ändern)
 2. Seite responsiv machen
-3. Animation einfügen (optional)
-4. Bestellen Button hinzufügen
-5. Max. bestell limit hinzufügen
+4. Bestellen Button hinzufügen //done
+5. Max. bestell limit hinzufügen // done
 */
