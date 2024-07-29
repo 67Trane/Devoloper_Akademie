@@ -1,7 +1,6 @@
-let allempty = true;
+let allEmpty = true;
 let amount = 1;
-let m = [];
-let n = [];
+
 
 function render() {
   let content = document.getElementById("dishes");
@@ -11,13 +10,13 @@ function render() {
       <div class="dishestitle">
         <h2>${alldishes[i].title}</h2>
       </div>`;
-    renderdishes(i);
+    renderDishes(i);
     renderCategoryImg(i);
   }
-  makeitempty();
+  makeitEmpty();
   loadSlider();
   renderCategorys();
-  renderpayButton();
+  renderPayButton();
 }
 
 function renderCategoryImg(i) {
@@ -25,7 +24,7 @@ function renderCategoryImg(i) {
   img.style.backgroundImage = `url(${alldishes[i].img})`;
 }
 
-function renderdishes(j) {
+function renderDishes(j) {
   let dishes = document.getElementById(`dishes`);
   for (let i = 0; i < alldishes[j].dishes.length; i++) {
     dishes.innerHTML += `
@@ -33,22 +32,20 @@ function renderdishes(j) {
      <div id="dishinfo" class="dishinfo">
             <h2>${alldishes[j].dishes[i].name}</h2>
             <p>${alldishes[j].dishes[i].ingredients}</p>
-            <h2>${parseFloat(alldishes[j].dishes[i].price)
-              .toFixed(2)
-              .replace(".", ",")}€</h2>
+            <h2>${parseFloat(alldishes[j].dishes[i].price).toFixed(2).replace(".", ",")}€</h2>
         </div>
         ${renderAddButton(j,i)}` ;
   }
 }
 
 function renderAddButton(j,i) {
-  return `<div class="addbtn" id="addbtn${j}${i}" onclick="addbasket(${j}, ${i})">
+  return `<div class="addbtn" id="addbtn${j}${i}" onclick="addBasket(${j}, ${i})">
                 <button id="addbtn-button${j}${i}"></button>
             </div>
         </div>`
 }
 
-function addbasket(j, i) {
+function addBasket(j, i) {
   let basket = document.getElementById(`basket-section`);
   let basketcontainer = document.getElementById(`basket-container${i}${j}`);
   alldishes[j].dishes[i].amount = 1;
@@ -60,7 +57,7 @@ function addbasket(j, i) {
     } else {
       addAmount(i, j);
     }
-    if (allempty == true) {
+    if (allEmpty == true) {
       checkBasektIsEmpty();
     }
     calculatePrice();
@@ -70,15 +67,17 @@ function addbasket(j, i) {
   }
 }
 
-function makeitempty() {
+function makeitEmpty() {
   let empty = document.getElementById("costs");
   empty.innerHTML = "";
 }
 
+let index1 = [];
+let index2 = [];
 function renderBasketInfos(j, i, amount, price) {
   alldishes[j].dishes[i].amount++;
-  m.push(j);
-  n.push(i);
+  index1.push(j);
+  index2.push(i);
   return ` <div id="basket-container${i}${j}" class="basket-container" name="basket-container">
                 <div class="basket-infos">
                   ${renderAmountPrice(j,i,amount, price)}
@@ -199,30 +198,30 @@ function renderCosts() {
             `);
 }
 
-function renderpayButton() {
+function renderPayButton() {
   let costs = document.getElementById("basket-section");
   return (costs.innerHTML += `<div class="pay-button d-none" id="pay-button" onclick="pay()">Bezahlen </div>`);
 }
 
 function checkBasektIsEmpty() {
-  if (allempty == true) {
+  if (allEmpty == true) {
     renderCosts();
-    allempty = false;
+    allEmpty = false;
   }
 }
 
 function pay() {
-  for (let i = 0; i < m.length; i++) {
-    let first = m[i];
-    let second = n[i];
+  for (let i = 0; i < index1.length; i++) {
+    let first = index1[i];
+    let second = index2[i];
     let dish = document.getElementById(`amount1${second}${first}`);
     let count = dish.innerHTML;
     for (let j = 0; j < count; j++) {
       removeAmount(second, first);
     }
   }
-  m = [];
-  n = [];
+  index1 = [];
+  index2 = [];
   switchBasketInfo();
   succsess();
 }
@@ -250,9 +249,7 @@ function calculateAmount(i, j) {
   let price = document.getElementById(`price${i}${j}`).innerHTML;
   let cost = alldishes[j].dishes[i].price;
   let res = parseInt(price) + cost;
-  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
-    .toFixed(2)
-    .replace(".", ",")}€`;
+  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res).toFixed(2).replace(".", ",")}€`;
   return res;
 }
 
@@ -260,9 +257,7 @@ function calculateAmountDecrese(i, j) {
   let price = document.getElementById(`price${i}${j}`).innerHTML;
   let cost = alldishes[j].dishes[i].price;
   let res = parseInt(price) - cost;
-  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res)
-    .toFixed(2)
-    .replace(".", ",")}€`;
+  document.getElementById(`price${i}${j}`).innerHTML = `${parseFloat(res).toFixed(2).replace(".", ",")}€`;
   return res;
 }
 

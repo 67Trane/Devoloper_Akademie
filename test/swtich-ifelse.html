@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+    </style>
+    <script>
+        color = "green"
+
+        function init() {
+            newVersion();
+        }
+
+        function newVersion() {
+            let colorcode;
+
+            switch (color) {
+                case "red":
+                case "Red":
+                    colorcode = "red"
+                    break;
+                case "green":
+                    colorcode = "#0eba1e"
+                    break;
+                default:
+                    colorcode = "blue"
+                    break;
+            }
+
+            document.getElementById('title').style.color = colorcode;
+        }
+
+    </script>
+</head>
+
+<body onload="init()">
+    <h1 id="title">SwitchCase</h1>
+</body>
+
+</html>

@@ -73,6 +73,7 @@ footer {
 
 .leftside {
   width: 70%;
+  margin-bottom: 20px;
 }
 
 .basket-section {
@@ -106,7 +107,7 @@ footer {
   position: relative;
   display: inline-block;
   width: 300px;
-  height: 60px;
+  height: auto;
   margin-top: 20px;
 }
 
@@ -117,7 +118,7 @@ footer {
 }
 
 .slider {
-  position: absolute;
+
   cursor: pointer;
   top: 0;
   left: 0;
@@ -132,12 +133,13 @@ footer {
   padding: 0 10px;
   box-sizing: border-box;
   box-shadow: 0px 0px 18px 8px rgba(0, 0, 0, 0.1);
+  height: 60px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 54px;
+  height: 55px;
   width: 50%;
   left: 4px;
   opacity: 0.7;
@@ -625,8 +627,9 @@ a {
   font-weight: 700;
   color: white;
   width: 80%;
-  height: 8%;
+  height: 10%;
   border-radius: 40px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -634,6 +637,7 @@ a {
   box-sizing: border-box;
   order: 999;
   margin-top: 60px;
+  margin-bottom: 100px;
 }
 
 .pay-button:hover {
