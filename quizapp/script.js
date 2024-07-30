@@ -118,7 +118,7 @@ function answer(selection) {
 }
 
 function rightAnswerSelected(selectedQuestionNumber, question) {
-    selectedQuestionNumber == question["correct_answer"]
+   return selectedQuestionNumber == question["correct_answer"]
 }
 
 function nextQuestion() {
