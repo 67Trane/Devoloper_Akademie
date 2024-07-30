@@ -24,20 +24,28 @@
     </nav>
 
     <div class="container">
-        
+
         <div class="card quiz-card">
             <img src="../Bilder/ballon.jpg" class="card-img-top" id="header-image">
-            
-            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuemin="0" aria-valuemax="100">
+
+            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuemin="0"
+                aria-valuemax="100">
                 <div class="progress-bar" style="width: 25%" id="progressbar">25%</div>
-              </div>
-              
-            <div class="card-body" id="endScreen" style="display: none;">
-                <div class="text-center">Quiz beendet!</div>
-                
-                <div class="text-center"> Du hast von <b id="correct-answers">XXX</b> Fragen von <b id="amount-of-questions">XXX</b> richtig benatwortet</div>
             </div>
 
+            <div class="card-body" id="endScreen" style="display: none;">
+                <div class="text-center">Quiz beendet!</div>
+
+                <div class="text-center"> Du hast von <b id="correct-answers">XXX</b> Fragen von <b
+                        id="amount-of-questions">XXX</b> richtig benatwortet</div>
+
+                        <div class="button-row">
+                            <button type="button" onclick="restartGame()" class="btn btn-primary" id="restart">Erneut
+                                spielen</button>
+                        </div>
+
+            </div>
+            
             <div class="card-body" id="questionBody">
                 <h5 class="card-title" id="questiontext">Frage</h5>
 
@@ -67,7 +75,8 @@
 
                 <div class="question-footer">
                     <span><b id="question-number">1</b> von <b id="all-questions">5</b> Fragen</span>
-                    <button type="button" onclick="nextQuestion()" class="btn btn-primary" disabled id="next-button">Nächste Frage</button>
+                    <button type="button" onclick="nextQuestion()" class="btn btn-primary" disabled
+                        id="next-button">Nächste Frage</button>
                 </div>
             </div>
         </div>
