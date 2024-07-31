@@ -2,6 +2,7 @@ let fields = Array(9).fill(null); // Initialisiere das Array mit null
 let currentPlayer = "circle"; // Startet mit "circle"
 
 function render() {
+    currentPlayerRound()
     let table = '<table>';
     for (let i = 0; i < 3; i++) {
         table += '<tr>';
@@ -22,7 +23,12 @@ function render() {
     document.getElementById('container').innerHTML = table;
 }
 
+function currentPlayerRound() {
+    document.getElementById("current-player").innerHTML = currentPlayer
+}
+
 function handleCellClick(index, element) {
+    currentPlayerRound()
 
     if (fields[index] !== null) return; // Überspringen, wenn das Feld bereits gesetzt ist
 
@@ -128,3 +134,9 @@ function generateCrossSVG() {
 document.addEventListener("DOMContentLoaded", function() {
     render();
 });
+
+
+function restartGame() {
+    fields = Array(9).fill(null);
+    render()
+}
