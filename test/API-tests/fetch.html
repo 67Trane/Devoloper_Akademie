@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+        async function fetchDataJson() {
+            let response = await fetch('db.json');
+            let responseAsJson = await response.json()
+            console.log(responseAsJson)
+        }
+
+        async function fetchDataJson() {
+            let response = await fetch('h1.txt');
+            let responseAsText = await response.text()
+            document.getElementById("content").innerHTML = responseAsText
+        }
+
+    </script>
+</head>
+
+<body onload="fetchDataJson()">
+    <div id="content"></div>
+</body>
+
+</html>
