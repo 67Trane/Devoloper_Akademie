@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 20px;
+  gap: 20px;
+}
+
+footer {
+  width: 100%;
+  border-top: 1px solid grey;
+  height: 60px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+}
+
+header img {
+  width: 10%;
+}
+
+header h1 {
+  font-weight: 700;
+}
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 20px;
+}
+
+.poison {
+  background-color: rgb(182, 122, 177);
+}
+
+.grass {
+  background-color: rgb(159, 211, 132);
+}
+
+.fire {
+  background-color: rgb(240, 128, 48);
+}
+
+.water {
+  background-color: rgb(104, 144, 240);
+}
+
+.electric {
+  background-color: rgb(248, 208, 48);
+}
+
+.ice {
+  background-color: rgb(152, 216, 216);
+}
+
+.fighting {
+  background-color: rgb(192, 48, 40);
+}
+
+.ground {
+  background-color: rgb(224, 192, 104);
+}
+
+.flying {
+  background-color: rgb(168, 144, 240);
+}
+
+.psychic {
+  background-color: rgb(248, 88, 136);
+}
+
+.bug {
+  background-color: rgb(168, 184, 32);
+}
+
+.rock {
+  background-color: rgb(184, 160, 56);
+}
+
+.ghost {
+  background-color: rgb(112, 88, 152);
+}
+
+.dragon {
+  background-color: rgb(112, 56, 248);
+}
+
+.dark {
+  background-color: rgb(112, 88, 72);
+}
+
+.steel {
+  background-color: rgb(184, 184, 208);
+}
+
+.fairy {
+  background-color: rgb(238, 153, 172);
+}
+
+.normal {
+  background-color: rgb(168, 168, 120);
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  height: 200px !important;
+  border-radius: 40px !important;
+  margin-top: 50px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-body {
+  flex: none !important;
+  transform: translateY(-40%);
+}
+
+.pokemon-info-text {
+  text-align: center;
+}
+
+.card-img-top {
+  transform: translateY(-30%);
+  height: 60% !important;
+  object-fit: cover;
+  width: 50% !important;
+}
+
+.badge {
+    font-size: 1.4rem !important;
+}
+
+.type {
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.fullscreen-container {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+
+}
+
+#fullscreen {
+    height: auto;
+}
