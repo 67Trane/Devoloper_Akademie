@@ -19,6 +19,7 @@ footer {
   align-items: center;
   justify-content: center;
   display: flex;
+  background-color: grey;
 }
 
 .wrapper {
@@ -30,6 +31,8 @@ footer {
 .content {
   flex: 1;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header img {
@@ -47,90 +50,161 @@ header h1 {
   gap: 20px;
 }
 
-.poison {
-  background-color: rgb(182, 122, 177);
-}
-
-.grass {
-  background-color: rgb(159, 211, 132);
-}
-
-.fire {
-  background-color: rgb(240, 128, 48);
-}
-
-.water {
-  background-color: rgb(104, 144, 240);
-}
-
-.electric {
-  background-color: rgb(248, 208, 48);
-}
-
-.ice {
-  background-color: rgb(152, 216, 216);
-}
-
-.fighting {
-  background-color: rgb(192, 48, 40);
-}
-
-.ground {
-  background-color: rgb(224, 192, 104);
-}
-
-.flying {
-  background-color: rgb(168, 144, 240);
-}
-
-.psychic {
-  background-color: rgb(248, 88, 136);
-}
-
-.bug {
-  background-color: rgb(168, 184, 32);
-}
-
-.rock {
-  background-color: rgb(184, 160, 56);
-}
-
-.ghost {
-  background-color: rgb(112, 88, 152);
-}
-
-.dragon {
-  background-color: rgb(112, 56, 248);
-}
-
-.dark {
-  background-color: rgb(112, 88, 72);
-}
-
-.steel {
-  background-color: rgb(184, 184, 208);
-}
-
-.fairy {
-  background-color: rgb(238, 153, 172);
-}
-
 .normal {
-  background-color: rgb(168, 168, 120);
-}
-
+    background-color: rgb(168, 168, 120) !important;
+  }
+  
+  .normal-bg {
+    background-color: rgb(120, 120, 80) !important;
+  }
+  
+  .fire {
+    background-color: rgb(240, 128, 48) !important;
+  }
+  
+  .fire-bg {
+    background-color: rgb(192, 84, 20) !important;
+  }
+  
+  .water {
+    background-color: rgb(104, 144, 240) !important;
+  }
+  
+  .water-bg {
+    background-color: rgb(72, 104, 192) !important;
+  }
+  
+  .electric {
+    background-color: rgb(248, 208, 48) !important;
+  }
+  
+  .electric-bg {
+    background-color: rgb(192, 160, 20) !important;
+  }
+  
+  .grass {
+    background-color: rgb(159, 211, 132) !important;
+  }
+  
+  .grass-bg {
+    background-color: rgb(102, 182, 60) !important;
+  }
+  
+  .ice {
+    background-color: rgb(152, 216, 216) !important;
+  }
+  
+  .ice-bg {
+    background-color: rgb(112, 168, 168) !important;
+  }
+  
+  .fighting {
+    background-color: rgb(192, 48, 40) !important;
+  }
+  
+  .fighting-bg {
+    background-color: rgb(144, 24, 20) !important;
+  }
+  
+  .poison {
+    background-color: rgb(182, 122, 177) !important;
+  }
+  
+  .poison-bg {
+    background-color: rgb(148, 66, 150) !important;
+  }
+  
+  .ground {
+    background-color: rgb(224, 192, 104) !important;
+  }
+  
+  .ground-bg {
+    background-color: rgb(184, 160, 56) !important;
+  }
+  
+  .flying {
+    background-color: rgb(168, 144, 240) !important;
+  }
+  
+  .flying-bg {
+    background-color: rgb(112, 89, 192) !important;
+  }
+  
+  .psychic {
+    background-color: rgb(248, 88, 136) !important;
+  }
+  
+  .psychic-bg {
+    background-color: rgb(192, 48, 88) !important;
+  }
+  
+  .bug {
+    background-color: rgb(168, 184, 32) !important;
+  }
+  
+  .bug-bg {
+    background-color: rgb(120, 136, 20) !important;
+  }
+  
+  .rock {
+    background-color: rgb(184, 160, 56) !important;
+  }
+  
+  .rock-bg {
+    background-color: rgb(144, 128, 40) !important;
+  }
+  
+  .ghost {
+    background-color: rgb(112, 88, 152) !important;
+  }
+  
+  .ghost-bg {
+    background-color: rgb(80, 56, 112) !important;
+  }
+  
+  .dragon {
+    background-color: rgb(112, 56, 248) !important;
+  }
+  
+  .dragon-bg {
+    background-color: rgb(72, 40, 192) !important;
+  }
+  
+  .dark {
+    background-color: rgb(112, 88, 72) !important;
+  }
+  
+  .dark-bg {
+    background-color: rgb(72, 56, 40) !important;
+  }
+  
+  .steel {
+    background-color: rgb(184, 184, 208) !important;
+  }
+  
+  .steel-bg {
+    background-color: rgb(136, 136, 160) !important;
+  }
+  
+  .fairy {
+    background-color: rgb(238, 153, 172) !important;
+  }
+  
+  .fairy-bg {
+    background-color: rgb(192, 104, 128) !important;
+  }
+  
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: green;
   height: 200px !important;
   border-radius: 40px !important;
   margin-top: 50px;
 }
 
 .card:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .card-body {
@@ -150,29 +224,63 @@ header h1 {
 }
 
 .badge {
-    font-size: 1.4rem !important;
+  font-size: 1.4rem !important;
 }
 
 .type {
-    gap: 20px;
-    display: flex;
-    justify-content: center;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .fullscreen-container {
-    position: absolute;
-    z-index: 999;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.6);
-
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-#fullscreen {
-    height: auto;
+.fullscreen-card {
+  width: 50%;
+  height: 90%;
+  background-color: white;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  align-items: center;
 }
+
+.fullscreen-img {
+  width: 20%;
+}
+
+.fullscree-info-text-section {
+  border: 1px solid grey;
+  border-radius: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+#load-more {
+    margin: 20px;
+}
+
+.loadingball {
+    width: 20%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }

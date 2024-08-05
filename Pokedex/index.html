@@ -17,14 +17,36 @@
 
 <body onload="init()" id="test">
     <div class="wrapper">
-        <div class="fullscreen-container">
-            <div class="card" style="width: 50rem;" id="fullscreen">
-                <img src="icon/pokeball.png" class="card-img-top" alt="...">
-                <div class="card-body">
+        
+        <div class="loadingscreen fullscreen-container d-none" id="loading-screen">
+            <img src="./icon/loadingball.png" alt="" class="loadingball">
+        </div>
+
+
+        <div class="fullscreen-container d-none" id="fullscreen-container">
+            <div class="fullscreen-card" style="width: 50rem;" id="fullscreen">
+                <img src="icon/pokeball.png" class="fullscreen-img" alt="...">
+                <div class="fullscree-info-text-section">   
+                    <ul class="nav nav-underline">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                      </ul>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
               </div>
         </div>
+
+
         <header class="shadow">
             <img src="./icon/pokeball.png" alt="">
             <h1>Pokedex</h1>
@@ -42,6 +64,7 @@
             
             <div class="pokemon-container" id="pokemon-container">
             </div>
+            <button type="button" class="btn btn-primary btn-lg" id="load-more" onclick="loadMore()">Mehr Laden</button>
         </div>
 
         <footer class="shadow-sm">Created by Mehmet Deliaci</footer>
