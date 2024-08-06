@@ -32,11 +32,9 @@
                         <h1 id="pokemon-name">Name</h1>
                     </div>
                     <div class="types" id="types">
-                        <h2>grass</h2>
-                        <h2>poison</h2>
                     </div>
 
-                    <img src="icon/pokeball.png" class="fullscreen-img" alt="...">
+                    <img src="icon/pokeball.png" class="fullscreen-img" alt="..." id="pokemon-image">
                 </div>
                 <div class="fullscree-info-text-section">
                     <div class="fullscreen-infos">
@@ -45,18 +43,16 @@
                             <div class="height-weight">
                                 <div class="height">
                                     <h2>Größe:</h2>
-                                    <h3>0.7 m</h3>
+                                    <h3 id="height"></h3>
                                 </div>
                                 <div class="weight">
                                     <h2>Gewicht:</h2>
-                                    <h3>6.9Kg</h3>
+                                    <h3 id="weight"></h3>
                                 </div>
                             </div>
                             <div class="abilities">
                                 <h2>Fähigkeiten:</h2>
-                                <div class="allabilities">
-                                    <h3>overgrow</h3>
-                                    <h3>chornobyl</h3>
+                                <div class="allabilities" id="allabilities">
                                 </div>
                             </div>
                             <div class="stats">
@@ -65,8 +61,8 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 70%;"
-                                                aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">70%</span>
+                                                aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="hp">
+                                                <span class="progress-value" id="hp-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">HP</p>
@@ -74,8 +70,8 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 50%;"
-                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">50%</span>
+                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="attack">
+                                                <span class="progress-value" id="attack-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">Attack</p>
@@ -83,8 +79,8 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 30%;"
-                                                aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">30%</span>
+                                                aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" id="defense">
+                                                <span class="progress-value" id="defense-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">Defense</p>
@@ -92,8 +88,8 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 80%;"
-                                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">80%</span>
+                                                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" id="speed">
+                                                <span class="progress-value" id="speed-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">Speed</p>
@@ -101,8 +97,8 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 60%;"
-                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">60%</span>
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" id="sp.atk">
+                                                <span class="progress-value" id="sp.atk-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">Sp. Atk</p>
@@ -110,25 +106,17 @@
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
                                             <div class="progress-bar" role="progressbar" style="height: 40%;"
-                                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="progress-value">40%</span>
+                                                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="sp.def">
+                                                <span class="progress-value" id="sp.def-text"></span>
                                             </div>
                                         </div>
                                         <p class="progress-info">Sp. Def</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="evo">
-                                <h2>Evolution:</h2>
-                                <div class="evolutions">
-                                    <img src="icon/pokeball.png" alt="">
-                                    <img src="icon/pokeball.png" alt="">
-                                    <img src="icon/pokeball.png" alt="">
-                                </div>
-                            </div>
-                            <div class="arrows">
-                                <img src="icon/left.png" alt="">
-                                <img src="icon/right.png" alt="">
+                            
+                            <div class="arrows" id="arrows">
+                    
                             </div>
                         </div>
                     </div>
