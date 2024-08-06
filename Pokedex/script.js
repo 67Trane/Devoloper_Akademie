@@ -56,6 +56,7 @@ function renderPokemonType(pokemon, i) {
 }
 
 function renderPokemonCard(AllPokemons) {
+  console.log(AllPokemons)
   for (let i = pokemonCount; i < pokemonCount + AllPokemons.length; i++) {
     loadPokemon(i + 1);
     let Pokemon = AllPokemons[i - pokemonCount];
@@ -104,6 +105,12 @@ function closeFullscreen() {
   document.getElementById("types").innerHTML = "";
   document.getElementById("allabilities").innerHTML = "";
   document.getElementById("fullscreen").className = "fullscreen-card";
+}
+
+function checkClick(event) {
+  if (event.target.id === "fullscreen-container") {
+    closeFullscreen();
+  }
 }
 
 async function loadPokemonInformations(id) {
@@ -175,7 +182,10 @@ function renderFullscreenPokemon(pokemon) {
 }
 
 function next(arrow, id) {
-  console.log(id)
+  document.getElementById("types").innerHTML = "";
+  document.getElementById("fullscreen").className = "fullscreen-card";
+  document.getElementById("allabilities").innerHTML = "";
+  console.log(id);
   if (arrow == "left") {
     if (id < 1) {
       alert("nein");
@@ -190,3 +200,38 @@ function next(arrow, id) {
     }
   }
 }
+
+let allPokemonNames = [];
+
+async function collectPokemonNames() {
+  fetch(POKEDEX_API + "/pokemon?offset=0&limit=100")
+    .then((response) => response.json())
+    .then((data) => getPokemons(data.results));
+}
+
+function getPokemons(data) {
+  for (let i = 0; i < 100; i++) {
+    allPokemonNames.push(data[i].name);
+  }
+}
+
+let test = [{name:"bulbasaur"}]
+
+function searchPokemon() {
+  let input = document.getElementById("input-search").value.toLowerCase();
+
+  let result = allPokemonNames.filter((pokemon) => pokemon.includes(input));
+
+  if (input.length < 3) {
+    alert("Bitte zum suchen ein Namen eingeben!");
+  } else {
+    for (let i = 0; i < result.length; i++) {
+      console.log(result[i]);
+      document.getElementById("pokemon-container").innerHTML ="";
+    }
+  }
+}
+
+
+
+collectPokemonNames();

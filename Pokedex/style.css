@@ -234,16 +234,17 @@ header h1 {
 }
 
 .fullscreen-container {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 20px;
 }
 
 .fullscreen-card {
@@ -256,7 +257,7 @@ header h1 {
 }
 
 .fullscreen-img {
-  width: 20%;
+  width: 30%;
   justify-self: center;
   align-self: center;
   display: flex;
@@ -278,8 +279,10 @@ header h1 {
 }
 
 .loadingball {
-    width: 20%;
+    width: 40%;
+    height: fit-content;
     animation: spin 2s linear infinite;
+    align-self: center;
 }
 
 @keyframes spin {

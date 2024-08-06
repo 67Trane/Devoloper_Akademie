@@ -18,12 +18,12 @@
 <body onload="init()" id="body">
     <div class="wrapper">
 
-        <div class="loadingscreen fullscreen-container d-none" id="loading-screen">
+        <div class="loadingscreen fullscreen-container" id="loading-screen">
             <img src="./icon/loadingball.png" alt="" class="loadingball">
         </div>
 
 
-        <div class="fullscreen-container d-none" id="fullscreen-container" onclick="closeFullscreen()">
+        <div class="fullscreen-container d-none" id="fullscreen-container" onclick="checkClick(event)">
             <!-- fullscreen-container einfach d-none hinzufügen -->
             <div class="fullscreen-card" style="width: 50rem;" id="fullscreen">
                 <div class="top-half">
@@ -130,8 +130,8 @@
             <h1>Pokedex</h1>
 
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="text" placeholder="Suchen..." aria-label="Search">
-                <button type="submit" class="btn btn-primary"
+                <input class="form-control me-2" type="text" placeholder="Suchen..." aria-label="Search" id="input-search">
+                <button onclick="searchPokemon()" type="submit" class="btn btn-primary"
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                     Suchen
                 </button>
