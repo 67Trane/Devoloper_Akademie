@@ -247,18 +247,20 @@ header h1 {
 }
 
 .fullscreen-card {
-  width: 50%;
+  width: 100%;
   height: 90%;
-  background-color: white;
+  background-color: red;
   border-radius: 40px;
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
-  align-items: center;
 }
 
 .fullscreen-img {
   width: 20%;
+  justify-self: center;
+  align-self: center;
+  display: flex;
 }
 
 .fullscree-info-text-section {
@@ -269,6 +271,7 @@ header h1 {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  background-color: white;
 }
 
 #load-more {
@@ -284,3 +287,137 @@ header h1 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(-360deg); }
   }
+
+
+.fullscreen-navbar {
+margin: 10px;
+padding-bottom: 10px;
+}
+
+.fullscreen-infos {
+  width: 100%;
+
+}
+
+
+.top-half {
+  display: flex;
+  width: 80%;
+  padding-left: 20px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullscreen-img {
+  justify-self: center; 
+}
+
+.all-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.height-weight {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.allabilities {
+  display: flex;
+  width: 100%;
+  justify-content: space-between !important;
+}
+
+.evolutions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.evolutions img {
+  width: 10%;
+}
+
+.evo {
+  display: flex;
+  align-items: center;
+  flex-direction: column
+}
+
+.stats {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Abstand zwischen den Balken */
+}
+
+.progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical {
+  width: 50px;
+  height: 100px !important;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.vertical .progress-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.progress-value {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+}
+
+.progress-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 100px;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.arrows img {
+  width: 10%;
+}
