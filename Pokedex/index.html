@@ -114,9 +114,9 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="arrows" id="arrows">
-                    
+
                             </div>
                         </div>
                     </div>
@@ -125,21 +125,23 @@
         </div>
 
 
-        <header class="shadow">
-            <img src="./icon/pokeball.png" alt="">
-            <h1>Pokedex</h1>
+        <header class="header-section">
+            <img src="./icon/pokeball.png" alt="" class="header-img">
+            <h1 class="header-title">Pokedex</h1>
 
             <div class="search-field">
-                <input class="form-control me-2" type="text" placeholder="Suchen..."id="input-search">
-                <button onclick="searchPokemon()" class="btn btn-primary"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    Suchen
-                </button>
-                <button onclick="reset()" class="btn btn-primary"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                    Zurück
-                </button>
-           </div>
+                <input class="form-control me-2" type="text" placeholder="Suchen..." id="input-search">
+                <div class="buttons">
+                    <button onclick="searchPokemon()" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                        Suchen
+                    </button>
+                    <button onclick="reset()" class="btn btn-primary"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                        Zurück
+                    </button>
+                </div>
+            </div>
         </header>
 
         <div class="content" id="content">

@@ -75,10 +75,10 @@ function renderPokemonCard(AllPokemons, lenghts) {
   } else {
     for (let z = 0; z < lenghts; z++) {
       let Pokemonid = AllPokemons[z].id;
-      console.log(AllPokemons[z])
+      console.log(AllPokemons[z]);
       console.log(Pokemonid);
       loadPokemon(Pokemonid);
-      rendertest(AllPokemons[z].name, Pokemonid-1);
+      rendertest(AllPokemons[z].name, Pokemonid - 1);
     }
   }
 
@@ -87,7 +87,7 @@ function renderPokemonCard(AllPokemons, lenghts) {
 
 function rendertest(AllPokemons, i) {
   let pokemonContainer = document.getElementById("pokemon-container");
-  pokemonContainer.innerHTML += `<div class="card shadow" id="card${
+  pokemonContainer.innerHTML += `<div class="card" id="card${
     i + 1
   }" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
                   <img src="#" class="card-img-top" alt="..." id="pokemonpicture${
@@ -113,7 +113,7 @@ async function loadMore() {
       }
       return response.json();
     })
-    .then((data) => renderPokemonCard(data.results, pokemonCount))
+    .then((data) => renderPokemonCard(data.results))
     .then(() =>
       document.getElementById("loading-screen").classList.add("d-none")
     )
@@ -214,22 +214,27 @@ function renderFullscreenPokemon(pokemon) {
 }
 
 function next(arrow, id) {
-  document.getElementById("types").innerHTML = "";
-  document.getElementById("fullscreen").className = "fullscreen-card";
-  document.getElementById("allabilities").innerHTML = "";
   if (arrow == "left") {
-    if (id < 1) {
+    if (id <= 1) {
       alert("minimum erreicht!");
     } else {
+      clear()
       loadPokemonInformations(id - 1);
     }
   } else {
     if (id > 1302) {
       alert("Ende");
     } else {
+      clear()
       loadPokemonInformations(id + 1);
     }
   }
+}
+
+function clear() {
+  document.getElementById("types").innerHTML = "";
+  document.getElementById("fullscreen").className = "fullscreen-card";
+  document.getElementById("allabilities").innerHTML = "";
 }
 
 let allPokemonNames = [];
@@ -271,11 +276,11 @@ function searchPokemon() {
       alert("Keine Pokémon gefunden!");
     }
   }
-  document.getElementById("load-more").style.display = "none"
+  document.getElementById("load-more").style.display = "none";
 }
 
 function reset() {
-  location.reload()
+  location.reload();
 }
 
 collectPokemonNames();
