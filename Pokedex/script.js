@@ -21,9 +21,6 @@ async function loadPokemons() {
       return response.json();
     })
     .then((data) => renderPokemonCard(data.results))
-    .then(() =>
-      document.getElementById("loading-screen").classList.add("d-none")
-    )
     .catch((error) => console.error(error));
 }
 
@@ -37,9 +34,6 @@ async function loadPokemon(number) {
       return response.json();
     })
     .then((data) => pokemon(data, number))
-    .then(() =>
-      document.getElementById("loading-screen").classList.add("d-none")
-    )
     .catch((error) => console.error(error));
 }
 
@@ -50,6 +44,7 @@ function pokemon(pokemon, i) {
     `pokemonpicture${i}`
   ).src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
   renderPokemonType(pokemon, i);
+  document.getElementById("loading-screen").classList.add("d-none")
 }
 
 function renderPokemonType(pokemon, i) {
@@ -180,7 +175,7 @@ function renderFullscreenPokemon(pokemon) {
   for (let i = 0; i < pokemon.abilities.length; i++) {
     document.getElementById(
       "allabilities"
-    ).innerHTML += `<h2>${pokemon.abilities[i].ability.name}</h2>`;
+    ).innerHTML += `<h2 class="badge rounded-pill text-bg-success">${pokemon.abilities[i].ability.name}</h2>`;
   }
 
   document.getElementById("hp").style.height = pokemon.stats[0].base_stat + "%";
