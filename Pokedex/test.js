@@ -65,43 +65,31 @@ function renderPokemonType(pokemon, i) {
   }
 }
 
-function renderPokemonCard(AllPokemons, lenghts) {
-  if (lenghts === undefined) {
-    for (let i = pokemonCount; i < pokemonCount + AllPokemons.length; i++) {
-      loadPokemon(i + 1);
-      let Pokemon = AllPokemons[i - pokemonCount];
-      rendertest(Pokemon.name, i);
-    }
-  } else {
-    for (let z = 0; z < lenghts; z++) {
-      let Pokemonid = AllPokemons[z].id;
-      console.log(AllPokemons[z])
-      console.log(Pokemonid);
-      loadPokemon(Pokemonid);
-      rendertest(AllPokemons[z].name, Pokemonid-1);
-    }
+function renderPokemonCard(AllPokemons) {
+  console.log(AllPokemons);
+  for (let i = pokemonCount; i < pokemonCount + AllPokemons.length; i++) {
+    loadPokemon(i + 1);
+    let Pokemon = AllPokemons[i - pokemonCount];
+    let pokemonContainer = document.getElementById("pokemon-container");
+    pokemonContainer.innerHTML += `<div class="card shadow" id="card${
+      i + 1
+    }" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
+                    <img src="#" class="card-img-top" alt="..." id="pokemonpicture${
+                      i + 1
+                    }">
+                    <div class="card-body">
+                        <div class="pokemon-info-text">
+                            <p class="card-text" id="pokemon-id${
+                              i + 1
+                            }">Nr. </p>
+                            <h5 class="card-title">${Pokemon.name.toUpperCase()}</h5>
+                        </div>
+                        <div class="type" id="type${i + 1}">
+                        </div>
+                    </div>
+                </div>`;
   }
-
   pokemonCount += AllPokemons.length;
-}
-
-function rendertest(AllPokemons, i) {
-  let pokemonContainer = document.getElementById("pokemon-container");
-  pokemonContainer.innerHTML += `<div class="card shadow" id="card${
-    i + 1
-  }" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
-                  <img src="#" class="card-img-top" alt="..." id="pokemonpicture${
-                    i + 1
-                  }">
-                  <div class="card-body">
-                      <div class="pokemon-info-text">
-                          <p class="card-text" id="pokemon-id${i + 1}">Nr. </p>
-                          <h5 class="card-title">${AllPokemons.toUpperCase()}</h5>
-                      </div>
-                      <div class="type" id="type${i + 1}">
-                      </div>
-                  </div>
-              </div>`;
 }
 
 async function loadMore() {
@@ -257,25 +245,17 @@ function searchPokemon() {
   let results = allPokemonNames.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(input)
   );
-
-  let lengths = results.length;
+  console.log(results);
+  console.log(results[0].name + "  " + results[0].id);
 
   if (input.length < 3) {
-    alert("Bitte zum Suchen einen Namen eingeben!");
+    alert("Bitte zum suchen ein Namen eingeben!");
   } else {
-    if (results.length > 0) {
-      pokemonCount = 0;
-      document.getElementById("pokemon-container").innerHTML = "";
-      renderPokemonCard(results, lengths);
-    } else {
-      alert("Keine Pokémon gefunden!");
-    }
-  }
-  document.getElementById("load-more").style.display = "none"
-}
+    
+    pokemonCount = 0;
+    document.getElementById("pokemon-container").innerHTML = "";
 
-function reset() {
-  location.reload()
+  }
 }
 
 collectPokemonNames();

@@ -129,13 +129,17 @@
             <img src="./icon/pokeball.png" alt="">
             <h1>Pokedex</h1>
 
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="text" placeholder="Suchen..." aria-label="Search" id="input-search">
-                <button onclick="searchPokemon()" type="submit" class="btn btn-primary"
+            <div class="search-field">
+                <input class="form-control me-2" type="text" placeholder="Suchen..."id="input-search">
+                <button onclick="searchPokemon()" class="btn btn-primary"
                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
                     Suchen
                 </button>
-            </form>
+                <button onclick="reset()" class="btn btn-primary"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                    Zurück
+                </button>
+           </div>
         </header>
 
         <div class="content" id="content">
