@@ -27,12 +27,12 @@
             <!-- fullscreen-container einfach d-none hinzufügen -->
             <div class="fullscreen-card" style="width: 50rem;" id="fullscreen">
                 <div class="top-half">
-                    
+
                     <div id="message" class="hidden"></div>
                     <div class="info">
                         <h1 id="pokemon-id">ID</h1>
                         <h1 id="pokemon-name">Name</h1>
-                        
+
                     </div>
                     <div class="types" id="types">
                     </div>
@@ -114,7 +114,7 @@
                                                 <span class="progress-value" id="sp.def-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info vertical-text">Sp. Def</p>
+                                        <p class="progress-info ">Sp. Def</p>
                                     </div>
                                 </div>
                             </div>
@@ -130,20 +130,22 @@
 
 
         <header class="header-section">
-            <img src="./icon/pokeball.png" alt="" class="header-img">
-            <h1 class="header-title">Pokedex</h1>
+            <div class="header-content">
+                <img src="./icon/pokeball.png" alt="" class="header-img">
+                <h1 class="header-title">Pokedex</h1>
 
-            <div class="search-field">
-                <input class="form-control me-2" type="text" placeholder="Suchen..." id="input-search">
-                <div class="buttons">
-                    <button onclick="searchPokemon()" class="btn btn-primary"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                        Suchen
-                    </button>
-                    <button onclick="reset()" class="btn btn-primary"
-                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                        Zurück
-                    </button>
+                <div class="search-field">
+                    <input class="form-control me-2" type="text" placeholder="Suchen..." id="input-search">
+                    <div class="buttons">
+                        <button onclick="searchPokemon()" id="search-btn" disabled class="btn btn-primary"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                            Suchen
+                        </button>
+                        <button onclick="reset()" class="btn btn-primary"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                            Zurück
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>
@@ -158,7 +160,7 @@
         <footer class="shadow-sm">Created by Mehmet Deliaci</footer>
     </div>
 
-    
+
 
 
 

@@ -4,8 +4,10 @@ let pokemonCount = 0;
 let allPokemonNames = [];
 
 function init() {
+  
   loadingScreen();
   loadPokemons();
+  searchLength()
 }
 
 function loadingScreen() {
@@ -63,7 +65,11 @@ function renderPokemonCard(AllPokemons, lenghts) {
 
 function renderCard(AllPokemons, i) {
   let pokemonContainer = document.getElementById("pokemon-container");
-  pokemonContainer.innerHTML += `
+  pokemonContainer.innerHTML += renderCardTemplate(AllPokemons, i);
+}
+
+function renderCardTemplate(AllPokemons, i) {
+  return `
   <div class="card" id="card${i + 1}" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
         <img src="#" class="card-img-top" alt="..." id="pokemonpicture${i + 1}">
         <div class="card-body">
@@ -74,7 +80,7 @@ function renderCard(AllPokemons, i) {
             <div class="type" id="type${i + 1}">
             </div>
         </div>
-    </div>`;
+    </div>`
 }
 
 async function loadMore() {
@@ -165,22 +171,29 @@ function renderFullscreenStats(pokemon) {
 
 function next(arrow, id) {
   if (arrow == "left") {
-    if (id <= 1) {
-      showMessage("Das ist das erste Pokemon. Es gibt keine vorherigen Pokemon.")
-    } else {
-      loadPokemonInformations(id - 1);
-      clear()
-    }
+    nextLeft(id)
   } else {
-    if (id > 1302) {
-      showMessage("Das ist das letzte Pokemon.")
-    } else {
-      loadPokemonInformations(id + 1);
-      document.getElementById("message").classList.remove("visible");
-    }
-    clear();
+    nextRight(id)
   }
-  
+}
+
+function nextLeft(id){
+  if (id <= 1) {
+    showMessage("Das ist das erste Pokemon. Es gibt keine vorherigen Pokemon.")
+  } else {
+    loadPokemonInformations(id - 1);
+    clear()
+  }
+}
+
+function nextRight(id){
+  if (id > 1302) {
+    showMessage("Das ist das letzte Pokemon.")
+  } else {
+    loadPokemonInformations(id + 1);
+    document.getElementById("message").classList.remove("visible");
+  }
+  clear();
 }
 
 function showMessage(message) {
@@ -208,14 +221,23 @@ function getPokemons(data) {
   }
 }
 
+function searchLength() {
+  let input = document.getElementById("input-search")
+  input.addEventListener("input", () => {
+    if (input.value.length >= 3) {
+      document.getElementById("search-btn").disabled = false
+    } else {
+      document.getElementById("search-btn").disabled = true
+    }
+  })
+}
+
 function searchPokemon() {
   let input = document.getElementById("input-search").value.toLowerCase();
   let results = allPokemonNames.filter((pokemon) => pokemon.name.toLowerCase().includes(input));
   let lengths = results.length;
 
-  if (input.length <= 3) {
-    alert("Bitte zum Suchen einen Namen eingeben!");
-  } else {
+  if (input.length >= 3) {
     if (lengths > 0) {
       pokemonCount = 0;
       document.getElementById("pokemon-container").innerHTML = "";
