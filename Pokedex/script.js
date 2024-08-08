@@ -62,17 +62,18 @@ function renderPokemonCard(AllPokemons, lenghts) {
 
 function renderCard(AllPokemons, i) {
   let pokemonContainer = document.getElementById("pokemon-container");
-  pokemonContainer.innerHTML += `<div class="card" id="card${i + 1}" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
-                  <img src="#" class="card-img-top" alt="..." id="pokemonpicture${i + 1}">
-                  <div class="card-body">
-                      <div class="pokemon-info-text">
-                          <p class="card-text" id="pokemon-id${i + 1}">Nr. </p>
-                          <h5 class="card-title">${AllPokemons.toUpperCase()}</h5>
-                      </div>
-                      <div class="type" id="type${i + 1}">
-                      </div>
-                  </div>
-              </div>`;
+  pokemonContainer.innerHTML += `
+  <div class="card" id="card${i + 1}" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
+        <img src="#" class="card-img-top" alt="..." id="pokemonpicture${i + 1}">
+        <div class="card-body">
+            <div class="pokemon-info-text">
+                <p class="card-text" id="pokemon-id${i + 1}">Nr. </p>
+                <h5 class="card-title">${AllPokemons.toUpperCase()}</h5>
+            </div>
+            <div class="type" id="type${i + 1}">
+            </div>
+        </div>
+    </div>`;
 }
 
 async function loadMore() {
@@ -114,44 +115,52 @@ async function loadPokemonInformations(id) {
 
 
 function renderFullscreenPokemon(pokemon) {
-  document.getElementById("pokemon-id").innerHTML = "ID: " + pokemon.id
-  document.getElementById("pokemon-name").innerHTML = "Name: " + pokemon.name.toUpperCase()
-
-  for (let i = 0; i < pokemon.types.length; i++) {
-    document.getElementById("types").innerHTML += `<h2 class="badge ${pokemon.types[i].type.name}-bg">${pokemon.types[i].type.name}</h2>`;
-    document.getElementById("fullscreen").classList.add(pokemon.types[0].type.name);
-  }
-  document.getElementById("pokemon-image").src = pokemon.sprites.front_default;
-
-  document.getElementById("height").innerHTML = parseFloat(pokemon.height / 10).toFixed(2) + " m"
-  document.getElementById("weight").innerHTML = parseFloat(pokemon.weight / 10).toFixed(2) + " kg"
-
-  for (let i = 0; i < pokemon.abilities.length; i++) {
-    document.getElementById("allabilities").innerHTML += `<h2 class="badge rounded-pill text-bg-success">${pokemon.abilities[i].ability.name}</h2>`;
-  }
-
-  document.getElementById("hp").style.height = pokemon.stats[0].base_stat + "%";
-  document.getElementById("hp-text").innerHTML = pokemon.stats[0].base_stat;
-
-  document.getElementById("attack").style.height =pokemon.stats[1].base_stat + "%";
-  document.getElementById("attack-text").innerHTML = pokemon.stats[1].base_stat;
-
-  document.getElementById("defense").style.height =pokemon.stats[2].base_stat + "%";
-  document.getElementById("defense-text").innerHTML =pokemon.stats[2].base_stat;
-
-  document.getElementById("speed").style.height =pokemon.stats[3].base_stat + "%";
-  document.getElementById("speed-text").innerHTML = pokemon.stats[3].base_stat;
-
-  document.getElementById("sp.atk").style.height =pokemon.stats[4].base_stat + "%";
-  document.getElementById("sp.atk-text").innerHTML = pokemon.stats[4].base_stat;
-
-  document.getElementById("sp.def").style.height =pokemon.stats[5].base_stat + "%";
-  document.getElementById("sp.def-text").innerHTML = pokemon.stats[5].base_stat;
-
+  renderFullscreenTitles(pokemon)
+  renderFullscreenTypes(pokemon)
+  renderFullscreenImage(pokemon)
+  renderFullscreenSize(pokemon)
+  renderFullscreenAbilities(pokemon)
+  renderFullscreenStats(pokemon)
   document.getElementById("arrows").innerHTML = `
 <img src="./icon/left.png" alt="" onclick="next('left', ${pokemon.id})" class="hover">
 <img src="./icon/right.png" alt="" onclick="next('right', ${pokemon.id})" class="hover">
 `;
+}
+
+function renderFullscreenImage(pokemon) {
+  document.getElementById("pokemon-image").src = pokemon.sprites.front_default;
+}
+
+function renderFullscreenAbilities(pokemon) {
+  for (let i = 0; i < pokemon.abilities.length; i++) {
+    document.getElementById("allabilities").innerHTML += `<h2 class="badge rounded-pill text-bg-success">${pokemon.abilities[i].ability.name}</h2>`;
+  }
+}
+
+function renderFullscreenTitles(pokemon) {
+  document.getElementById("pokemon-id").innerHTML = "ID: " + pokemon.id
+  document.getElementById("pokemon-name").innerHTML = "Name: " + pokemon.name.toUpperCase()
+}
+
+function renderFullscreenTypes(pokemon) {
+  for (let i = 0; i < pokemon.types.length; i++) {
+    document.getElementById("types").innerHTML += `<h2 class="badge ${pokemon.types[i].type.name}-bg">${pokemon.types[i].type.name}</h2>`;
+    document.getElementById("fullscreen").classList.add(pokemon.types[0].type.name);
+  }
+}
+
+function renderFullscreenSize(pokemon) {
+  document.getElementById("height").innerHTML = parseFloat(pokemon.height / 10).toFixed(2) + " m"
+  document.getElementById("weight").innerHTML = parseFloat(pokemon.weight / 10).toFixed(2) + " kg"
+}
+
+function renderFullscreenStats(pokemon) {
+  let stats= ["hp", "attack", "defense", "speed", "sp.atk", "sp.def"]
+
+  for (let i = 0; i < stats.length; i++) {
+    document.getElementById(stats[i]).style.height = pokemon.stats[i].base_stat + "%";
+    document.getElementById(stats[i] + "-text").innerHTML = pokemon.stats[i].base_stat;
+  }
 }
 
 function next(arrow, id) {
@@ -159,17 +168,16 @@ function next(arrow, id) {
     if (id <= 1) {
       alert("minimum erreicht!");
     } else {
-      clear();
       loadPokemonInformations(id - 1);
     }
   } else {
     if (id > 1302) {
       alert("Ende");
     } else {
-      clear();
       loadPokemonInformations(id + 1);
     }
   }
+  clear();
 }
 
 function clear() {
@@ -195,24 +203,19 @@ function getPokemons(data) {
 
 function searchPokemon() {
   let input = document.getElementById("input-search").value.toLowerCase();
-  let results = allPokemonNames.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(input)
-  );
-
+  let results = allPokemonNames.filter((pokemon) => pokemon.name.toLowerCase().includes(input));
   let lengths = results.length;
 
-  if (input.length < 3) {
+  if (input.length <= 3) {
     alert("Bitte zum Suchen einen Namen eingeben!");
   } else {
-    if (results.length > 0) {
+    if (lengths > 0) {
       pokemonCount = 0;
       document.getElementById("pokemon-container").innerHTML = "";
       renderPokemonCard(results, lengths);
-    } else {
-      alert("Keine Pokémon gefunden!");
+      document.getElementById("load-more").style.display = "none";
     }
   }
-  document.getElementById("load-more").style.display = "none";
 }
 
 function reset() {
