@@ -1,6 +1,7 @@
 const POKEDEX_API = "https://pokeapi.co/api/v2";
 
 let pokemonCount = 0;
+let allPokemonNames = [];
 
 function init() {
   loadingScreen();
@@ -113,7 +114,6 @@ async function loadPokemonInformations(id) {
   .catch((error) => console.error(error));
 }
 
-
 function renderFullscreenPokemon(pokemon) {
   renderFullscreenTitles(pokemon)
   renderFullscreenTypes(pokemon)
@@ -185,8 +185,6 @@ function clear() {
   document.getElementById("fullscreen").className = "fullscreen-card";
   document.getElementById("allabilities").innerHTML = "";
 }
-
-let allPokemonNames = [];
 
 async function collectPokemonNames() {
   fetch(POKEDEX_API + "/pokemon?offset=0&limit=100")
