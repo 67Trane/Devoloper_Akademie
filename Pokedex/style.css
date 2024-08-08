@@ -292,7 +292,7 @@ header h1 {
 }
 
 .loadingball {
-  width: 40%;
+  width: 20%;
   height: fit-content;
   animation: spin 2s linear infinite;
   align-self: center;
