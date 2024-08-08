@@ -14,10 +14,7 @@ function loadingScreen() {
 async function loadPokemons() {
   loadingScreen();
   fetch(POKEDEX_API + "/pokemon?limit=20&offset=0")
-    .then((response) => {
-      if (!response.ok) {throw new Error("Network response was not ok " + response.statusText);}
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => renderPokemonCard(data.results))
     .catch((error) => console.error(error));
 }
@@ -25,14 +22,9 @@ async function loadPokemons() {
 async function loadPokemon(number) {
   loadingScreen();
   fetch(POKEDEX_API + "/pokemon/" + number)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => pokemon(data, number))
-    .catch((error) => console.error(error));
+  .then((response) => response.json())
+  .then((data) => pokemon(data, number))
+  .catch((error) => console.error(error));
 }
 
 function pokemon(pokemon, i) {
@@ -56,21 +48,19 @@ function renderPokemonCard(AllPokemons, lenghts) {
     for (let i = pokemonCount; i < pokemonCount + AllPokemons.length; i++) {
       loadPokemon(i + 1);
       let Pokemon = AllPokemons[i - pokemonCount];
-      rendertest(Pokemon.name, i);
+      renderCard(Pokemon.name, i);
     }
   } else {
     for (let z = 0; z < lenghts; z++) {
       let Pokemonid = AllPokemons[z].id;
-      console.log(AllPokemons[z]);
-      console.log(Pokemonid);
       loadPokemon(Pokemonid);
-      rendertest(AllPokemons[z].name, Pokemonid - 1);
+      renderCard(AllPokemons[z].name, Pokemonid - 1);
     }
   }
   pokemonCount += AllPokemons.length;
 }
 
-function rendertest(AllPokemons, i) {
+function renderCard(AllPokemons, i) {
   let pokemonContainer = document.getElementById("pokemon-container");
   pokemonContainer.innerHTML += `<div class="card" id="card${i + 1}" style="width: 18rem;" onclick="openPokemonCard(${i + 1})">
                   <img src="#" class="card-img-top" alt="..." id="pokemonpicture${i + 1}">
@@ -88,14 +78,9 @@ function rendertest(AllPokemons, i) {
 async function loadMore() {
   loadingScreen();
   fetch(`${POKEDEX_API}/pokemon?limit=20&offset=${pokemonCount}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => renderPokemonCard(data.results))
-    .catch((error) => console.error(error));
+  .then((response) => response.json())
+  .then((data) => renderPokemonCard(data.results))
+  .catch((error) => console.error(error));
 }
 
 function openPokemonCard(i) {
@@ -121,17 +106,10 @@ function checkClick(event) {
 async function loadPokemonInformations(id) {
   loadingScreen();
   fetch(POKEDEX_API + "/pokemon/" + id)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => renderFullscreenPokemon(data))
-    .then(() =>
-      document.getElementById("loading-screen").classList.add("d-none")
-    )
-    .catch((error) => console.error(error));
+  .then((response) => response.json())
+  .then((data) => renderFullscreenPokemon(data))
+  .then(() =>document.getElementById("loading-screen").classList.add("d-none"))
+  .catch((error) => console.error(error));
 }
 
 
@@ -204,14 +182,9 @@ let allPokemonNames = [];
 
 async function collectPokemonNames() {
   fetch(POKEDEX_API + "/pokemon?offset=0&limit=100")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => getPokemons(data.results))
-    .catch((error) => console.error(error));
+  .then((response) => response.json())
+  .then((data) => getPokemons(data.results))
+  .catch((error) => console.error(error));
 }
 
 function getPokemons(data) {
