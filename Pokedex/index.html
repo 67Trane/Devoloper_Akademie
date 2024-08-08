@@ -27,14 +27,18 @@
             <!-- fullscreen-container einfach d-none hinzufügen -->
             <div class="fullscreen-card" style="width: 50rem;" id="fullscreen">
                 <div class="top-half">
+                    
+                    <div id="message" class="hidden"></div>
                     <div class="info">
                         <h1 id="pokemon-id">ID</h1>
                         <h1 id="pokemon-name">Name</h1>
+                        
                     </div>
                     <div class="types" id="types">
                     </div>
 
                     <img src="icon/pokeball.png" class="fullscreen-img" alt="..." id="pokemon-image">
+                    <img src="icon/cross.png" alt="" class="close-img" onclick="closeFullscreen()">
                 </div>
                 <div class="fullscree-info-text-section">
                     <div class="fullscreen-infos">
@@ -65,7 +69,7 @@
                                                 <span class="progress-value" id="hp-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">HP</p>
+                                        <p class="progress-info vertical-text">HP</p>
                                     </div>
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
@@ -74,7 +78,7 @@
                                                 <span class="progress-value" id="attack-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">Attack</p>
+                                        <p class="progress-info vertical-text">atk</p>
                                     </div>
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
@@ -83,7 +87,7 @@
                                                 <span class="progress-value" id="defense-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">Defense</p>
+                                        <p class="progress-info vertical-text">def</p>
                                     </div>
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
@@ -92,7 +96,7 @@
                                                 <span class="progress-value" id="speed-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">Speed</p>
+                                        <p class="progress-info vertical-text">Speed</p>
                                     </div>
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
@@ -101,7 +105,7 @@
                                                 <span class="progress-value" id="sp.atk-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">Sp. Atk</p>
+                                        <p class="progress-info vertical-text">Sp. Atk</p>
                                     </div>
                                     <div class="progress-wrapper">
                                         <div class="progress vertical">
@@ -110,7 +114,7 @@
                                                 <span class="progress-value" id="sp.def-text"></span>
                                             </div>
                                         </div>
-                                        <p class="progress-info">Sp. Def</p>
+                                        <p class="progress-info vertical-text">Sp. Def</p>
                                     </div>
                                 </div>
                             </div>

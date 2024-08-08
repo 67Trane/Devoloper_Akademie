@@ -166,18 +166,27 @@ function renderFullscreenStats(pokemon) {
 function next(arrow, id) {
   if (arrow == "left") {
     if (id <= 1) {
-      alert("minimum erreicht!");
+      showMessage("Das ist das erste Pokemon. Es gibt keine vorherigen Pokemon.")
     } else {
       loadPokemonInformations(id - 1);
+      clear()
     }
   } else {
     if (id > 1302) {
-      alert("Ende");
+      showMessage("Das ist das letzte Pokemon.")
     } else {
       loadPokemonInformations(id + 1);
+      document.getElementById("message").classList.remove("visible");
     }
+    clear();
   }
-  clear();
+  
+}
+
+function showMessage(message) {
+  let messageDiv = document.getElementById("message");
+  messageDiv.textContent = message;
+  messageDiv.classList.add("visible");
 }
 
 function clear() {

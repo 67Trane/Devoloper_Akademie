@@ -1,0 +1,21 @@
+#message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcc00;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: none;
+}
+
+#message.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
