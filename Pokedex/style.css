@@ -534,7 +534,6 @@ header h1 {
 
   .progress-container {
     gap: 0px !important;
-
   }
 
   .height-weight {
@@ -555,7 +554,7 @@ header h1 {
 
   .vertical-text {
     writing-mode: vertical-rl;
-}
+  }
 
   .fullscreen-card {
     width: 99% !important;
