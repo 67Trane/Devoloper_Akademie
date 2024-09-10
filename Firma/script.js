@@ -1,9 +1,29 @@
 let selectedmaschineid = 0;
 let maschinecount = 34;
+let BASE_URL = "https://dgs-projekt-default-rtdb.europe-west1.firebasedatabase.app/";
+let allMachines = {}
+let downloadedOrderInfos = {}
+
 
 function loaded() {
-  load();
-  renderColoursMaschines();
+  download().then(() => {
+    load();
+    renderColoursMaschines();
+    renderOrder()
+  })
+
+}
+
+async function download() {
+  await fetch(BASE_URL + "/.json")
+    .then((res) => res.json())
+    .then((infos) => splitInfos(infos))
+    .then((error) => console.log(error))
+}
+
+function splitInfos(infos) {
+  downloadedOrderInfos = infos.orderinfos
+  allMachines = infos
 }
 
 function selectmaschine(id) {
@@ -107,11 +127,70 @@ function clearcheckbox() {
 
 
 function buttonClicked(id) {
-  let maschine = document.getElementById(`maschine${id+1}`)
-  
+  let maschine = document.getElementById(`maschine${id + 1}`)
+
   for (let i = 0; i < maschinecount; i++) {
-    let allmaschines = document.getElementById(`maschine${i+1}`)
+    let allmaschines = document.getElementById(`maschine${i + 1}`)
     allmaschines.classList.remove("clicked")
   }
   maschine.classList.toggle("clicked")
+}
+
+function searchOrder() {
+  let input = document.getElementById("search-machine-input").value
+  let list = document.getElementById("orders").getElementsByTagName("ul")
+  for (let i = 0; i < list.length; i++) {
+    if (input == list[i].innerHTML) {
+      alert("auftrag gefunden")
+      list[i].classList.add("found-background-color")
+      return
+    } else {
+      alert("Auftrag nicht vorhanden, neuen erstellen?")
+      getOrderNumber(input)
+      showCard()
+      return
+    }
+  }
+}
+
+function showCard() {
+  document.getElementById("machine-card-container").classList.remove("d-none")
+}
+
+function getOrderNumber(input) {
+  let cardOrderNumber = document.getElementById("order-number-input")
+  cardOrderNumber.value = input
+}
+
+let orderInfos = {}
+
+function uploadInfos() {
+  fetch(BASE_URL + "/orderinfos/" + ".json", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(orderInfos),
+  });
+}
+
+function renderOrder() {
+  let orderList = document.getElementById("orders")
+  orderList.innerHTML += `<ul class="order" id="order">${downloadedOrderInfos.ordernumber} <button onclick="calcAmount(${downloadedOrderInfos.ordernumber})">Menge</button></ul>`
+}
+
+function saveData() {
+  getInfosline1()
+  uploadInfos()
+  renderOrder()
+}
+
+function getInfosline1() {
+  let inputAmount = document.getElementById("amount")
+  let inputOrderNumber = document.getElementById("order-number-input")
+  orderInfos[inputOrderNumber]["amount"] = inputAmount.value
+  orderInfos[inputOrderNumber]["ordernumber"] = inputOrderNumber.value
+  console.log(orderInfos)
+}
+
+function calcAmount(order) {
+  let orderNumber = document.getElementById()
 }

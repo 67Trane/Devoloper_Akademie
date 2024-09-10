@@ -12,6 +12,42 @@
 </head>
 
 <body onload="loaded()">
+    <div class="machine-card-container d-none" id="machine-card-container"> <!-- d-none hinzufügen -->
+        <div class="machine-card">
+            <div class="line-1">
+                <div class="size flex-row">
+                    <span>100x100x100</span>
+                </div>
+                <div class="packingdensity flex-row">
+                    <p>Packungsdichte:</p>
+                    <span>220 kg/m3</span>
+                </div>
+                <div class="date flex-row">
+                    <p>Datum:</p>
+                    <span>23.23.2230</span>
+                </div>
+            </div>
+
+            <div class="line-2">
+                <div class="item-number flex-row">
+                    <p>Artikel-Nr.:</p>
+                    <span>454545</span>
+                </div>
+                <div class="order-number flex-row">
+                    <p>Auftrag:</p>
+                    <input type="text" id="order-number-input">
+                </div>
+                <div class="amount flex-row">
+                    <p>Menge:</p>
+                    <input type="number" name="" id="amount">
+                </div>
+            </div>
+            <div class="footer">
+                <button class="save-btn" id="save-btn" onclick="saveData()">Speichern</button>
+            </div>
+        </div>
+    </div>
+
     <div class="above">
         <div class="maschine-container">
             <div class="maschines" id="maschine1" onclick="selectmaschine(0)">SM -</div>
@@ -55,20 +91,35 @@
             <h2 class="maschineheader" id="maschineheader">StrickMaschine</h2>
             <textarea name="" id="textarea" class="textarea" oninput="textfield()"></textarea>
         </div>
-        <div class="right">
+        <div class="middle">
             <div class="checkbox-container">
                 <div class="checkboxes"><input class="checkbox" type="checkbox" name="green" id="green"
                         onclick="checkbox('green')"><label for="green">Wurde repariert <p style="color: green;">(Grün)
                         </p></label></div>
                 <div class="checkboxes"><input class="checkbox" type="checkbox" name="yellow" id="yellow"
-                        onclick="checkbox('yellow')"><label for="yellow">Reparieren <p
-                            style="color: rgb(199, 199, 2);">(Gelb)</p></label>
+                        onclick="checkbox('yellow')"><label for="yellow">Reparieren <p style="color: rgb(199, 199, 2);">
+                            (Gelb)</p></label>
                 </div>
                 <div class="checkboxes"><input class="checkbox" type="checkbox" name="red" id="red"
                         onclick="checkbox('red')"><label for="red">Defekt <p style="color: red">(Rot)</p></label></div>
                 <div class="checkboxes"><input class="checkbox" type="checkbox" name="blue" id="blue"
                         onclick="checkbox('blue')"><label for="red">Aufpassen <p style="color: blue">(Blau)</p></label>
                 </div>
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <input type="text" name="" id="search-machine-input" placeholder="Auftrag suchen">
+                <button onclick="searchOrder()">Auftrag suchen</button>
+            </div>
+
+
+            <h1>AuftragListe</h1>
+            <div class="auftragliste" id="auftragliste">
+                <dt class="orders" id="orders">
+                    <ul class="order" id="order">hans <button onclick="calcAmount()">Menge</button></ul>
+                    <ul>test</ul>
+                </dt>
             </div>
         </div>
     </div>
