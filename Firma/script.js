@@ -17,7 +17,7 @@ function loaded() {
 function getOrderIds() {
   let keys = Object.keys(allOrders)
   for (let i = 0; i < keys.length; i++) {
-    renderOrder(allOrders[keys[i]].ordernumber)
+    renderOrder(allOrders[keys[i]].ordernumber, i)
   }
 }
 
@@ -145,19 +145,18 @@ function buttonClicked(id) {
 
 function searchOrder() {
   let input = document.getElementById("search-machine-input").value
-  let list = document.getElementById("orders").getElementsByTagName("ul")
+  let list = document.getElementById("orders").getElementsByTagName("p")
+
   for (let i = 0; i < list.length; i++) {
     if (input == list[i].innerHTML) {
       alert("auftrag gefunden")
       list[i].classList.add("found-background-color")
       return
-    } else {
-      alert("Auftrag nicht vorhanden, neuen erstellen?")
-      getOrderNumber(input)
-      showCard()
-      return
     }
   }
+  alert("Auftrag nicht vorhanden, neuen erstellen?")
+  getOrderNumber(input)
+  showCard()
 }
 
 function showCard() {
@@ -179,9 +178,9 @@ function uploadInfos() {
   });
 }
 
-function renderOrder(orderNumber) {
+function renderOrder(orderNumber, i) {
   let orderList = document.getElementById("orders")
-  orderList.innerHTML += `<ul class="order" id="order">${orderNumber} <button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
+  orderList.innerHTML += `<ul class="order" id="order"> <p id="order-id${i}">${orderNumber}</p> <button id="delete-order" onclick="deleteOrder(${i})" >Löschen</button><button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
 }
 
 function saveData() {
@@ -246,4 +245,19 @@ function searchByEnter() {
       searchOrder()
     }
   })
+}
+
+function deleteOrder(i) {
+  let order = document.getElementById(`order-id${i}`)
+  let keys = Object.keys(allOrders)
+  for (let j = 0; j < keys.length; j++) {
+    if (order.innerHTML == allOrders[keys[j]].ordernumber) {
+      console.log(keys[j])
+      deleteFromServer(keys[j])
+    }
+  }
+}
+
+function deleteFromServer(orderId) {
+  fetch(BASE_URL + "/orderinfos/" +orderId + ".json", { method: "DELETE" })
 }
