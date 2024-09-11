@@ -180,12 +180,24 @@ function uploadInfos() {
 
 function renderOrder(orderNumber, i) {
   let orderList = document.getElementById("orders")
-  orderList.innerHTML += `<ul class="order" id="order"> <p id="order-id${i}">${orderNumber}</p> <button id="delete-order" onclick="deleteOrder(${i})" >Löschen</button><button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
+  orderList.innerHTML += `<ul class="order" id="order" onclick="openDetail(event)"> <p id="order-id${i}">${orderNumber}</p> <button id="delete-order" onclick="deleteOrder(${i})" >Löschen</button><button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
 }
 
 function saveData() {
-  getInfosline1()
-  uploadInfos()
+  getInfosline1();
+  uploadInfos();
+  setTimeout(() => {
+    clearOrdersList()
+    download().then(() => {
+    getOrderIds();
+  })
+  }, 50);
+}
+
+function clearOrdersList() {
+  console.log("test")
+  let list = document.getElementById("orders")
+  list.innerHTML = ""
 }
 
 function getInfosline1() {
@@ -193,7 +205,6 @@ function getInfosline1() {
   let inputOrderNumber = document.getElementById("order-number-input")
   orderInfos["amount"] = inputAmount.value
   orderInfos["ordernumber"] = inputOrderNumber.value
-  console.log(orderInfos)
 }
 
 function calcAmount(order) {
@@ -203,7 +214,6 @@ function calcAmount(order) {
   let keys = Object.keys(allOrders)
   for (let i = 0; i < keys.length; i++) {
     if (order == allOrders[keys[i]].ordernumber) {
-      console.log(allOrders[keys[i]].amount)
       openCalculator()
       target.innerHTML = allOrders[keys[i]].amount
     }
@@ -220,12 +230,10 @@ function calculateAmount() {
   let input = document.getElementById("input-weight").value
 
   let result = target.innerHTML - input
-  console.log(result)
   target.innerHTML = result
   if (!input == "") {
     renderWeights(input)
   }
-  console.log(target)
 }
 
 function renderWeights(result) {
@@ -250,14 +258,31 @@ function searchByEnter() {
 function deleteOrder(i) {
   let order = document.getElementById(`order-id${i}`)
   let keys = Object.keys(allOrders)
+  
   for (let j = 0; j < keys.length; j++) {
     if (order.innerHTML == allOrders[keys[j]].ordernumber) {
-      console.log(keys[j])
       deleteFromServer(keys[j])
+      clearOrdersList();
     }
   }
+  setTimeout(() => {
+    download().then(() => {
+    getOrderIds();
+  })
+  }, 50);
+  
+  
 }
 
 function deleteFromServer(orderId) {
-  fetch(BASE_URL + "/orderinfos/" +orderId + ".json", { method: "DELETE" })
+  fetch(BASE_URL + "/orderinfos/" + orderId + ".json", { method: "DELETE" })
+}
+
+function openDetail(event) {
+  if (event.target.tagName == "BUTTON") {
+    event.stopPropagation()
+  } else {
+    console.log("congrats")
+    showCard()
+  }
 }
