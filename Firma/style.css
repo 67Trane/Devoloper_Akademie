@@ -157,7 +157,7 @@ input[type="checkbox"]:focus {
 }
 
 .auftragliste {
-  background-color: blue;
+  background-color: turquoise;
   width: 100%;
   height: 300px;
 }
@@ -248,4 +248,5 @@ span{
 .calc-header {
   display: flex;
   gap: 21px;
+  align-items: center;
 }

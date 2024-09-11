@@ -9,7 +9,8 @@ function loaded() {
   download().then(() => {
     load();
     renderColoursMaschines();
-    getOrderIds()
+    getOrderIds();
+    searchByEnter();
   })
 }
 
@@ -206,8 +207,6 @@ function calcAmount(order) {
       console.log(allOrders[keys[i]].amount)
       openCalculator()
       target.innerHTML = allOrders[keys[i]].amount
-    } else {
-      console.log("noo")
     }
   }
 }
@@ -219,13 +218,14 @@ function openCalculator() {
 
 function calculateAmount() {
   let target = document.getElementById("target-amount")
-  let input =document.getElementById("input-weight").value
+  let input = document.getElementById("input-weight").value
 
   let result = target.innerHTML - input
   console.log(result)
-  target.innerHTML = result 
-  renderWeights(input)
-  
+  target.innerHTML = result
+  if (!input == "") {
+    renderWeights(input)
+  }
   console.log(target)
 }
 
@@ -237,4 +237,13 @@ function renderWeights(result) {
 function closeWindow(id) {
   let window = document.getElementById(id)
   window.classList.add("d-none")
+}
+
+function searchByEnter() {
+  let inputfield = document.getElementById("search-machine-input")
+  inputfield.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      searchOrder()
+    }
+  })
 }
