@@ -2,27 +2,33 @@ let selectedmaschineid = 0;
 let maschinecount = 34;
 let BASE_URL = "https://dgs-projekt-default-rtdb.europe-west1.firebasedatabase.app/";
 let allMachines = {}
-let downloadedOrderInfos = {}
+let allOrders = {}
 
 
 function loaded() {
   download().then(() => {
     load();
     renderColoursMaschines();
-    renderOrder()
+    getOrderIds()
   })
-
 }
+
+function getOrderIds() {
+  let keys = Object.keys(allOrders)
+  for (let i = 0; i < keys.length; i++) {
+    renderOrder(allOrders[keys[i]].ordernumber)
+  }
+}
+
 
 async function download() {
   await fetch(BASE_URL + "/.json")
     .then((res) => res.json())
     .then((infos) => splitInfos(infos))
-    .then((error) => console.log(error))
 }
 
 function splitInfos(infos) {
-  downloadedOrderInfos = infos.orderinfos
+  allOrders = infos.orderinfos
   allMachines = infos
 }
 
@@ -166,28 +172,27 @@ let orderInfos = {}
 
 function uploadInfos() {
   fetch(BASE_URL + "/orderinfos/" + ".json", {
-    method: "PUT",
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(orderInfos),
   });
 }
 
-function renderOrder() {
+function renderOrder(orderNumber) {
   let orderList = document.getElementById("orders")
-  orderList.innerHTML += `<ul class="order" id="order">${downloadedOrderInfos.ordernumber} <button onclick="calcAmount(${downloadedOrderInfos.ordernumber})">Menge</button></ul>`
+  orderList.innerHTML += `<ul class="order" id="order">${orderNumber} <button onclick="calcAmount(${orderNumber})">Menge</button></ul>`
 }
 
 function saveData() {
   getInfosline1()
   uploadInfos()
-  renderOrder()
 }
 
 function getInfosline1() {
   let inputAmount = document.getElementById("amount")
   let inputOrderNumber = document.getElementById("order-number-input")
-  orderInfos[inputOrderNumber]["amount"] = inputAmount.value
-  orderInfos[inputOrderNumber]["ordernumber"] = inputOrderNumber.value
+  orderInfos["amount"] = inputAmount.value
+  orderInfos["ordernumber"] = inputOrderNumber.value
   console.log(orderInfos)
 }
 
