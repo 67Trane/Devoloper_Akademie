@@ -180,7 +180,7 @@ function uploadInfos() {
 
 function renderOrder(orderNumber) {
   let orderList = document.getElementById("orders")
-  orderList.innerHTML += `<ul class="order" id="order">${orderNumber} <button onclick="calcAmount(${orderNumber})">Menge</button></ul>`
+  orderList.innerHTML += `<ul class="order" id="order">${orderNumber} <button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
 }
 
 function saveData() {
@@ -197,5 +197,44 @@ function getInfosline1() {
 }
 
 function calcAmount(order) {
-  let orderNumber = document.getElementById()
+  let target = document.getElementById("target-amount")
+
+  calculateAmount()
+  let keys = Object.keys(allOrders)
+  for (let i = 0; i < keys.length; i++) {
+    if (order == allOrders[keys[i]].ordernumber) {
+      console.log(allOrders[keys[i]].amount)
+      openCalculator()
+      target.innerHTML = allOrders[keys[i]].amount
+    } else {
+      console.log("noo")
+    }
+  }
+}
+
+function openCalculator() {
+  let card = document.getElementById("amount-calculator")
+  card.classList.remove("d-none")
+}
+
+function calculateAmount() {
+  let target = document.getElementById("target-amount")
+  let input =document.getElementById("input-weight").value
+
+  let result = target.innerHTML - input
+  console.log(result)
+  target.innerHTML = result 
+  renderWeights(input)
+  
+  console.log(target)
+}
+
+function renderWeights(result) {
+  let weights = document.getElementById("all-weights")
+  weights.innerHTML += `<ul>${result}kg</ul>`
+}
+
+function closeWindow(id) {
+  let window = document.getElementById(id)
+  window.classList.add("d-none")
 }

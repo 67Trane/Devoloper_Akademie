@@ -14,6 +14,7 @@
 <body onload="loaded()">
     <div class="machine-card-container d-none" id="machine-card-container"> <!-- d-none hinzufügen -->
         <div class="machine-card">
+            <h1 onclick="closeWindow('machine-card-container')">X</h1>
             <div class="line-1">
                 <div class="size flex-row">
                     <span>100x100x100</span>
@@ -44,6 +45,23 @@
             </div>
             <div class="footer">
                 <button class="save-btn" id="save-btn" onclick="saveData()">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="machine-card-container d-none" id="amount-calculator"> <!-- d-none hinzufügen -->
+        <div class="machine-card">
+            <h1 onclick="closeWindow('amount-calculator')">X</h1>
+            <div>
+                <input type="text" name="" id="input-weight">
+                <button onclick="calculateAmount()">ok</button>
+            </div>
+            <div class="calc-header">
+                <p>RestMenge:</p>
+                <span id="target-amount">50</span>
+            </div>
+            <div class="all-weights" id="all-weights">
+
             </div>
         </div>
     </div>

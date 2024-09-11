@@ -244,3 +244,8 @@ span{
   height: 30px;
   font-size: 24px;
 }
+
+.calc-header {
+  display: flex;
+  gap: 21px;
+}
