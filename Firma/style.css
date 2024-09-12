@@ -379,3 +379,8 @@ span {
 .amount-btn:hover {
   background-color: rgba(0, 0, 255, 0.158);
 }
+
+.btn-container {
+  display: flex;
+  gap: 16px;
+}
