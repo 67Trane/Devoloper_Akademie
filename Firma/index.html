@@ -15,32 +15,34 @@
     <div class="machine-card-container d-none" id="machine-card-container"> <!-- d-none hinzufügen -->
         <div class="machine-card">
             <h1 onclick="closeWindow('machine-card-container')">X</h1>
-            <div class="line-1">
-                <div class="size flex-row">
-                    <span>100x100x100</span>
+            <div class="all-card-infos">
+                <div class="line-1">
+                    <div class="size flex-row">
+                        <span>100x100x100</span>
+                    </div>
+                    <div class="packingdensity flex-row">
+                        <p>Packungsdichte:</p>
+                        <span>220 kg/m3</span>
+                    </div>
+                    <div class="date flex-row">
+                        <p>Datum:</p>
+                        <span>23.23.2230</span>
+                    </div>
                 </div>
-                <div class="packingdensity flex-row">
-                    <p>Packungsdichte:</p>
-                    <span>220 kg/m3</span>
-                </div>
-                <div class="date flex-row">
-                    <p>Datum:</p>
-                    <span>23.23.2230</span>
-                </div>
-            </div>
 
-            <div class="line-2">
-                <div class="item-number flex-row">
-                    <p>Artikel-Nr.:</p>
-                    <span>454545</span>
-                </div>
-                <div class="order-number flex-row">
-                    <p>Auftrag:</p>
-                    <input type="text" id="order-number-input">
-                </div>
-                <div class="amount flex-row">
-                    <p>Menge:</p>
-                    <input type="number" name="" id="amount">
+                <div class="line-2">
+                    <div class="item-number flex-row">
+                        <p>Artikel-Nr.:</p>
+                        <span>454545</span>
+                    </div>
+                    <div class="order-number flex-row">
+                        <p>Auftrag:</p>
+                        <input type="text" id="order-number-input">
+                    </div>
+                    <div class="amount flex-row">
+                        <p>Menge:</p>
+                        <input type="number" name="" id="amount">
+                    </div>
                 </div>
             </div>
             <div class="footer">
@@ -49,10 +51,10 @@
         </div>
     </div>
 
-    <div class="machine-card-container d-none" id="amount-calculator"> <!-- d-none hinzufügen -->
-        <div class="machine-card">
-            <h1 onclick="closeWindow('amount-calculator')">X</h1>
-            <div>
+    <div class="machine-card-container" id="amount-calculator"> <!-- d-none hinzufügen -->
+        <div class="calulator-card">
+            <h1 class="close-btn" onclick="closeWindow('amount-calculator')">X</h1>
+            <div class="search-section-calc">
                 <input type="text" name="" id="input-weight">
                 <button onclick="calculateAmount()">ok</button>
             </div>
@@ -126,13 +128,13 @@
             </div>
         </div>
         <div class="right">
-            <div>
-                <input type="text" name="" id="search-machine-input" placeholder="Auftrag suchen">
+            <div class="search-section">
+                <input class="input-search" type="text" name="" id="search-machine-input" placeholder="Auftrag suchen">
                 <button onclick="searchOrder()">Auftrag suchen</button>
             </div>
 
 
-            <h1>AuftragListe</h1>
+            <h1>AuftragListe:</h1>
             <div class="auftragliste" id="auftragliste">
                 <dt class="orders" id="orders">
                 </dt>

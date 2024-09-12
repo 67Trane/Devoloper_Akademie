@@ -180,7 +180,7 @@ function uploadInfos() {
 
 function renderOrder(orderNumber, i) {
   let orderList = document.getElementById("orders")
-  orderList.innerHTML += `<ul class="order" id="order" onclick="openDetail(event)"> <p id="order-id${i}">${orderNumber}</p> <button id="delete-order" onclick="deleteOrder(${i})" >Löschen</button><button onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
+  orderList.innerHTML += `<ul class="order" id="order" onclick="openDetail(event)"> <p id="order-id${i}">${orderNumber}</p> <button class="delete-btn" id="delete-order" onclick="deleteOrder(${i})" >Löschen</button><button class="amount-btn" onclick="calcAmount('${orderNumber}')">Menge</button></ul>`
 }
 
 function saveData() {
