@@ -72,25 +72,25 @@ class Character extends MoveableObject {
   ];
 
   IMAGES_IDLE = [
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_000.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_001.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_002.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_003.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_004.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_005.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_006.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_007.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_008.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_009.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_010.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_011.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_012.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_013.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_014.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_015.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_016.png',
-    'img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_017.png',
-  ]
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_000.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_001.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_002.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_003.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_004.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_005.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_006.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_007.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_008.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_009.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_010.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_011.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_012.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_013.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_014.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_015.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_016.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_017.png",
+  ];
 
   world;
   walking_sound = new Audio("./audio/steps.mp3");
@@ -101,14 +101,14 @@ class Character extends MoveableObject {
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_ISDEAD);
     this.loadImages(this.IMAGES_HURT);
-    this.loadImages(this.IMAGES_IDLE)
+    this.loadImages(this.IMAGES_IDLE);
     this.applyGravity();
     this.animate();
   }
 
   animate() {
     setInterval(() => {
-      this.playAnimation(this.IMAGES_IDLE)
+      this.playAnimation(this.IMAGES_IDLE);
       this.walking_sound.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.ortherDirection = false;
@@ -133,17 +133,16 @@ class Character extends MoveableObject {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_ISDEAD);
       } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT)
-      } else if (this.isAboveGround())
-        if (this.isAboveGround()) {
-          this.playAnimation(this.IMAGES_JUMPING);
-        } else {
-          if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            //walk animation
-            this.playAnimation(this.IMAGES_WALKING);
-          }
+        this.playAnimation(this.IMAGES_HURT);
+      } else if (this.isAboveGround()) {
+        this.playAnimation(this.IMAGES_JUMPING);
+      } else {
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+          //walk animation
+          this.playAnimation(this.IMAGES_WALKING);
         }
-    }, 50);
+      }
+    }, 60);
   }
 
   jump() {
