@@ -109,6 +109,8 @@ class Character extends MoveableObject {
   animate() {
     setInterval(() => {
       this.playAnimation(this.IMAGES_IDLE);
+    }, 60);
+    setInterval(() => {
       this.walking_sound.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.ortherDirection = false;
@@ -127,7 +129,7 @@ class Character extends MoveableObject {
       }
 
       this.world.camera_x = -this.x + 100;
-    }, 50);
+    }, 1000 / 60);
 
     setInterval(() => {
       if (this.isDead()) {

@@ -7,17 +7,17 @@ class DrawableObject {
   height = 150;
   width = 150;
 
-  //loadImage('img/test.png);
   loadImage(path) {
+    //loadImage('img/test.png);
     this.img = new Image();
     this.img.src = path;
   }
   draw(ctx) {
     try {
-         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    } catch(error) {
-      console.warn(error)
-      console.log("This image makes Trouble: ", this.img.src)
+      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    } catch (error) {
+      console.warn(error);
+      console.log("This image makes Trouble: ", this.img.src);
     }
   }
 
@@ -32,7 +32,7 @@ class DrawableObject {
       this.imageCache[path] = img;
     });
   }
-  
+
   drawFrame(ctx) {
     if (this instanceof Character || this instanceof Skull) {
       ctx.beginPath();
