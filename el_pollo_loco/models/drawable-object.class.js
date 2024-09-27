@@ -12,7 +12,7 @@ class DrawableObject {
     this.img = new Image();
     this.img.src = path;
   }
-  draw(ctx) {
+  draw(ctx) { 
     try {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     } catch (error) {
