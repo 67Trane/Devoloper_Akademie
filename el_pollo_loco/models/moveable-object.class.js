@@ -1,6 +1,6 @@
 class MoveableObject extends DrawableObject {
   speed = 0.15;
-  ortherDirection = false;
+  otherDirection = false;
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 340;
@@ -8,7 +8,7 @@ class MoveableObject extends DrawableObject {
   lastHit = 0;
 
   applyGravity() {
-    setInterval(() => {
+    this.intervalHelper(() => {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
@@ -17,17 +17,36 @@ class MoveableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    if (this instanceof ThrowableObject) { //throwable object should always fall
+    if (this instanceof ThrowableObject) {
+      //throwable object should always fall
       return true;
     }
     return this.y < this.groundLevel;
   }
 
-  playAnimation(images) {
-    let i = this.currentImage % images.length; // let i = 7 % 6; 1 rest 1
-    let path = images[i];
-    this.img = this.imageCache[path];
-    this.currentImage++;
+  playAnimation(images, loop = false) {
+    if (loop == false) {
+      let i = this.currentImage % images.length; // let i = 7 % 6; 1 rest 1
+      let path = images[i];
+      this.img = this.imageCache[path];
+      this.currentImage++;
+    } else {
+      if (this.currentImage < images.length) {
+        let path = images[this.currentImage];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+      } else {
+        // Stoppe die Animation, wenn alle Bilder einmal abgespielt wurden
+        this.currentImage = 0; // Optional: Setze zurück, falls du wieder neu starten willst
+      }
+    }
+  }
+
+  intervalHelper(fn, time) {
+    let id = setInterval(() => {
+      fn();
+    }, time);
+    window.intervalIds.push(id);
   }
 
   moveRight() {

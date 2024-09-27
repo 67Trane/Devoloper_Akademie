@@ -17,8 +17,6 @@ class Skull extends MoveableObject {
     "img/skull/PNG/Wariors/Walk/Warior_walk_011.png",
   ];
 
-
-
   constructor() {
     super().loadImage("img/skull/PNG/Wariors/Walk/Warior_walk_000.png");
     this.loadImages(this.IMAGES_WALKING);
@@ -28,12 +26,12 @@ class Skull extends MoveableObject {
   }
 
   animate() {
-    setInterval(() => {
+    this.intervalHelper(() => {
       this.moveLeft();
-    }, 1000/60);
-    this.moveLeft();
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_WALKING)
+    }, 1000 / 60);
+
+    this.intervalHelper(() => {
+      this.playAnimation(this.IMAGES_WALKING);
     }, 200);
   }
 }

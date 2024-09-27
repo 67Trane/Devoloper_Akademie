@@ -1,3 +1,4 @@
+
 let canvas;
 let world;
 let keyboard = new Keyboard();
@@ -10,6 +11,13 @@ function init() {
 }
 
 document.addEventListener("keydown", (event) => {
+  if (event.keyCode == 80) {
+    console.log(intervalIds)
+    stopAllIntervals();
+    console.log(intervalIds)
+  }
+
+ 
   if (event.keyCode == 70) {
     keyboard.F = true;
   }
@@ -59,3 +67,9 @@ document.addEventListener("keyup", (event) => {
     keyboard.SPACE = false;
   }
 });
+
+
+function stopAllIntervals() {
+  window.intervalIds.forEach(clearInterval);
+  window.intervalIds = [];
+}

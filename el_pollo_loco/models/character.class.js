@@ -92,6 +92,21 @@ class Character extends MoveableObject {
     "img/chracter/black_ninja/PNG/PNG_sequences/Idle Blinking/Idle Blinking_017.png",
   ];
 
+  IMAGES_THROW = [
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_000.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_001.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_002.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_003.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_004.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_005.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_006.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_007.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_008.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_009.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_010.png",
+    "img/chracter/black_ninja/PNG/PNG_sequences/Throwing/Throwing_011.png",
+  ];
+
   world;
   walking_sound = new Audio("./audio/steps.mp3");
 
@@ -102,24 +117,26 @@ class Character extends MoveableObject {
     this.loadImages(this.IMAGES_ISDEAD);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_THROW);
     this.applyGravity();
     this.animate();
   }
 
   animate() {
-    setInterval(() => {
-      this.playAnimation(this.IMAGES_IDLE);
-    }, 60);
-    setInterval(() => {
+    this.intervalHelper(() => this.playAnimation(this.IMAGES_IDLE), 60);
+    this.intervalHelper(() => {
       this.walking_sound.pause();
+      if (this.world.keyboard.F) {
+        this.playAnimation(this.IMAGES_THROW);
+      }
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.ortherDirection = false;
+        this.otherDirection = false;
         this.moveRight();
         this.walking_sound.play();
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
-        this.ortherDirection = true;
+        this.otherDirection = true;
         this.moveLeft();
         this.walking_sound.play();
       }
@@ -131,13 +148,16 @@ class Character extends MoveableObject {
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
-    setInterval(() => {
+    this.intervalHelper(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_ISDEAD);
+        this.playAnimation(this.IMAGES_ISDEAD, true);
+        setTimeout(() => {
+          window.stopAllIntervals();
+        }, 400)
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
-        this.playAnimation(this.IMAGES_JUMPING);
+        this.playAnimation(this.IMAGES_JUMPING, true);
       } else {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
           //walk animation

@@ -1,5 +1,5 @@
 class Cloud extends MoveableObject {
-  y = 20;
+  y = 0;
   height = 250;
   width = 500;
 
@@ -10,7 +10,10 @@ class Cloud extends MoveableObject {
   }
 
   animate() {
-    this.moveLeft();
+    this.intervalHelper(() => {
+      this.moveLeft();
+    }, 60)
+    
   }
  
 }
