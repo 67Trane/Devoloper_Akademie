@@ -21,8 +21,11 @@ class Skull extends MoveableObject {
     super().loadImage("img/skull/PNG/Wariors/Walk/Warior_walk_000.png");
     this.loadImages(this.IMAGES_WALKING);
     this.x = 200 + Math.random() * 500; //Zahl zwischen 200 und 700
-    this.animate();
     this.speed = 0.15 + Math.random() * 0.5;
+  }
+
+  initialize() {
+    this.animate();
   }
 
   animate() {

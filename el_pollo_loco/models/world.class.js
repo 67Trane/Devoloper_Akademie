@@ -19,6 +19,14 @@ class World {
 
   setWorld() {
     this.character.world = this;
+
+    this.level.enemies.forEach((enemy) => {
+      enemy.world = this; // Setze die world-Referenz, falls nötig
+      if (enemy instanceof Skull) {
+        enemy.initialize();
+      }
+      // Falls du andere Gegnertypen hast, die ähnlich behandelt werden sollen, kannst du sie hier hinzufügen
+    });
   }
 
   run() {
@@ -29,9 +37,9 @@ class World {
   }
 
   checkThrowObjects() {
-    if(this.keyboard.F) {
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y)
-      this.throwableObject.push(bottle)
+    if (this.keyboard.F) {
+      let bottle = new ThrowableObject(this.character.x + 100, this.character.y);
+      this.throwableObject.push(bottle);
     }
   }
 
