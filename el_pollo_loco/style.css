@@ -1,12 +1,14 @@
 html {
     background-color: black;
     color: white;
+    background-image: url('img/background/PNG/3_game_background/layers/1.png');
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 
