@@ -6,7 +6,11 @@ class World {
   keyboard;
   camera_x = 0;
   statusBar = new StatusBar();
+  bottleBar = new StatusBar("THROW", 50);
+  coinBar = new StatusBar("COIN", 100);
+  allCoins = [];
   throwableObject = [];
+  collectibleBottles = [];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -15,33 +19,73 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    this.addCollectibleBottleToMap();
+    this.addCollectibleCoinToMap();
   }
 
   setWorld() {
     this.character.world = this;
 
     this.level.enemies.forEach((enemy) => {
-      enemy.world = this; // Setze die world-Referenz, falls nötig
+      enemy.world = this;
       if (enemy instanceof Skull) {
         enemy.initialize();
       }
-      // Falls du andere Gegnertypen hast, die ähnlich behandelt werden sollen, kannst du sie hier hinzufügen
+      // andere Gegnertypen, die ähnlich behandelt werden sollen, hier hinzufügen
     });
   }
 
   run() {
     setInterval(() => {
       this.checkCollisions();
+    }, 50);
+
+    setInterval(() => {
       this.checkThrowObjects();
-      console.log(this.character.energy);
+    }, 150);
+
+    setInterval(() => {
+      this.checkItemCollection();
     }, 50);
   }
 
   checkThrowObjects() {
     if (this.keyboard.F) {
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y);
-      this.throwableObject.push(bottle);
+      if (this.character.thorws > 0) {
+        this.character.thorws -= 10;
+        this.bottleBar.setPercentage(this.character.thorws);
+        let throwbottle = new ThrowableObject(this.character.x + 100, this.character.y);
+        this.throwableObject.push(throwbottle);
+      }
     }
+  }
+
+  checkItemCollection() {
+    this.checkCoins();
+    this.checkBottles();
+  }
+
+  checkBottles() {
+    this.bottleBar.setPercentage(this.character.thorws);
+    this.collectibleBottles.some((bottle, index) => {
+      if (this.collectItem(bottle)) {
+        this.collectibleBottles.splice(index, 1);
+        if (this.character.thorws < 100) {
+          this.character.thorws += 10;
+        }
+      }
+    });
+  }
+
+  checkCoins() {
+    this.coinBar.setPercentage(this.character.coins);
+    this.allCoins.some((coin, index) => {
+      if (this.collectItem(coin)) {
+        this.allCoins.splice(index, 1);
+        this.character.coins += 20;
+        this.coinBar.setPercentage(this.character.coins);
+      }
+    });
   }
 
   checkCollisions() {
@@ -49,22 +93,22 @@ class World {
       if (this.character.isJumpingOn(enemy)) {
         this.character.jump();
         enemy.skullIsDying();
-        clearInterval(enemy.moveId)
-        clearInterval(enemy.idleId)
+        clearInterval(enemy.moveId);
+        clearInterval(enemy.idleId);
         setTimeout(() => {
           this.level.enemies.splice(index, 1);
-        }, 1000)
+        }, 1000);
         return true;
       }
       if (this.character.isColliding(enemy)) {
         this.character.hit();
-        this.character.knockBack(); 
+        this.character.knockBack();
         this.statusBar.setPercentage(this.character.energy);
         return true;
       }
     });
   }
-  
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -77,23 +121,54 @@ class World {
       this.ctx.restore();
     });
 
-    // Restliche Objekte normal zeichnen
     this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
+    this.addObjectsToMap(this.collectibleBottles);
+    this.addObjectsToMap(this.allCoins);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
-    this.ctx.translate(this.camera_x, 0);
+    this.addToMap(this.bottleBar);
+    this.addToMap(this.coinBar);
 
+    this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.throwableObject);
+
     this.ctx.translate(-this.camera_x, 0);
 
     let self = this;
     requestAnimationFrame(() => {
       self.draw();
     });
+  }
+
+  addCollectibleBottleToMap() {
+    let bottleAmount = 10;
+    for (let i = 0; i < bottleAmount; i++) {
+      let random = Math.random() * 2300 + 200;
+      let collectBottle = new Bottle(random, 400);
+      this.collectibleBottles.push(collectBottle);
+    }
+  }
+
+  addCollectibleCoinToMap() {
+    let coinsAmount = 10;
+    for (let i = 0; i < coinsAmount; i++) {
+      let random = Math.random() * 2300 + 500;
+      let coin = new Coin(random, 230);
+      this.allCoins.push(coin);
+    }
+  }
+
+  collectItem(mo) {
+    return (
+      this.character.x < mo.x + mo.width &&
+      this.character.x + this.character.width > mo.x &&
+      this.character.y < mo.y + mo.height &&
+      this.character.y + this.character.height > mo.y
+    );
   }
 
   addObjectsToMap(objects) {
@@ -107,7 +182,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    //mo.drawFrame(this.ctx);
+    mo.drawFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

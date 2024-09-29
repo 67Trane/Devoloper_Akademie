@@ -4,8 +4,10 @@ class MoveableObject extends DrawableObject {
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 340;
-  energy = 1000;
+  energy = 150;
   lastHit = 0;
+  thorws = 100;
+  coins = 0;
 
   applyGravity() {
     this.intervalHelper(() => {
@@ -14,7 +16,7 @@ class MoveableObject extends DrawableObject {
         this.speedY -= this.acceleration;
       }
       if (this.y > this.groundLevel) {
-        this.speedY = 0;
+
       }
     }, 1000 / 25);
   }
