@@ -1,7 +1,7 @@
 class Character extends MoveableObject {
   height = 120;
   width = 120;
-  y = 80;
+  y = 342.5;
   speed = 10;
   IMAGES_WALKING = [
     "img/chracter/black_ninja/PNG/PNG_sequences/Running/Running_001.png",
@@ -153,7 +153,7 @@ class Character extends MoveableObject {
         this.playAnimation(this.IMAGES_ISDEAD, true);
         setTimeout(() => {
           window.stopAllIntervals();
-        }, 400)
+        }, 400);
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
@@ -169,5 +169,9 @@ class Character extends MoveableObject {
 
   jump() {
     this.speedY = 30;
+  }
+
+  knockBack() {
+    this.x -= 30
   }
 }

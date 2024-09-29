@@ -33,13 +33,18 @@ class DrawableObject {
     });
   }
 
-  drawFrame(ctx) {
+  /*drawFrame(ctx) {
     if (this instanceof Character || this instanceof Skull) {
       ctx.beginPath();
       ctx.lineWidth = "3";
       ctx.strokeStyle = "red";
       ctx.rect(this.x, this.y, this.width, this.height);
       ctx.stroke();
+      ctx.beginPath();
+      ctx.lineWidth = "3";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.x +20, this.y +20, this.width -40, this.height -40);
+      ctx.stroke();
     }
-  }
+  }*/
 }

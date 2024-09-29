@@ -4,7 +4,7 @@ class MoveableObject extends DrawableObject {
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 340;
-  energy = 100;
+  energy = 1000;
   lastHit = 0;
 
   applyGravity() {
@@ -12,6 +12,9 @@ class MoveableObject extends DrawableObject {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
+      }
+      if (this.y > this.groundLevel) {
+        this.speedY = 0;
       }
     }, 1000 / 25);
   }
@@ -47,6 +50,7 @@ class MoveableObject extends DrawableObject {
       fn();
     }, time);
     window.intervalIds.push(id);
+    return id
   }
 
   moveRight() {
@@ -58,7 +62,19 @@ class MoveableObject extends DrawableObject {
   }
 
   isColliding(mo) {
-    return this.x + this.width > mo.x && this.y + this.height > mo.y && this.x < mo.x && this.y < mo.y + mo.height;
+    return  this.x + this.width > mo.x && 
+            this.x < mo.x && 
+            this.y + this.height > mo.y && 
+            this.y < mo.y + mo.height;
+  }
+
+  isJumpingOn(mo) {
+    const bufferX = 0; 
+    return  this.x + this.width + bufferX > mo.x &&
+            this.x - bufferX < mo.x + mo.width && 
+            this.y + this.height > mo.y &&
+            this.y < mo.y + mo.height &&
+            this.speedY < 0;
   }
 
   hit() {

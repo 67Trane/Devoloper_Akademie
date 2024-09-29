@@ -33,7 +33,8 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
-    }, 200);
+      console.log(this.character.energy);
+    }, 50);
   }
 
   checkThrowObjects() {
@@ -44,13 +45,26 @@ class World {
   }
 
   checkCollisions() {
-    this.level.enemies.forEach((enemy) => {
+    this.level.enemies.some((enemy, index) => {
+      if (this.character.isJumpingOn(enemy)) {
+        this.character.jump();
+        enemy.skullIsDying();
+        clearInterval(enemy.moveId)
+        clearInterval(enemy.idleId)
+        setTimeout(() => {
+          this.level.enemies.splice(index, 1);
+        }, 1000)
+        return true;
+      }
       if (this.character.isColliding(enemy)) {
         this.character.hit();
+        this.character.knockBack(); 
         this.statusBar.setPercentage(this.character.energy);
+        return true;
       }
     });
   }
+  
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -93,7 +107,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
+    //mo.drawFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
