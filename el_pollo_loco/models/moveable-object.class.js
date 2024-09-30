@@ -4,7 +4,7 @@ class MoveableObject extends DrawableObject {
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 340;
-  energy = 150;
+  energy = 1000;
   lastHit = 0;
   thorws = 100;
   coins = 0;
@@ -64,16 +64,17 @@ class MoveableObject extends DrawableObject {
   }
 
   isColliding(mo) {
-    return  this.x + this.width > mo.x && 
-            this.x < mo.x && 
-            this.y + this.height > mo.y && 
-            this.y < mo.y + mo.height;
+    const tolerance = 40;
+    return  this.x + this.width - tolerance > mo.x &&
+            this.x + tolerance < mo.x + mo.width &&
+            this.y + this.height - tolerance > mo.y &&
+            this.y + tolerance < mo.y + mo.height;
   }
-
+  
   isJumpingOn(mo) {
-    const bufferX = 0; 
-    return  this.x + this.width + bufferX > mo.x &&
-            this.x - bufferX < mo.x + mo.width && 
+    const tolerance = 0; 
+    return  this.x + this.width + tolerance > mo.x &&
+            this.x - tolerance < mo.x + mo.width && 
             this.y + this.height > mo.y &&
             this.y < mo.y + mo.height &&
             this.speedY < 0;

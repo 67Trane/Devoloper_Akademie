@@ -163,11 +163,12 @@ class World {
   }
 
   collectItem(mo) {
+    const tolerance = 15;
     return (
-      this.character.x < mo.x + mo.width &&
-      this.character.x + this.character.width > mo.x &&
-      this.character.y < mo.y + mo.height &&
-      this.character.y + this.character.height > mo.y
+      this.character.x + tolerance < mo.x + mo.width - tolerance &&
+      this.character.x + this.character.width - tolerance > mo.x + tolerance &&
+      this.character.y + tolerance < mo.y + mo.height - tolerance &&
+      this.character.y + this.character.height - tolerance > mo.y + tolerance
     );
   }
 
