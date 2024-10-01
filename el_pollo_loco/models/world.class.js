@@ -11,6 +11,7 @@ class World {
   allCoins = [];
   throwableObject = [];
   collectibleBottles = [];
+  groundlevel = 400;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -47,6 +48,10 @@ class World {
     setInterval(() => {
       this.checkItemCollection();
     }, 50);
+
+    setInterval(() => {
+      this.throwHitsSomething();
+    }, 30);
   }
 
   checkThrowObjects() {
@@ -58,6 +63,15 @@ class World {
         this.throwableObject.push(throwbottle);
       }
     }
+  }
+
+  throwHitsSomething() {
+    this.throwableObject.forEach((throwable, index) => {
+      if (throwable.y > this.groundlevel) {
+        console.log(throwable.y);
+        this.throwableObject.splice(index, 1);
+      }
+    });
   }
 
   checkItemCollection() {
