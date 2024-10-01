@@ -73,7 +73,7 @@ class World {
   checkExplosions() {
     this.explosions.forEach((explosion, i) => {
       if (explosion.done == true) {
-        this.explosions.splice(i, 1)
+        this.explosions.splice(i, 1);
       }
     });
   }
@@ -81,7 +81,7 @@ class World {
   throwHitsSomething() {
     this.throwableObject.forEach((throwable, index) => {
       if (throwable.y > this.groundlevel) {
-        let explosion = new Explosion(throwable.x-130, throwable.y-150);
+        let explosion = new Explosion(throwable.x - 130, throwable.y - 150);
         this.explosions.push(explosion);
         this.addObjectsToMap(this.explosions);
         this.throwableObject.splice(index, 1);
@@ -118,15 +118,16 @@ class World {
   }
 
   checkCollisions() {
-    this.level.enemies.some((enemy, index) => {
+    this.level.enemies.forEach((enemy, index) => {
+      if (enemy.isDead == true) {
+        this.level.enemies.splice(index, 1);
+      }
       if (this.character.isJumpingOn(enemy)) {
         this.character.jump();
         enemy.skullIsDying();
         clearInterval(enemy.moveId);
         clearInterval(enemy.idleId);
-        setTimeout(() => {
-          this.level.enemies.splice(index, 1);
-        }, 1000);
+
         return true;
       }
       if (this.character.isColliding(enemy)) {

@@ -38,7 +38,7 @@ class Skull extends MoveableObject {
 
   moveId;
   idleId;
-  dead = false;
+  isDead = false;
 
   constructor() {
     super().loadImage("img/skull/PNG/Wariors/Walk/Warior_walk_000.png");
@@ -52,12 +52,6 @@ class Skull extends MoveableObject {
     this.animate();
   }
 
-  skullIsDying() {
-    this.intervalHelper(() => {
-      this.playAnimation(this.IMAGES_DYING, true);
-    }, 100);
-  }
-
   animate() {
     let moveSkullId = this.intervalHelper(() => {
       this.moveId = moveSkullId;
@@ -68,5 +62,18 @@ class Skull extends MoveableObject {
       this.idleId = idle;
       this.playAnimation(this.IMAGES_WALKING);
     }, 200);
+  }
+
+  skullIsDying() {
+    let interval = setInterval(() => {
+      this.playAnimation(this.IMAGES_DYING, true);
+      this.width = 140;
+      this.height = 130;
+
+      if (this.currentImage >= this.IMAGES_DYING.length) {
+        clearInterval(interval);
+        this.isDead = true;
+      }
+    }, 40);
   }
 }
