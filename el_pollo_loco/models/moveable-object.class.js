@@ -32,7 +32,7 @@ class MoveableObject extends DrawableObject {
       let path = images[i];
       this.img = this.imageCache[path];
       this.currentImage++;
-    } else {
+    } else if (loop == true) {
       if (this.currentImage < images.length) {
         let path = images[this.currentImage];
         this.img = this.imageCache[path];
@@ -44,12 +44,33 @@ class MoveableObject extends DrawableObject {
     }
   }
 
+  playAnimationOnce(images, loop = false) {
+    if (loop) {
+      // Animation in einer Schleife abspielen
+      let i = this.currentImage % images.length; // Zyklisches Abspielen
+      let path = images[i];
+      this.img = this.imageCache[path];
+      this.currentImage++;
+    } else {
+      // Animation nur einmal abspielen
+      if (this.currentImage < images.length) {
+        let path = images[this.currentImage];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+      } else {
+        // Animation ist durchgelaufen, keine weitere Änderung von this.img
+        console.log("Animation beendet.");
+      }
+    }
+  }
+  
+
   intervalHelper(fn, time) {
     let id = setInterval(() => {
       fn();
     }, time);
     window.intervalIds.push(id);
-    return id
+    return id;
   }
 
   moveRight() {
@@ -62,19 +83,23 @@ class MoveableObject extends DrawableObject {
 
   isColliding(mo) {
     const tolerance = 40;
-    return  this.x + this.width - tolerance > mo.x &&
-            this.x + tolerance < mo.x + mo.width &&
-            this.y + this.height - tolerance > mo.y &&
-            this.y + tolerance < mo.y + mo.height;
+    return (
+      this.x + this.width - tolerance > mo.x &&
+      this.x + tolerance < mo.x + mo.width &&
+      this.y + this.height - tolerance > mo.y &&
+      this.y + tolerance < mo.y + mo.height
+    );
   }
-  
+
   isJumpingOn(mo) {
-    const tolerance = 0; 
-    return  this.x + this.width + tolerance > mo.x &&
-            this.x - tolerance < mo.x + mo.width && 
-            this.y + this.height > mo.y &&
-            this.y < mo.y + mo.height &&
-            this.speedY < 0;
+    const tolerance = 0;
+    return (
+      this.x + this.width + tolerance > mo.x &&
+      this.x - tolerance < mo.x + mo.width &&
+      this.y + this.height > mo.y &&
+      this.y < mo.y + mo.height &&
+      this.speedY < 0
+    );
   }
 
   hit() {

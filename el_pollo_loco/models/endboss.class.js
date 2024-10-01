@@ -2,7 +2,7 @@ class Endboss extends MoveableObject {
     height = 400;
     width = 200;
     y = 50;
-
+    x = 2400;
 
     IMAGES_WALKING = [
         'img/skull/PNG/YetiSkull/Walk/SkullYeti_Walk_000.png',
@@ -24,9 +24,8 @@ class Endboss extends MoveableObject {
     ]
 
     constructor() {
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super()
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 2400;
         this.animate();
     }
 

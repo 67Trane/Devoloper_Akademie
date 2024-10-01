@@ -12,6 +12,7 @@ class World {
   throwableObject = [];
   collectibleBottles = [];
   groundlevel = 400;
+  explosions = [];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -52,6 +53,10 @@ class World {
     setInterval(() => {
       this.throwHitsSomething();
     }, 30);
+
+    setInterval(() => {
+      this.checkExplosions();
+    }, 30);
   }
 
   checkThrowObjects() {
@@ -65,10 +70,20 @@ class World {
     }
   }
 
+  checkExplosions() {
+    this.explosions.forEach((explosion, i) => {
+      if (explosion.done == true) {
+        this.explosions.splice(i, 1)
+      }
+    });
+  }
+
   throwHitsSomething() {
     this.throwableObject.forEach((throwable, index) => {
       if (throwable.y > this.groundlevel) {
-        console.log(throwable.y);
+        let explosion = new Explosion(throwable.x-130, throwable.y-150);
+        this.explosions.push(explosion);
+        this.addObjectsToMap(this.explosions);
         this.throwableObject.splice(index, 1);
       }
     });
@@ -139,6 +154,7 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.collectibleBottles);
     this.addObjectsToMap(this.allCoins);
+    this.addObjectsToMap(this.explosions);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
