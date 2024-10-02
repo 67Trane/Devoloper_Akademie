@@ -3,7 +3,7 @@ class MoveableObject extends DrawableObject {
   otherDirection = false;
   speedY = 0;
   acceleration = 2.5;
-  groundLevel = 340;
+  groundLevel = 342;
   energy = 1000;
   lastHit = 0;
   thorws = 100;
@@ -14,6 +14,8 @@ class MoveableObject extends DrawableObject {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
+      } else if (this.isAboveGround) {
+        this.speedY = 0
       }
     }, 1000 / 25);
   }

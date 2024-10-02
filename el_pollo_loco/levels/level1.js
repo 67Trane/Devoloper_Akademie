@@ -1,6 +1,6 @@
 const level1 = new Level(
-  [new Skull(),new Skull(), new Skull(), new Skull(), new Skull(),new Endboss()],
-  [new Cloud()],
+  [new Skull(),new Skull(), new Endboss()],
+  [new Cloud(),new Cloud(),new Cloud(),new Cloud()],
   [
     new BackgroundObject("img/background/PNG/3_game_background/layers/1.png", -719, 1),
     new BackgroundObject("img/background/PNG/3_game_background/layers/1.png", 0, 0.1),

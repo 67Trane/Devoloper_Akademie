@@ -41,7 +41,7 @@ class Skull extends MoveableObject {
   isDead = false;
 
   constructor() {
-    super().loadImage("img/skull/PNG/Wariors/Walk/Warior_walk_000.png");
+    super();
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DYING);
     this.x = 200 + Math.random() * 500; //Zahl zwischen 200 und 700
@@ -74,6 +74,6 @@ class Skull extends MoveableObject {
         clearInterval(interval);
         this.isDead = true;
       }
-    }, 40);
+    }, 60);
   }
 }

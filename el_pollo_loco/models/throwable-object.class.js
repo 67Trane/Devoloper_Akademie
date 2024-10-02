@@ -18,4 +18,9 @@ class ThrowableObject extends MoveableObject {
             this.x += 10;
         }, 25)
     }
+
+    collisionThrowable(mo) {
+        return  this.x + this.width > mo.x &&
+
+    }
 }

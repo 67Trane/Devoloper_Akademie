@@ -5,7 +5,7 @@ class Cloud extends MoveableObject {
 
   constructor() {
     super().loadImage("img/background/PNG/3_game_background/layers/5.png");
-    this.x = Math.random() * 500;
+    this.x = Math.random() * 2000;
     this.animate();
   }
 
@@ -13,7 +13,5 @@ class Cloud extends MoveableObject {
     this.intervalHelper(() => {
       this.moveLeft();
     }, 60)
-    
   }
- 
 }

@@ -156,6 +156,7 @@ class World {
     this.addObjectsToMap(this.collectibleBottles);
     this.addObjectsToMap(this.allCoins);
     this.addObjectsToMap(this.explosions);
+    this.addObjectsToMap(this.level.clouds);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
@@ -164,7 +165,6 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.throwableObject);
 
     this.ctx.translate(-this.camera_x, 0);
