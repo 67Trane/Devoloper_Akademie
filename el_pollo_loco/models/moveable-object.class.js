@@ -15,7 +15,7 @@ class MoveableObject extends DrawableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       } else if (this.isAboveGround) {
-        this.speedY = 0
+        this.speedY = 0;
       }
     }, 1000 / 25);
   }
@@ -65,7 +65,6 @@ class MoveableObject extends DrawableObject {
       }
     }
   }
-  
 
   intervalHelper(fn, time) {
     let id = setInterval(() => {
@@ -94,12 +93,13 @@ class MoveableObject extends DrawableObject {
   }
 
   isJumpingOn(mo) {
-    let tolerance = 0;
+    let xTolerance = -70;
+    let yTolerance = 5;
     return (
-      this.x + this.width + tolerance > mo.x &&
-      this.x - tolerance < mo.x + mo.width &&
-      this.y + this.height > mo.y &&
-      this.y < mo.y + mo.height &&
+      this.x + this.width + xTolerance > mo.x &&
+      this.x - xTolerance < mo.x + mo.width &&
+      this.y + this.height - yTolerance > mo.y &&
+      this.y < mo.y &&
       this.speedY < 0
     );
   }
@@ -124,21 +124,24 @@ class MoveableObject extends DrawableObject {
   }
 
   skullIsDying() {
+    this.currentImage = 0;
     let interval = setInterval(() => {
-      clearInterval(this.moveInterval);
+      clearInterval(this.moveId);
       this.playAnimation(this.IMAGES_DYING, true);
       if (this instanceof Skull) {
-        this.width = 140;
+        this.width = 150;
         this.height = 130;
+        this.y = 342.5 - 13;
       } else if (this instanceof Endboss) {
-       this.height = 450;
-       this.width = 400;
+        this.height = 500;
+        this.width = 400;
+        this.y = 10;
       }
 
       if (this.currentImage >= this.IMAGES_DYING.length) {
         clearInterval(interval);
         this.isDead = true;
       }
-    }, 600);
+    }, 60);
   }
 }

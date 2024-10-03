@@ -4,7 +4,8 @@ class Endboss extends MoveableObject {
   y = 50;
   x = 2400;
   isDead = false;
-  moveInterval;
+  moveId;
+  speed = 2
 
   IMAGES_DYING = [
     "img/skull/PNG/YetiSkull/Die/SkullYeti_Death_000.png",
@@ -52,9 +53,10 @@ class Endboss extends MoveableObject {
   }
 
   animate() {
-    let test = setInterval(() => {
-      this.moveInterval = test;
+    let moveId = setInterval(() => {
+      this.moveId = moveId;
       this.playAnimation(this.IMAGES_WALKING);
+      this.moveLeft();
     }, 60);
   }
 }
