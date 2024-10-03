@@ -20,7 +20,9 @@ class ThrowableObject extends MoveableObject {
     }
 
     collisionThrowable(mo) {
-        return  this.x + this.width > mo.x &&
-
+        let tolerance = 10;
+        return  this.x + this.width  > mo.x &&
+                this.x + this.width < mo.x + mo.width &&
+                this.y + this.height > mo.y + tolerance
     }
 }

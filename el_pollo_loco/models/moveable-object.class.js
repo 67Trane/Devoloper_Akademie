@@ -84,7 +84,7 @@ class MoveableObject extends DrawableObject {
   }
 
   isColliding(mo) {
-    const tolerance = 40;
+    let tolerance = 40;
     return (
       this.x + this.width - tolerance > mo.x &&
       this.x + tolerance < mo.x + mo.width &&
@@ -94,7 +94,7 @@ class MoveableObject extends DrawableObject {
   }
 
   isJumpingOn(mo) {
-    const tolerance = 0;
+    let tolerance = 0;
     return (
       this.x + this.width + tolerance > mo.x &&
       this.x - tolerance < mo.x + mo.width &&
@@ -121,5 +121,24 @@ class MoveableObject extends DrawableObject {
     let timepass = new Date().getTime() - this.lastHit; //  Difference in ms
     timepass = timepass / 1000; // Difference in s
     return timepass < 0.5;
+  }
+
+  skullIsDying() {
+    let interval = setInterval(() => {
+      clearInterval(this.moveInterval);
+      this.playAnimation(this.IMAGES_DYING, true);
+      if (this instanceof Skull) {
+        this.width = 140;
+        this.height = 130;
+      } else if (this instanceof Endboss) {
+       this.height = 450;
+       this.width = 400;
+      }
+
+      if (this.currentImage >= this.IMAGES_DYING.length) {
+        clearInterval(interval);
+        this.isDead = true;
+      }
+    }, 600);
   }
 }

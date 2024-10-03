@@ -81,12 +81,16 @@ class World {
   throwHitsSomething() {
     this.throwableObject.forEach((throwable, index) => {
       if (throwable.y > this.groundlevel) {
-        let explosion = new Explosion(throwable.x - 130, throwable.y - 150);
-        this.explosions.push(explosion);
-        this.addObjectsToMap(this.explosions);
+        this.objectExplodes(throwable)
         this.throwableObject.splice(index, 1);
       }
     });
+  }
+
+  objectExplodes(throwable) {
+    let explosion = new Explosion(throwable.x - 130, throwable.y - 150);
+    this.explosions.push(explosion);
+    this.addObjectsToMap(this.explosions);
   }
 
   checkItemCollection() {
@@ -119,6 +123,7 @@ class World {
 
   checkCollisions() {
     this.level.enemies.forEach((enemy, index) => {
+      this.throwHit(enemy);
       if (enemy.isDead == true) {
         this.level.enemies.splice(index, 1);
       }
@@ -137,6 +142,20 @@ class World {
         return true;
       }
     });
+  }
+
+  throwHit(enemy) {
+    if (this.throwableObject.length > 0) {
+      this.throwableObject.forEach((bottle, index) => {
+        if (bottle.collisionThrowable(enemy)) {
+          this.throwableObject.splice(index, 1);
+          this.objectExplodes(bottle)
+          enemy.skullIsDying();
+          clearInterval(enemy.moveId);
+          clearInterval(enemy.idleId);
+        }
+      });
+    }
   }
 
   draw() {
@@ -194,7 +213,7 @@ class World {
   }
 
   collectItem(mo) {
-    const tolerance = 15;
+    let tolerance = 15;
     return (
       this.character.x + tolerance < mo.x + mo.width - tolerance &&
       this.character.x + this.character.width - tolerance > mo.x + tolerance &&

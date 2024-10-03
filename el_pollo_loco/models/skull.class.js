@@ -44,7 +44,7 @@ class Skull extends MoveableObject {
     super();
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DYING);
-    this.x = 200 + Math.random() * 500; //Zahl zwischen 200 und 700
+    this.x = 500 + Math.random() * 1500;
     this.speed = 0.15 + Math.random() * 0.5;
   }
 
@@ -64,16 +64,5 @@ class Skull extends MoveableObject {
     }, 200);
   }
 
-  skullIsDying() {
-    let interval = setInterval(() => {
-      this.playAnimation(this.IMAGES_DYING, true);
-      this.width = 140;
-      this.height = 130;
-
-      if (this.currentImage >= this.IMAGES_DYING.length) {
-        clearInterval(interval);
-        this.isDead = true;
-      }
-    }, 60);
-  }
+  
 }
