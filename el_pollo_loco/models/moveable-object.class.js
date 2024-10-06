@@ -124,7 +124,13 @@ class MoveableObject extends DrawableObject {
   }
 
   skullIsDying() {
+    let speed;
     this.currentImage = 0;
+    if (this instanceof Skull) {
+      speed = 40;
+    } else if (this instanceof Endboss) {
+      speed = 80;
+    }
     let interval = setInterval(() => {
       clearInterval(this.moveId);
       this.playAnimation(this.IMAGES_DYING, true);
@@ -137,11 +143,10 @@ class MoveableObject extends DrawableObject {
         this.width = 400;
         this.y = 10;
       }
-
       if (this.currentImage >= this.IMAGES_DYING.length) {
         clearInterval(interval);
         this.isDead = true;
       }
-    }, 60);
+    }, speed);
   }
 }

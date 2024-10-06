@@ -30,10 +30,7 @@ class World {
 
     this.level.enemies.forEach((enemy) => {
       enemy.world = this;
-      if (enemy instanceof Skull) {
-        enemy.initialize();
-      }
-      // andere Gegnertypen, die ähnlich behandelt werden sollen, hier hinzufügen
+      enemy.initialize();
     });
   }
 
@@ -81,7 +78,7 @@ class World {
   throwHitsSomething() {
     this.throwableObject.forEach((throwable, index) => {
       if (throwable.y > this.groundlevel) {
-        this.objectExplodes(throwable)
+        this.objectExplodes(throwable);
         this.throwableObject.splice(index, 1);
       }
     });
@@ -149,7 +146,7 @@ class World {
       this.throwableObject.forEach((bottle, index) => {
         if (bottle.collisionThrowable(enemy)) {
           this.throwableObject.splice(index, 1);
-          this.objectExplodes(bottle)
+          this.objectExplodes(bottle);
           enemy.skullIsDying();
           clearInterval(enemy.moveId);
           clearInterval(enemy.idleId);

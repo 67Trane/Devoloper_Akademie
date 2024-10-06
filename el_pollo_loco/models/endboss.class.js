@@ -49,8 +49,13 @@ class Endboss extends MoveableObject {
     super();
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DYING);
+
+  }
+
+  initialize() {
     this.animate();
   }
+
 
   animate() {
     let moveId = setInterval(() => {
