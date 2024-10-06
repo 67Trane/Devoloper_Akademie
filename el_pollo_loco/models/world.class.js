@@ -8,6 +8,7 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
+  gui = new MobileGui(this.character, canvas);
   allCoins = [];
   throwableObject = [];
   collectibleBottles = [];
@@ -178,6 +179,7 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
+    this.addToMap(this.gui)
 
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.enemies);
