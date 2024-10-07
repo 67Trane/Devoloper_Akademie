@@ -19,15 +19,13 @@ class MobileGui extends DrawableObject {
                 let x = event.clientX - rect.left;
                 let y = event.clientY - rect.top;
                 if (x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height) {
-                    window.stopAllIntervals()
-                    this.character.moveLeft()
-                    this.character.playAnimation(this.character.IMAGES_WALKING);
-                    this.character.otherDirection = true
+                    this.character.stop();
+                    this.character.moveCharacterLeft();
                 }
                 /*this.canvas.addEventListener('mouseup', () => {
                     clearInterval(moveleft)
                 })*/
-            }, 60)
+            }, 10)
         })
     }
 

@@ -22,9 +22,8 @@ function startGame() {
 
 document.addEventListener("keydown", (event) => {
   if (event.keyCode == 80) {
-    console.log(intervalIds);
+    console.log("STOP")
     stopAllIntervals();
-    console.log(intervalIds);
   }
 
   if (event.keyCode == 70) {
@@ -78,6 +77,6 @@ document.addEventListener("keyup", (event) => {
 });
 
 function stopAllIntervals() {
-  window.intervalIds.forEach(clearInterval);
-  window.intervalIds = [];
+  window.gameIntervalIds.forEach(clearInterval);
+  window.gameIntervalIds = [];
 }

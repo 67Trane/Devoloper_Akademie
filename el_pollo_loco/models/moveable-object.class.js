@@ -8,6 +8,7 @@ class MoveableObject extends DrawableObject {
   lastHit = 0;
   thorws = 100;
   coins = 0;
+  intervalIds = [];
 
   applyGravity() {
     this.intervalHelper(() => {
@@ -70,8 +71,14 @@ class MoveableObject extends DrawableObject {
     let id = setInterval(() => {
       fn();
     }, time);
-    window.intervalIds.push(id);
+    this.intervalIds.push(id);
     return id;
+  }
+
+  pushIntervalIds() {
+    this.intervalIds.forEach((id) => {
+      window.gameIntervalIds.push(id)
+    })
   }
 
   moveRight() {

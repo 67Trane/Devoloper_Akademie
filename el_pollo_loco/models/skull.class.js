@@ -48,8 +48,11 @@ class Skull extends MoveableObject {
     this.speed = 0.15 + Math.random() * 0.5;
   }
 
+
+
   initialize() {
     this.animate();
+    this.pushIntervalIds();
   }
 
   animate() {

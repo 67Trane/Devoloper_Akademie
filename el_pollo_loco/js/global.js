@@ -1,1 +1,1 @@
-window.intervalIds = [];
+window.gameIntervalIds = [];
