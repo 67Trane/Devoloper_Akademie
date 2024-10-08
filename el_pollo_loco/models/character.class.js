@@ -130,12 +130,6 @@ class Character extends MoveableObject {
 
   }
 
-  stop() {
-    this.intervalIds.forEach((i) => {
-      clearInterval(i)
-    })
-  }
-
   moveCharacterLeft() {
     this.otherDirection = true;
     this.moveLeft();

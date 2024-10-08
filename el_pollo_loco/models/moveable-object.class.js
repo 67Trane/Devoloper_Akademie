@@ -81,6 +81,12 @@ class MoveableObject extends DrawableObject {
     })
   }
 
+  stopInterval() {
+    this.intervalIds.forEach((id) => {
+      clearInterval(id)
+    })
+  }
+
   moveRight() {
     this.x += this.speed;
   }
