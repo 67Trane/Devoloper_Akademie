@@ -7,8 +7,8 @@ class MobileGui extends DrawableObject {
         super();
         this.character = character
         this.canvas = canvas;
-        this.width = 200;
-        this.height = 200;
+        this.width = 100;
+        this.height = 100;
         this.x = x
         this.y = y
         this.loadImage("./img/button.png")
@@ -17,25 +17,26 @@ class MobileGui extends DrawableObject {
 
     moveCharacter(direction) { //später onclick mit touchstart ersetzen !!!!! 
         this.canvas.addEventListener('pointerdown', (event) => {
-            let moveleft = setInterval(() => {
+            let moveId = setInterval(() => {
                 let rect = this.canvas.getBoundingClientRect()
                 let x = event.clientX - rect.left;
                 let y = event.clientY - rect.top;
                 if (x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height) {
-                    if (direction == "LEFT") {
-                        this.world.keyboard.LEFT = true;
-                    } else if (direction == "RIGHT") {
-                        this.world.keyboard.RIGHT = true;
-                    }
-
+                    this.pressKey(direction)
                 }
                 this.canvas.addEventListener('mouseup', () => {
-                    clearInterval(moveleft)
-                    this.world.keyboard.LEFT = false;
-                    this.world.keyboard.RIGHT = false;
+                    clearInterval(moveId)
+                    this.releaseKey(direction)
                 })
             }, 10)
         })
     }
 
+    pressKey(direction) {
+        this.world.keyboard[direction] = true;
+    }
+
+    releaseKey(direction) {
+        this.world.keyboard[direction] = false;
+    }
 }

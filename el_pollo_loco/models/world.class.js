@@ -8,7 +8,12 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  gui = [new MobileGui(this.character, canvas, "LEFT", 200, 200), new MobileGui(this.character, canvas, "RIGHT", 400, 200)];
+  gui = [
+    new MobileGui(this.character, canvas, "LEFT", 200, 200), 
+    new MobileGui(this.character, canvas, "RIGHT", 400, 200),
+    new MobileGui(this.character, canvas, "SPACE", 400, 100),
+    new MobileGui(this.character, canvas, "F", 200, 100),
+  ];
   allCoins = [];
   throwableObject = [];
   collectibleBottles = [];
