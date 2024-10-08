@@ -9,7 +9,7 @@ class World {
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
   gui = [
-    new MobileGui(this.character, canvas, "LEFT", 200, 200), 
+    new MobileGui(this.character, canvas, "LEFT", 200, 200),
     new MobileGui(this.character, canvas, "RIGHT", 400, 200),
     new MobileGui(this.character, canvas, "SPACE", 400, 100),
     new MobileGui(this.character, canvas, "F", 200, 100),
@@ -156,9 +156,14 @@ class World {
         if (bottle.collisionThrowable(enemy)) {
           this.throwableObject.splice(index, 1);
           this.objectExplodes(bottle);
-          enemy.skullIsDying();
-          clearInterval(enemy.moveId);
-          clearInterval(enemy.idleId);
+          enemy.hp -= 10;
+          enemy.healthbar.setPercentage(enemy.hp)
+          if (enemy.hp < 0) {
+            enemy.skullIsDying();
+            clearInterval(enemy.moveId);
+            clearInterval(enemy.idleId);
+          }
+
         }
       });
     }

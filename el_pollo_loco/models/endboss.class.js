@@ -1,12 +1,4 @@
 class Endboss extends MoveableObject {
-  height = 400;
-  width = 200;
-  y = 50;
-  x = 2400;
-  isDead = false;
-  moveId;
-  speed = 2
-
   IMAGES_DYING = [
     "img/skull/PNG/YetiSkull/Die/SkullYeti_Death_000.png",
     "img/skull/PNG/YetiSkull/Die/SkullYeti_Death_001.png",
@@ -45,10 +37,32 @@ class Endboss extends MoveableObject {
     "img/skull/PNG/YetiSkull/Walk/SkullYeti_Walk_015.png",
   ];
 
+  IMAGES_HP = [
+    "img/statusbar/0.png",
+    "img/statusbar/20.png",
+    "img/statusbar/40.png",
+    "img/statusbar/60.png",
+    "img/statusbar/80.png",
+    "img/statusbar/100.png",
+  ];
+
+  height = 400;
+  width = 200;
+  y = 50;
+  x = 2400;
+  isDead = false;
+  moveId;
+  speed = 2
+  hp = 100;
+
+
   constructor() {
     super();
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DYING);
+    this.loadImages(this.IMAGES_HP);
+    this.healthbar = new StatusBar();
+    this.updateHealthbar()
   }
 
   initialize() {
@@ -56,11 +70,31 @@ class Endboss extends MoveableObject {
     this.pushIntervalIds();
   }
 
+  updateHealthbar() {
+    setInterval(() => {
+      this.healthbar.x = this.x;
+      this.healthbar.y = this.y;
+    }, 60)
+
+  }
+
+  draw(ctx) {
+    super.draw(ctx)
+    this.healthbar.draw(ctx)
+  }
+
   animate() {
+
     let moveId = this.intervalHelper(() => {
       this.moveId = moveId;
       this.playAnimation(this.IMAGES_WALKING);
       this.moveLeft();
     }, 60);
+  }
+
+  setHp() {
+    if (this.hp >= 100) {
+
+    }
   }
 }
