@@ -84,17 +84,10 @@ class Endboss extends MoveableObject {
   }
 
   animate() {
-
     let moveId = this.intervalHelper(() => {
       this.moveId = moveId;
       this.playAnimation(this.IMAGES_WALKING);
       this.moveLeft();
     }, 60);
-  }
-
-  setHp() {
-    if (this.hp >= 100) {
-
-    }
   }
 }
