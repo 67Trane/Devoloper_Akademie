@@ -160,13 +160,11 @@ class World {
           if (enemy instanceof Endboss) {
             enemy.healthbar.setPercentage(enemy.hp)
           }
-
           if (enemy.hp <= 0) {
             enemy.skullIsDying();
             clearInterval(enemy.moveId);
             clearInterval(enemy.idleId);
           }
-
         }
       });
     }
