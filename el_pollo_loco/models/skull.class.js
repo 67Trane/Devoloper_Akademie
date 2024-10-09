@@ -39,6 +39,7 @@ class Skull extends MoveableObject {
   moveId;
   idleId;
   isDead = false;
+  hp = 10;
 
   constructor() {
     super();

@@ -157,8 +157,11 @@ class World {
           this.throwableObject.splice(index, 1);
           this.objectExplodes(bottle);
           enemy.hp -= 10;
-          enemy.healthbar.setPercentage(enemy.hp)
-          if (enemy.hp < 0) {
+          if (enemy instanceof Endboss) {
+            enemy.healthbar.setPercentage(enemy.hp)
+          }
+
+          if (enemy.hp <= 0) {
             enemy.skullIsDying();
             clearInterval(enemy.moveId);
             clearInterval(enemy.idleId);
