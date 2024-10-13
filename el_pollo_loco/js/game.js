@@ -7,7 +7,7 @@ function init() {
 
   let checkStart = setInterval(() => {
     if (startScreen.start) {
-      clearInterval(checkStart); 
+      clearInterval(checkStart);
       startGame();
     }
   }, 500);
@@ -80,3 +80,15 @@ function stopAllIntervals() {
   window.gameIntervalIds.forEach(clearInterval);
   window.gameIntervalIds = [];
 }
+
+function isMobileRotate() {
+  let rotate = document.getElementById("rotate")
+  if (window.innerWidth < window.innerHeight) {
+    rotate.style.display = "flex"
+  } else {
+    rotate.style.display = "none"
+  }
+}
+
+window.addEventListener("resize", isMobileRotate)
+window.addEventListener("load", isMobileRotate)

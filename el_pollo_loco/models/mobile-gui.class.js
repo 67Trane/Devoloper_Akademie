@@ -17,13 +17,13 @@ class MobileGui extends DrawableObject {
     }
 
     setImage(direction) {
-        if(direction == "LEFT") {
+        if (direction == "LEFT") {
             this.loadImage("img/mobile-imgs/left.png")
         } else if (direction == "RIGHT") {
             this.loadImage("img/mobile-imgs/right.png")
         } else if (direction == "SPACE") {
             this.loadImage("img/mobile-imgs/up.png")
-        } else if(direction == "F") {
+        } else if (direction == "F") {
             this.loadImage("img/mobile-imgs/molotov.png")
         }
     }
@@ -35,11 +35,15 @@ class MobileGui extends DrawableObject {
                 let rect = this.canvas.getBoundingClientRect();
                 let x = event.touches[0].clientX - rect.left;
                 let y = event.touches[0].clientY - rect.top;
-                if (x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height) {
+                let scaleFactorX = this.canvas.width / this.canvas.clientWidth;
+                let scaleFactorY = this.canvas.height / this.canvas.clientHeight;
+                let adjustX = x * scaleFactorX
+                let adjustY = y * scaleFactorY
+                if (adjustX >= this.x && adjustX <= this.x + this.width && adjustY >= this.y && adjustY <= this.y + this.height) {
                     this.pressKey(direction);
                 }
             }, 10);
-    
+
             const onTouchEnd = () => {
                 clearInterval(moveId);
                 this.releaseKey(direction);
