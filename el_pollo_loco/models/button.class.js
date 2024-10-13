@@ -11,7 +11,7 @@ class Button extends Hud {
     this.text = text;
     this.loadImage(this.background);
     this.canvas = document.getElementById("canvas");
-    if (text == "fl") { this.fullscreen() };
+    text == "fl" && this.fullscreen()
   }
 
   draw(ctx) {

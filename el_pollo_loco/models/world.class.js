@@ -8,7 +8,7 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  fullscreen = new Button(200, 300, 200, 200, "fl")
+  fullscreen = new Button(630, 0, 100, 100, "fl")
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 100, 430),
     new MobileGui(this.character, canvas, "RIGHT", 250, 430),
