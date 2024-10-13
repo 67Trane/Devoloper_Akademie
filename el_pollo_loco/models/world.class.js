@@ -10,10 +10,10 @@ class World {
   coinBar = new StatusBar("COIN", 100);
   fullscreen = new Button(200, 300, 200, 200, "fl")
   gui = [
-    new MobileGui(this.character, canvas, "LEFT", 200, 200),
-    new MobileGui(this.character, canvas, "RIGHT", 400, 200),
-    new MobileGui(this.character, canvas, "SPACE", 400, 100),
-    new MobileGui(this.character, canvas, "F", 200, 100),
+    new MobileGui(this.character, canvas, "LEFT", 100, 430),
+    new MobileGui(this.character, canvas, "RIGHT", 250, 430),
+    new MobileGui(this.character, canvas, "SPACE", 500, 430),
+    new MobileGui(this.character, canvas, "F", 600, 430),
   ];
   allCoins = [];
   throwableObject = [];
@@ -248,7 +248,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx); //als kommentar deklarieren um rahmen wegzumachen
+    //mo.drawFrame(this.ctx); //als kommentar deklarieren um rahmen wegzumachen
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

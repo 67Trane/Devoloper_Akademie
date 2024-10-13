@@ -50,7 +50,7 @@ canvas {
     background-color: rgba(97, 97, 97, 0.699);
     z-index: 999;
     position: absolute;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }

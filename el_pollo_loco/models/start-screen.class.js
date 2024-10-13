@@ -30,9 +30,9 @@ class StartScreen extends DrawableObject {
     this.canvas.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      const rect = this.canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
+      let rect = this.canvas.getBoundingClientRect();
+      let mouseX = event.clientX - rect.left;
+      let mouseY = event.clientY - rect.top;
       if (this.button.isClicked(mouseX, mouseY)) {
         this.startGame();
       }

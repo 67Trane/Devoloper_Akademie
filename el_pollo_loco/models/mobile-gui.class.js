@@ -7,8 +7,8 @@ class MobileGui extends DrawableObject {
         super();
         this.character = character
         this.canvas = canvas;
-        this.width = 100;
-        this.height = 100;
+        this.width = 50;
+        this.height = 50;
         this.x = x
         this.y = y
         this.loadImage("img/mobile-imgs/left.png")
