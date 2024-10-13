@@ -92,3 +92,17 @@ function isMobileRotate() {
 
 window.addEventListener("resize", isMobileRotate)
 window.addEventListener("load", isMobileRotate)
+
+function isMobileDevice() {
+  return /Mobi|Android|iPhonei|iPad|iPod/i.test(navigator.userAgent)
+}
+
+function changeHud() {
+  if (isMobileDevice()) {
+    window.isMobile = true;
+  } else {
+    window.isMobile = false;
+  }
+}
+
+changeHud()

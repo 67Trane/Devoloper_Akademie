@@ -3,6 +3,7 @@ class World {
   level = level1;
   canvas;
   ctx;
+  isMobile = window.isMobile
   keyboard;
   camera_x = 0;
   statusBar = new StatusBar();
@@ -195,7 +196,10 @@ class World {
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.fullscreen)
-    this.addObjectsToMap(this.gui)
+    if (this.isMobile) {
+      this.addObjectsToMap(this.gui)
+    }
+
 
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.enemies);
