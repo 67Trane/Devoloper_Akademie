@@ -8,6 +8,7 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
+  fullscreen = new Button(200, 300, 200, 200, "fl")
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 200, 200),
     new MobileGui(this.character, canvas, "RIGHT", 400, 200),
@@ -193,6 +194,7 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
+    this.addToMap(this.fullscreen)
     this.addObjectsToMap(this.gui)
 
     this.ctx.translate(this.camera_x, 0);
