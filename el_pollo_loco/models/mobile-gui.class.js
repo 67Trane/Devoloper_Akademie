@@ -11,8 +11,21 @@ class MobileGui extends DrawableObject {
         this.height = 100;
         this.x = x
         this.y = y
-        this.loadImage("./img/button.png")
+        this.loadImage("img/mobile-imgs/left.png")
+        this.setImage(direction);
         this.moveCharacter(direction);
+    }
+
+    setImage(direction) {
+        if(direction == "LEFT") {
+            this.loadImage("img/mobile-imgs/left.png")
+        } else if (direction == "RIGHT") {
+            this.loadImage("img/mobile-imgs/right.png")
+        } else if (direction == "SPACE") {
+            this.loadImage("img/mobile-imgs/up.png")
+        } else if(direction == "F") {
+            this.loadImage("img/mobile-imgs/molotov.png")
+        }
     }
 
     moveCharacter(direction) {
