@@ -196,11 +196,8 @@ class World {
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.fullscreen)
-    if (this.isMobile) {
-      this.addObjectsToMap(this.gui)
-    }
-
-
+    this.isMobile && this.addObjectsToMap(this.gui)
+    
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.throwableObject);
