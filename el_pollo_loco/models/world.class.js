@@ -172,9 +172,7 @@ class World {
     }
   }
 
-  draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+  parallaxEffect() {
     // Hintergrundobjekte mit Parallaxeneffekt zeichnen
     this.level.backgroundObjects.forEach((backgroundObject) => {
       this.ctx.save();
@@ -183,31 +181,38 @@ class World {
       this.addToMap(backgroundObject);
       this.ctx.restore();
     });
+  }
 
+  draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.parallaxEffect()
     this.ctx.translate(this.camera_x, 0);
-    this.addToMap(this.character);
-    this.addObjectsToMap(this.collectibleBottles);
-    this.addObjectsToMap(this.allCoins);
-    this.addObjectsToMap(this.explosions);
-    this.addObjectsToMap(this.level.clouds);
-
+    this.placeInWorld()
     this.ctx.translate(-this.camera_x, 0);
-    this.addToMap(this.statusBar);
-    this.addToMap(this.bottleBar);
-    this.addToMap(this.coinBar);
-    this.addToMap(this.fullscreen)
-    this.isMobile && this.addObjectsToMap(this.gui)
-    
-    this.ctx.translate(this.camera_x, 0);
-    this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.throwableObject);
-
-    this.ctx.translate(-this.camera_x, 0);
+    this.runWithCamera()
 
     let self = this;
     requestAnimationFrame(() => {
       self.draw();
     });
+  }
+
+  placeInWorld() {
+    this.addToMap(this.character);
+    this.addObjectsToMap(this.collectibleBottles);
+    this.addObjectsToMap(this.allCoins);
+    this.addObjectsToMap(this.explosions);
+    this.addObjectsToMap(this.level.clouds);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.throwableObject);
+  }
+
+  runWithCamera() {
+    this.addToMap(this.statusBar);
+    this.addToMap(this.bottleBar);
+    this.addToMap(this.coinBar);
+    this.addToMap(this.fullscreen)
+    this.isMobile && this.addObjectsToMap(this.gui)
   }
 
   addCollectibleBottleToMap() {
