@@ -9,7 +9,7 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  fullscreen = new Button(630, 0, 100, 100, "fl")
+  fullscreen = new Button(620, 0, 100, 100, "fl")
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 100, 430),
     new MobileGui(this.character, canvas, "RIGHT", 250, 430),
@@ -254,7 +254,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    //mo.drawFrame(this.ctx); //als kommentar deklarieren um rahmen wegzumachen
+    mo.drawFrame(this.ctx); //als kommentar deklarieren um rahmen wegzumachen
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

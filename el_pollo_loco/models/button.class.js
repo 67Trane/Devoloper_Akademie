@@ -29,18 +29,22 @@ class Button extends Hud {
   }
 
   fullscreen() {
-    this.clickListener(() => this.openFullscreen())
+    this.clickListener(() => this.openFullscreen(), 30, 30)
   }
 
-  clickListener(func) {
+  clickListener(func, offsetWidth = 0, offsetHeight = 0) {
     this.canvas.addEventListener("click", (event) => {
-      console.log(event)
       event.preventDefault();
       event.stopPropagation();
-      const rect = this.canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
-      if (this.isClicked(mouseX, mouseY)) {
+      let rect = this.canvas.getBoundingClientRect();
+      let x = (event.clientX - rect.left) / rect.width * this.canvas.width;
+      let y = (event.clientY - rect.top) / rect.height * this.canvas.height;
+      if (
+        x >= this.x + offsetWidth &&
+        x <= this.x + this.width - offsetWidth &&
+        y >= this.y + offsetHeight &&
+        y <= this.y + this.height - offsetHeight
+      ) {
         func()
       }
     });

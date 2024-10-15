@@ -34,7 +34,7 @@ class DrawableObject {
   }
 
   drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Skull || this instanceof Bottle || this instanceof Coin || this instanceof Endboss || this instanceof MobileGui) {
+    if (this instanceof Character || this instanceof Button || this instanceof Skull || this instanceof Bottle || this instanceof Coin || this instanceof Endboss || this instanceof MobileGui) {
       ctx.beginPath();
       ctx.lineWidth = "3";
       ctx.strokeStyle = "red";

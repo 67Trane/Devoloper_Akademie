@@ -27,14 +27,23 @@ class StartScreen extends DrawableObject {
   }
 
   setupEventListeners() {
+    this.clickListener(() => this.startGame(), 30, 30)
+  }
+
+  clickListener(func, offsetWidth = 0, offsetHeight = 0) {
     this.canvas.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
       let rect = this.canvas.getBoundingClientRect();
-      let mouseX = event.clientX - rect.left;
-      let mouseY = event.clientY - rect.top;
-      if (this.button.isClicked(mouseX, mouseY)) {
-        this.startGame();
+      let x = (event.clientX - rect.left) / rect.width * this.canvas.width;
+      let y = (event.clientY - rect.top) / rect.height * this.canvas.height;
+      if (
+        x >= this.x + offsetWidth &&
+        x <= this.x + this.width - offsetWidth &&
+        y >= this.y + offsetHeight &&
+        y <= this.y + this.height - offsetHeight
+      ) {
+        func()
       }
     });
   }
