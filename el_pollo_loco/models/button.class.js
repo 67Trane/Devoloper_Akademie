@@ -32,7 +32,8 @@ class Button extends Hud {
   }
 
   fullscreen() {
-    this.clickListener(() => this.openFullscreen(), 30, 30)
+    this.loadImage("img/mobile-imgs/fullscreen.png")
+    this.clickListener(() => this.openFullscreen(), 0, 0)
   }
 
   clickListener(func, offsetWidth = 0, offsetHeight = 0, conditionCallback = () => true) {
