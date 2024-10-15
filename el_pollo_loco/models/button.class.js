@@ -1,6 +1,8 @@
 class Button extends Hud {
   img;
-  background = "./img/button.png";
+  defaultButton = "./img/button.png";
+  pauseIcon = "img/mobile-imgs/pause.png";
+  fullscreenIcon = "img/mobile-imgs/fullscreen.png"
 
   constructor(x, y, width, height, text, showtext = false) {
     super();
@@ -10,7 +12,7 @@ class Button extends Hud {
     this.width = width;
     this.height = height;
     this.text = text;
-    this.loadImage(this.background);
+    this.loadImage(this.defaultButton);
     this.canvas = document.getElementById("canvas");
     text == "fl" && this.fullscreen()
     text == "pause" && this.pauseGame()
@@ -32,7 +34,7 @@ class Button extends Hud {
   }
 
   fullscreen() {
-    this.loadImage("img/mobile-imgs/fullscreen.png")
+    this.loadImage(this.fullscreenIcon)
     this.clickListener(() => this.openFullscreen(), 0, 0)
   }
 
@@ -58,7 +60,7 @@ class Button extends Hud {
   }
 
   pauseGame(func) {
-    this.loadImage("img/mobile-imgs/pause.png")
+    this.loadImage(this.pauseIcon)
     if (typeof func === 'function') {
       this.clickListener(() => func(), 0, 0, () => window.gameIsPaused)
     }

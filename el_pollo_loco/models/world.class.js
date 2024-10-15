@@ -40,7 +40,6 @@ class World {
     this.gui.forEach((arrows) => {
       arrows.world = this;
     })
-
     this.level.enemies.forEach((enemy) => {
       enemy.world = this;
       enemy.initialize();
@@ -49,7 +48,6 @@ class World {
 
  
   run() {
-
     setInterval(() => {
       this.checkCollisions();
     }, 50);

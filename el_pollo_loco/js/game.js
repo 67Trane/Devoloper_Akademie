@@ -20,6 +20,11 @@ function startGame() {
   console.log("my chracter is", world.character);
 }
 
+function restartGame() {
+  world = null;
+  startGame();
+}
+
 document.addEventListener("keydown", (event) => {
   if (event.keyCode == 80) {
     console.log("STOP")
@@ -28,6 +33,7 @@ document.addEventListener("keydown", (event) => {
 
   if (event.keyCode == 70) {
     keyboard.F = true;
+    restartGame() // REMOVE THIS HERE !!!
   }
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;
@@ -96,6 +102,7 @@ window.addEventListener("resize", isMobileRotate)
 window.addEventListener("load", isMobileRotate)
 
 function isMobileDevice() {
+  console.log(navigator.userAgent)
   return /Mobi|Android|iPhonei|iPad|iPod/i.test(navigator.userAgent)
 }
 
