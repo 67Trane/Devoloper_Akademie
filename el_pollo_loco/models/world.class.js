@@ -9,7 +9,8 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  fullscreen = new Button(620, 0, 100, 100, "fl")
+  fullscreen = new Button(620, 0, 100, 100, "fl", true)
+  pause = new Button(500, 0, 30, 30, "pause")
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 100, 430),
     new MobileGui(this.character, canvas, "RIGHT", 250, 430),
@@ -31,6 +32,7 @@ class World {
     this.run();
     this.addCollectibleBottleToMap();
     this.addCollectibleCoinToMap();
+    this.unpauseGame()
   }
 
   setWorld() {
@@ -45,7 +47,9 @@ class World {
     });
   }
 
+ 
   run() {
+
     setInterval(() => {
       this.checkCollisions();
     }, 50);
@@ -65,6 +69,10 @@ class World {
     setInterval(() => {
       this.checkExplosions();
     }, 30);
+  }
+
+  unpauseGame() {
+      this.pause.pauseGame(() => this.character.unpauseCharacter())
   }
 
   checkThrowObjects() {
@@ -212,6 +220,7 @@ class World {
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.fullscreen)
+    this.addToMap(this.pause)
     this.isMobile && this.addObjectsToMap(this.gui)
   }
 

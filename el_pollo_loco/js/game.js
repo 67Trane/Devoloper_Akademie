@@ -77,6 +77,8 @@ document.addEventListener("keyup", (event) => {
 });
 
 function stopAllIntervals() {
+  window.gameIsPaused = true;
+  console.log(window.gameIsPaused)
   window.gameIntervalIds.forEach(clearInterval);
   window.gameIntervalIds = [];
 }

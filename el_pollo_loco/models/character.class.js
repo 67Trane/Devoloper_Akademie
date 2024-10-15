@@ -163,6 +163,13 @@ class Character extends MoveableObject {
     }
   }
 
+  unpauseCharacter() {
+    this.animate()
+    this.applyGravity();
+    this.pushIntervalIds();
+    window.gameIsPaused = false;
+  }
+
   moveCharacter() {
     this.walking_sound.pause();
     if (this.world.keyboard.F) {
@@ -183,7 +190,7 @@ class Character extends MoveableObject {
   cameraFollow() {
     setInterval(() => {
       this.world.camera_x = -this.x + 100;
-    }, 1000/60)
+    }, 1000 / 60)
   }
 
   jump() {

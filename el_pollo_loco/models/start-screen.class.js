@@ -15,7 +15,7 @@ class StartScreen extends DrawableObject {
     this.img.onload = () => {
       this.draw();
     };
-    this.button = new Button(300, 200, 120, 100, "Start");
+    this.button = new Button(300, 200, 120, 100, "Start", true);
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.setupEventListeners();
