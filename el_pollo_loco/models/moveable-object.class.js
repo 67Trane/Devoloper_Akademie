@@ -4,7 +4,7 @@ class MoveableObject extends DrawableObject {
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 342;
-  energy = 1000;
+  energy = 100;
   lastHit = 0;
   thorws = 100;
   coins = 0;
