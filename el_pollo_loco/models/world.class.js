@@ -10,7 +10,7 @@ class World {
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
   restartButton= new Button(540, 10, 30, 30, "restart")
-  fullscreen = new Button(660, 10, 30, 30, "fl")
+  fullscreen = new Button(660, 10, 30, 30, "fullscreen")
   pause = new Button(600, 10, 30, 30, "pause")
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 100, 430),

@@ -15,7 +15,7 @@ class Button extends Hud {
     this.text = text;
     this.loadImage(this.defaultButton);
     this.canvas = document.getElementById("canvas");
-    text == "fl" && this.fullscreen()
+    text == "fullscreen" && this.fullscreen()
     text == "pause" && this.pauseGame()
     text == "restart" && this.clickOnRestart()
   }
