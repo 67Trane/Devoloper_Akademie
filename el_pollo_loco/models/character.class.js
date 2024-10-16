@@ -149,6 +149,7 @@ class Character extends MoveableObject {
   playCharaterAnimation() {
     if (this.isDead()) {
       this.playAnimation(this.IMAGES_ISDEAD, true);
+      console.log("YOU ARE DEAD !!")
       setTimeout(() => {
         window.stopAllIntervals();
       }, 400);

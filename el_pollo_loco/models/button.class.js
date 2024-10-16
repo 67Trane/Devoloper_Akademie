@@ -3,6 +3,7 @@ class Button extends Hud {
   defaultButton = "./img/button.png";
   pauseIcon = "img/mobile-imgs/pause.png";
   fullscreenIcon = "img/mobile-imgs/fullscreen.png"
+  restartIcon = "img/mobile-imgs/restart.png"
 
   constructor(x, y, width, height, text, showtext = false) {
     super();
@@ -16,6 +17,7 @@ class Button extends Hud {
     this.canvas = document.getElementById("canvas");
     text == "fl" && this.fullscreen()
     text == "pause" && this.pauseGame()
+    text == "restart" && this.clickOnRestart()
   }
 
   draw(ctx) {
@@ -27,6 +29,11 @@ class Button extends Hud {
       ctx.textBaseline = "middle";
       ctx.fillText(this.text, this.x + this.width / 2, this.y + this.height / 2);
     }
+  }
+
+  clickOnRestart() {
+    this.loadImage(this.restartIcon)
+    this.clickListener(() => restartGame(), 0, 0)
   }
 
   isClicked(mouseX, mouseY) {

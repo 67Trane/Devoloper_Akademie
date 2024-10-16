@@ -21,8 +21,7 @@ function startGame() {
 }
 
 function restartGame() {
-  world.character.walking_sound.pause()
-  world.character.walking_sound.currentTime = 0;
+  stopAllIntervals();
   startGame();
 }
 
@@ -34,7 +33,6 @@ document.addEventListener("keydown", (event) => {
 
   if (event.keyCode == 70) {
     keyboard.F = true;
-    restartGame() // REMOVE THIS HERE !!!
   }
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;
