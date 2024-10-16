@@ -21,7 +21,8 @@ function startGame() {
 }
 
 function restartGame() {
-  world = null;
+  world.character.walking_sound.pause()
+  world.character.walking_sound.currentTime = 0;
   startGame();
 }
 

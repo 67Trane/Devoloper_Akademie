@@ -1,6 +1,6 @@
 class World {
   character = new Character();
-  level = level1;
+  level
   canvas;
   ctx;
   isMobile = window.isMobile
@@ -24,6 +24,25 @@ class World {
   explosions = [];
 
   constructor(canvas, keyboard) {
+    this.level = new Level(
+      [new Skull(), new Skull(), new Endboss()],
+      [new Cloud(), new Cloud(), new Cloud(), new Cloud()],
+      [
+        new BackgroundObject("img/background/PNG/3_game_background/layers/1.png", -719, 1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/1.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/2.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/3.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/4.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/5.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/6.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/7.png", 0, 0.1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/8.png", 0, 1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/8.png", -719, 1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/8.png", 720, 1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/8.png", 720 * 2, 1),
+        new BackgroundObject("img/background/PNG/3_game_background/layers/8.png", 720 * 3, 1),
+      ]
+    );
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
@@ -46,7 +65,7 @@ class World {
     });
   }
 
- 
+
   run() {
     setInterval(() => {
       this.checkCollisions();
@@ -70,11 +89,12 @@ class World {
   }
 
   unpauseGame() {
-      this.pause.pauseGame(() => this.character.unpauseCharacter())
+    this.pause.pauseGame(() => this.character.unpauseCharacter())
   }
 
   checkThrowObjects() {
     if (this.keyboard.F) {
+      this.level.enemies = []
       if (this.character.thorws > 0) {
         this.character.thorws -= 10;
         this.bottleBar.setPercentage(this.character.thorws);
