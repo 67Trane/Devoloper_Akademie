@@ -95,7 +95,6 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.F) {
-      this.level.enemies = []
       if (this.character.thorws > 0) {
         this.character.thorws -= 10;
         this.bottleBar.setPercentage(this.character.thorws);
