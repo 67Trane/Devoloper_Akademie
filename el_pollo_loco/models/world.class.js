@@ -6,6 +6,7 @@ class World {
   isMobile = window.isMobile
   keyboard;
   camera_x = 0;
+  gameOver = new GameOver()
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
@@ -234,6 +235,7 @@ class World {
   }
 
   runWithCamera() {
+    this.characterDeadGameOver();
     this.addToMap(this.statusBar);
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
@@ -241,6 +243,13 @@ class World {
     this.addToMap(this.pause)
     this.addToMap(this.restartButton)
     this.isMobile && this.addObjectsToMap(this.gui)
+  }
+
+  characterDeadGameOver() {
+    if(this.character.energy <= 0) {
+      this.addToMap(this.gameOver)
+      this.gameOver.init()
+    }
   }
 
   addCollectibleBottleToMap() {
