@@ -60,9 +60,6 @@ class MoveableObject extends DrawableObject {
         let path = images[this.currentImage];
         this.img = this.imageCache[path];
         this.currentImage++;
-      } else {
-        // Animation ist durchgelaufen, keine weitere Änderung von this.img
-        console.log("Animation beendet.");
       }
     }
   }
