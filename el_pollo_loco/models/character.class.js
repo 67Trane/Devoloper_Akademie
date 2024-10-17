@@ -108,6 +108,9 @@ class Character extends MoveableObject {
   speed = 10;
   world;
   walking_sound = new Audio("./audio/steps.mp3");
+  jump_sound = new Audio("./audio/jump.mp3");
+  dead_sound = new Audio("./audio/dead.mp3")
+  hit_sound = new Audio("./audio/hit.mp3")
 
   constructor() {
     super().loadImage("img/chracter/black_ninja/PNG/PNG_sequences/Running/Running_000.png");
@@ -121,19 +124,23 @@ class Character extends MoveableObject {
     this.animate();
     this.pushIntervalIds();
     this.cameraFollow()
+    allSounds.push(this.walking_sound)
+    allSounds.push(this.jump_sound)
+    allSounds.push(this.dead_sound)
+    allSounds.push(this.hit_sound)
   }
+
 
   moveCharacterRight() {
     this.otherDirection = false;
     this.moveRight();
-    this.walking_sound.play();
-
+    this.playSoundIfNotMuted(this.walking_sound)
   }
 
   moveCharacterLeft() {
     this.otherDirection = true;
     this.moveLeft();
-    this.walking_sound.play();
+    this.playSoundIfNotMuted(this.walking_sound)
   }
 
   characterIsIdle() {
@@ -149,14 +156,16 @@ class Character extends MoveableObject {
   playCharaterAnimation() {
     if (this.isDead()) {
       this.playAnimation(this.IMAGES_ISDEAD, true);
-      console.log("YOU ARE DEAD !!")
+      this.playSoundIfNotMuted(this.dead_sound)
       setTimeout(() => {
         window.stopAllIntervals();
       }, 400);
     } else if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
+      this.playSoundIfNotMuted(this.hit_sound)
     } else if (this.isAboveGround()) {
       this.playAnimation(this.IMAGES_JUMPING, true);
+      this.playSoundIfNotMuted(this.jump_sound)
     } else {
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);

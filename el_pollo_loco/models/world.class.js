@@ -4,12 +4,14 @@ class World {
   canvas;
   ctx;
   isMobile = window.isMobile
+  backgroundMusic = new Audio("./audio/background_music.mp3")
   keyboard;
   camera_x = 0;
   gameOver = new GameOver()
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
+  muteButton = new Button(500, 10, 30, 30, "mute")
   restartButton= new Button(540, 10, 30, 30, "restart")
   fullscreen = new Button(660, 10, 30, 30, "fullscreen")
   pause = new Button(600, 10, 30, 30, "pause")
@@ -54,6 +56,19 @@ class World {
     this.addCollectibleBottleToMap();
     this.addCollectibleCoinToMap();
     this.unpauseGame()
+    this.playBackgroundMusic()
+    this.pushAllSounds()
+  }
+
+  pushAllSounds() {
+    allSounds.push(this.backgroundMusic)
+    console.log(allSounds)
+  }
+    
+  playBackgroundMusic() {
+    this.backgroundMusic.play()
+    this.backgroundMusic.volume = 0.1
+    this.backgroundMusic.loop = true
   }
 
   setWorld() {
@@ -96,6 +111,7 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.F) {
+      console.log(allSounds)
       if (this.character.thorws > 0) {
         this.character.thorws -= 10;
         this.bottleBar.setPercentage(this.character.thorws);
@@ -240,6 +256,7 @@ class World {
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.fullscreen)
+    this.addToMap(this.muteButton)
     this.addToMap(this.pause)
     this.addToMap(this.restartButton)
     this.isMobile && this.addObjectsToMap(this.gui)

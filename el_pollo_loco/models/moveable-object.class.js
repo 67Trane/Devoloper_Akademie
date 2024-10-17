@@ -10,6 +10,19 @@ class MoveableObject extends DrawableObject {
   coins = 0;
   intervalIds = [];
 
+  playSoundIfNotMuted(sound) {
+    if (!allSoundsMute) {
+      console.log("all sounds is false", allSoundsMute)
+      if(sound && typeof sound.play === "function") {
+        sound.play();
+      } else {
+        console.log("nope")
+      }
+    } else {
+      console.log("Trueeee", allSoundsMute)
+    }
+  }
+
   applyGravity() {
     this.intervalHelper(() => {
       if (this.isAboveGround() || this.speedY > 0) {

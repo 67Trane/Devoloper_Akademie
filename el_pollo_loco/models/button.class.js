@@ -4,6 +4,7 @@ class Button extends Hud {
   pauseIcon = "img/mobile-imgs/pause.png";
   fullscreenIcon = "img/mobile-imgs/fullscreen.png"
   restartIcon = "img/mobile-imgs/restart.png"
+  muteIcon= "img/mobile-imgs/mute.png"
 
   constructor(x, y, width, height, text, showtext = false) {
     super();
@@ -18,6 +19,19 @@ class Button extends Hud {
     text == "fullscreen" && this.fullscreen()
     text == "pause" && this.pauseGame()
     text == "restart" && this.clickOnRestart()
+    text == "mute" && this.initMuteAllSounds();
+  }
+
+  initMuteAllSounds() {
+    this.loadImage(this.muteIcon)
+    this.clickListener(() => this.muteAllSounds(), 0, 0)
+  }
+
+  muteAllSounds() {
+    allSoundsMute = !allSoundsMute
+    allSounds.forEach(audio => {
+      audio.pause()
+    });
   }
 
   draw(ctx) {
