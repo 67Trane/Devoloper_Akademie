@@ -13,7 +13,7 @@ class World {
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
   muteButton = new Button(500, 10, 30, 30, "mute")
-  restartButton= new Button(540, 10, 30, 30, "restart")
+  restartButton= new Button(550, 10, 30, 30, "restart")
   fullscreen = new Button(660, 10, 30, 30, "fullscreen")
   pause = new Button(600, 10, 30, 30, "pause")
   gui = [
