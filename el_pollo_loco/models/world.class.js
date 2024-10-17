@@ -5,6 +5,7 @@ class World {
   ctx;
   isMobile = window.isMobile
   backgroundMusic = new Audio("./audio/background_music.mp3")
+  bottleSound= new Audio("./audio/bottle-shatter.mp3")
   keyboard;
   camera_x = 0;
   gameOver = new GameOver()
@@ -62,7 +63,6 @@ class World {
 
   pushAllSounds() {
     allSounds.push(this.backgroundMusic)
-    console.log(allSounds)
   }
     
   playBackgroundMusic() {
@@ -111,7 +111,6 @@ class World {
 
   checkThrowObjects() {
     if (this.keyboard.F) {
-      console.log(allSounds)
       if (this.character.thorws > 0) {
         this.character.thorws -= 10;
         this.bottleBar.setPercentage(this.character.thorws);
@@ -123,6 +122,9 @@ class World {
 
   checkExplosions() {
     this.explosions.forEach((explosion, i) => {
+      if(!allSoundsMute) {
+        this.bottleSound.play()
+      }
       if (explosion.done == true) {
         this.explosions.splice(i, 1);
       }

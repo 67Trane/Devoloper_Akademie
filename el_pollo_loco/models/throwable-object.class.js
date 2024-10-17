@@ -1,5 +1,5 @@
 class ThrowableObject extends MoveableObject {
-    
+
 
     constructor(x,y) {
         super().loadImage("img/explosiv/PNG_2048x1536/Weapons/weapon_14_molotov_cocktail.png");
