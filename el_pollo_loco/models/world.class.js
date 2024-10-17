@@ -64,6 +64,7 @@ class World {
 
   pushAllSounds() {
     allSounds.push(this.backgroundMusic)
+    allSounds.push(this.bottleSound)
   }
     
   playBackgroundMusic() {
