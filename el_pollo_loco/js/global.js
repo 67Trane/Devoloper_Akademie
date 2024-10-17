@@ -3,3 +3,4 @@ isMobile = false;
 gameIsPaused = false;
 allSoundsMute = false;
 allSounds = []
+gameStart = false;

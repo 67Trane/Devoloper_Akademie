@@ -3,14 +3,38 @@ let world;
 let keyboard = new Keyboard();
 
 function init() {
-  let startScreen = new StartScreen();
-
   let checkStart = setInterval(() => {
-    if (startScreen.start) {
+    if (gameStart) {
+      loadingScreen()
       clearInterval(checkStart);
       startGame();
     }
   }, 500);
+}
+
+
+function startButton() {
+  document.getElementById("start-screen").classList.add("d-none")
+  gameStart = true
+}
+
+function loadingScreen() {
+  loadingScreenDiv = document.getElementById("loading-screen")
+  loadingScreenImg = document.getElementById("loading-screen-img")
+  loadingScreenDiv.classList.remove("d-none")
+  count = 0;
+  amountOfPics = 26;
+
+  setInterval(() => {
+    i = (count % amountOfPics) + 1
+    formatedNumber = smallerThenTen(i)
+    loadingScreenImg.src = `./img/text-animation/PNG/LoadGame/LoadGame_${formatedNumber}.png`
+    count++
+  }, 60)
+}
+
+function smallerThenTen(number) {
+  return number < 10 ? `0${number}` : number;
 }
 
 function startGame() {

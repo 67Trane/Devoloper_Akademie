@@ -9,7 +9,6 @@
 
    <script src="./js/global.js"></script>
    <script src="./models/drawable-object.class.js"></script>
-   <script src="./models/start-screen.class.js"></script>
    <script src="./models/hud-options.class.js"></script>
    <script src="./models/button.class.js"></script>
    <script src="./models/moveable-object.class.js"></script>
@@ -42,11 +41,16 @@
 
    <div id="fullscreen">
       <h1 class="infos">Night Stalker: Rise of the Skull Army</h1>
+
+      <div class="loading-screen d-none" id="loading-screen"><img src="./img/text-animation/PNG/LoadGame/LoadGame_00.png" alt="" class="loading-screen-img" id="loading-screen-img"></div>
+
+      <div class="start-screen" id="start-screen">
+         <button class="start-btn" id="start-btn" onclick="startButton()"><span class="text">Start!</span></button>
+      </div>
+
       <canvas id="canvas" width="720" height="480">
       </canvas>
    </div>
-
-
 
    <h1 class="infos">Pfeiltasten zum bewegen "SPACE" zum springen</h1>
    <h1 class="infos">"F" um zu werfen</h1>

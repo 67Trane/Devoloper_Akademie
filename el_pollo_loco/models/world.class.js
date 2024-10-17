@@ -58,7 +58,6 @@ class World {
     this.addCollectibleBottleToMap();
     this.addCollectibleCoinToMap();
     this.unpauseGame()
-    this.playBackgroundMusic()
     this.pushAllSounds()
   }
 
@@ -86,6 +85,12 @@ class World {
 
 
   run() {
+    setInterval(() => {
+      if(!allSoundsMute) {
+        this.playBackgroundMusic()
+      }
+    }, 500)
+
     setInterval(() => {
       this.checkCollisions();
     }, 50);
