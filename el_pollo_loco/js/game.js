@@ -30,6 +30,11 @@ function loadingScreen() {
     formatedNumber = smallerThenTen(i)
     loadingScreenImg.src = `./img/text-animation/PNG/LoadGame/LoadGame_${formatedNumber}.png`
     count++
+    console.log(i)
+    if(loaded) {
+      loadingScreenDiv.classList.add("d-none")
+      return
+    }
   }, 60)
 }
 

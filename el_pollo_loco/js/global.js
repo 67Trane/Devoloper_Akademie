@@ -4,3 +4,4 @@ gameIsPaused = false;
 allSoundsMute = false;
 allSounds = []
 gameStart = false;
+loaded = false;

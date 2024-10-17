@@ -59,6 +59,7 @@ class World {
     this.addCollectibleCoinToMap();
     this.unpauseGame()
     this.pushAllSounds()
+    loaded = true
   }
 
   pushAllSounds() {
