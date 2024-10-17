@@ -27,6 +27,7 @@ class World {
   collectibleBottles = [];
   groundlevel = 400;
   explosions = [];
+  
 
   constructor(canvas, keyboard) {
     this.level = new Level(
