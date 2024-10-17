@@ -25,15 +25,16 @@ function loadingScreen() {
   count = 0;
   amountOfPics = 26;
 
-  setInterval(() => {
+  intervalId = setInterval(() => {
     i = (count % amountOfPics) + 1
     formatedNumber = smallerThenTen(i)
     loadingScreenImg.src = `./img/text-animation/PNG/LoadGame/LoadGame_${formatedNumber}.png`
     count++
-    console.log(i)
+    console.log(loaded)
     if(loaded) {
       loadingScreenDiv.classList.add("d-none")
-      return
+      clearInterval(intervalId)
+      
     }
   }, 60)
 }
