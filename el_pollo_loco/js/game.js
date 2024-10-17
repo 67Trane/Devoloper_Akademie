@@ -34,7 +34,6 @@ function loadingScreen() {
     if(loaded) {
       loadingScreenDiv.classList.add("d-none")
       clearInterval(intervalId)
-      
     }
   }, 60)
 }
