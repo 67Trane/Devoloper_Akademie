@@ -55,9 +55,14 @@ document.addEventListener("keydown", (event) => {
   if (event.keyCode == 80) {
     stopAllIntervals();
   }
+  
+  if(event.keyCode == 82) {
+    restartGame();
+  }
 
   if (event.keyCode == 70) {
     keyboard.F = true;
+    
   }
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;

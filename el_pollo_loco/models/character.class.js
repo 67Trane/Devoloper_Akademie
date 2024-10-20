@@ -173,6 +173,10 @@ class Character extends MoveableObject {
     }
   }
 
+  playThrowAnimation() {
+    this.playAnimation(this.IMAGES_THROW);
+  }
+
   moveCharacter() {
     this.walking_sound.pause();
     if (this.world.keyboard.F) {

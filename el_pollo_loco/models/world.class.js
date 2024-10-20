@@ -12,13 +12,6 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  
-  gui = [
-    new MobileGui(this.character, canvas, "LEFT", 100, 430),
-    new MobileGui(this.character, canvas, "RIGHT", 250, 430),
-    new MobileGui(this.character, canvas, "SPACE", 500, 430),
-    new MobileGui(this.character, canvas, "F", 600, 430),
-  ];
   allCoins = [];
   throwableObject = [];
   collectibleBottles = [];
@@ -71,9 +64,6 @@ class World {
 
   setWorld() {
     this.character.world = this;
-    this.gui.forEach((arrows) => {
-      arrows.world = this;
-    })
     this.level.enemies.forEach((enemy) => {
       enemy.world = this;
       enemy.initialize();
@@ -110,15 +100,20 @@ class World {
   }
 
 
+
   checkThrowObjects() {
     if (this.keyboard.F) {
-      if (this.character.thorws > 0) {
+      this.throwObject()
+    }
+  }
+
+  throwObject() {
+    if (this.character.thorws > 0) {
         this.character.thorws -= 10;
         this.bottleBar.setPercentage(this.character.thorws);
         let throwbottle = new ThrowableObject(this.character.x + 100, this.character.y);
         this.throwableObject.push(throwbottle);
       }
-    }
   }
 
   checkExplosions() {
@@ -258,7 +253,6 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
-    this.isMobile && this.addObjectsToMap(this.gui)
   }
 
   characterDeadGameOver() {
