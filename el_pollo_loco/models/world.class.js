@@ -12,10 +12,7 @@ class World {
   statusBar = new StatusBar();
   bottleBar = new StatusBar("THROW", 50);
   coinBar = new StatusBar("COIN", 100);
-  muteButton = new Button(500, 10, 30, 30, "mute")
-  restartButton= new Button(550, 10, 30, 30, "restart")
-  fullscreen = new Button(660, 10, 30, 30, "fullscreen")
-  pause = new Button(600, 10, 30, 30, "pause")
+  
   gui = [
     new MobileGui(this.character, canvas, "LEFT", 100, 430),
     new MobileGui(this.character, canvas, "RIGHT", 250, 430),
@@ -57,7 +54,6 @@ class World {
     this.run();
     this.addCollectibleBottleToMap();
     this.addCollectibleCoinToMap();
-    this.unpauseGame()
     this.pushAllSounds()
     loaded = true
   }
@@ -113,9 +109,6 @@ class World {
     }, 30);
   }
 
-  unpauseGame() {
-    this.pause.pauseGame(() => this.character.unpauseCharacter())
-  }
 
   checkThrowObjects() {
     if (this.keyboard.F) {
@@ -265,10 +258,6 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.bottleBar);
     this.addToMap(this.coinBar);
-    this.addToMap(this.fullscreen)
-    this.addToMap(this.muteButton)
-    this.addToMap(this.pause)
-    this.addToMap(this.restartButton)
     this.isMobile && this.addObjectsToMap(this.gui)
   }
 

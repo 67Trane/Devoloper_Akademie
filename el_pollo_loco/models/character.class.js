@@ -173,13 +173,6 @@ class Character extends MoveableObject {
     }
   }
 
-  unpauseCharacter() {
-    this.animate()
-    this.applyGravity();
-    this.pushIntervalIds();
-    window.gameIsPaused = false;
-  }
-
   moveCharacter() {
     this.walking_sound.pause();
     if (this.world.keyboard.F) {

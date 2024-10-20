@@ -49,10 +49,7 @@ function startGame() {
   console.log("my chracter is", world.character);
 }
 
-function restartGame() {
-  stopAllIntervals();
-  startGame();
-}
+
 
 document.addEventListener("keydown", (event) => {
   if (event.keyCode == 80) {

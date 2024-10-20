@@ -9,8 +9,6 @@
 
    <script src="./js/global.js"></script>
    <script src="./models/drawable-object.class.js"></script>
-   <script src="./models/hud-options.class.js"></script>
-   <script src="./models/button.class.js"></script>
    <script src="./models/moveable-object.class.js"></script>
    <script src="./models/character.class.js"></script>
    <script src="./models/skull.class.js"></script>
@@ -28,6 +26,7 @@
    <script src="./models/mobile-gui.class.js"></script>
    <script src="./models/endboss.class.js"></script>
    <script src="./models/explosion.class.js"></script>
+   <script src="./js/options.js"></script>
    <script src="./levels/level1.js"></script>
    <script src="./js/game.js"></script>
    <title>Night Stalker</title>
@@ -41,11 +40,19 @@
 
    <div id="fullscreen">
       <h1 class="infos">Night Stalker: Rise of the Skull Army</h1>
-
-      <div class="loading-screen d-none" id="loading-screen"><img src="./img/text-animation/PNG/LoadGame/LoadGame_00.png" alt="" class="loading-screen-img" id="loading-screen-img"></div>
+      <div class="options">
+         <img src="img/mobile-imgs/mute.png" alt="" onclick="muteAllSounds()">
+         <img src="./img/mobile-imgs/pause.png" alt="" onclick="unpauseCharacter()">
+         <img src="./img/mobile-imgs/restart.png" alt="" onclick="restartGame()">
+         <img src="./img/mobile-imgs/fullscreen.png" alt="" onclick="openFullscreen()">
+      </div>
+      <div class="loading-screen d-none" id="loading-screen"><img
+            src="./img/text-animation/PNG/LoadGame/LoadGame_00.png" alt="" class="loading-screen-img"
+            id="loading-screen-img"></div>
 
       <div class="start-screen" id="start-screen">
-         <button class="start-btn" id="start-btn" onclick="startButton()"><span class="text">Start!</span></button>
+         <button class="start-btn" id="start-btn" onclick="startButton()"><span class="text">START</span></button>
+         <button class="start-btn" id="infos"><span>infos</span></button>
       </div>
 
       <canvas id="canvas" width="720" height="480">
