@@ -34,10 +34,17 @@ body {
   z-index: 9;
 }
 
+.options-wrapper {
+    width: 720px;
+    height: 480px;
+    position: absolute;
+}
+
 .options {
   position: absolute;
+  top: 0;
   width: 720px;
-  height: 30px;
+  height: 40px;
   gap: 40px;
   display: flex;
   padding-top: 10px;
