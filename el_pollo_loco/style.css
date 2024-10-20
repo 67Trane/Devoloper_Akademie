@@ -24,7 +24,7 @@ body {
   width: 720px;
   height: 480px;
   background-color: rgba(97, 97, 97, 0.425);
-  z-index: 999;
+  z-index: 9;
 }
 
 .options {
@@ -45,6 +45,7 @@ body {
     position: absolute;
     z-index: 0;
 }
+
 
 .mobile-movement {
   display: flex;
@@ -95,6 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  z-index: 999;
 }
 
 body {
@@ -117,12 +119,25 @@ canvas {
 }
 
 @media only screen and (max-width: 720px) {
+
+    .mobile-wrapper{
+        width: 100%;
+    }
+
   canvas {
     width: 100%;
   }
 }
 
 @media only screen and (max-height: 480px) {
+    .start-screen {
+        height: 100%;
+    }
+
+    .mobile-wrapper{
+        height: 100%;
+    }
+
   canvas {
     height: 100vh;
   }

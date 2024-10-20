@@ -22,4 +22,6 @@ document.addEventListener("touchend", function () {
   }
 });
 
-
+document.addEventListener((event)=> {
+  event.stopPropagation()
+})
