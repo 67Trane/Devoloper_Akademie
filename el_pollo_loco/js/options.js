@@ -5,18 +5,22 @@ function toggleFullscreen() {
     // Vollbildmodus aktivieren
     if (fullscreenElement.requestFullscreen) {
       fullscreenElement.requestFullscreen();
-    } else if (fullscreenElement.webkitRequestFullscreen) { // Für Safari
+    } else if (fullscreenElement.webkitRequestFullscreen) {
+      // Für Safari
       fullscreenElement.webkitRequestFullscreen();
-    } else if (fullscreenElement.msRequestFullscreen) { // Für IE11
+    } else if (fullscreenElement.msRequestFullscreen) {
+      // Für IE11
       fullscreenElement.msRequestFullscreen();
     }
   } else {
     // Vollbildmodus verlassen
     if (document.exitFullscreen) {
       document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { // Für Safari
+    } else if (document.webkitExitFullscreen) {
+      // Für Safari
       document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { // Für IE11
+    } else if (document.msExitFullscreen) {
+      // Für IE11
       document.msExitFullscreen();
     }
   }
@@ -39,6 +43,9 @@ function unpauseCharacter() {
     world.character.animate();
     world.character.applyGravity();
     world.character.pushIntervalIds();
+    world.level.enemies.forEach((enemie) => {
+      enemie.initialize();
+    });
   }
   gameIsPaused = false;
 }
