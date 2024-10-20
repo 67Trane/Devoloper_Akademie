@@ -19,6 +19,11 @@ html {
 
 body {
     user-select: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .loading-screen {
@@ -107,6 +112,7 @@ body {
   align-items: center;
 }
 
+
 .start-btn {
   position: relative;
   width: 90px !important;
@@ -163,6 +169,13 @@ canvas {
   display: none;
   justify-content: center;
   align-items: center;
+}
+
+#fullscreen {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-height: 720px) {
