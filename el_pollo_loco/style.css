@@ -96,7 +96,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 999;
+  z-index: 99;
 }
 
 body {
@@ -157,7 +157,7 @@ canvas {
   width: 100vw;
   height: 100vh;
   background-color: rgba(97, 97, 97, 0.699);
-  z-index: 999;
+  z-index: 9999;
   position: absolute;
   display: none;
   justify-content: center;
