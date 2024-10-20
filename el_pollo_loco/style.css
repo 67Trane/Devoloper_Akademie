@@ -36,6 +36,14 @@ body {
   padding-top: 10px;
   justify-content: flex-end;
   padding-right: 20px;
+  z-index: 99;
+}
+
+.mobile-wrapper {
+    width: 720px;
+    height: 480px;
+    position: absolute;
+    z-index: 0;
 }
 
 .mobile-movement {
@@ -44,9 +52,10 @@ body {
   align-items: flex-end;
   justify-content: center;
   width: 720px;
-  height: 480px;
-  max-height: 480px;
+  height: 30px;
+  bottom: 0;
   gap: 100px;
+  z-index: 99;
 }
 
 .mobile-movement img {
