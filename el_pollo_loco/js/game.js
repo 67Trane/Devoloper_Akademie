@@ -152,3 +152,7 @@ function closeInfo() {
 function openInfo() {
   document.getElementById("info-field-wrapper").classList.remove("d-none")
 }
+
+document.addEventListener((event)=> {
+  event.preventDefault();
+})
