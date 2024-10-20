@@ -12,7 +12,7 @@ class MoveableObject extends DrawableObject {
 
   playSoundIfNotMuted(sound) {
     if (!allSoundsMute) {
-      if(sound && typeof sound.play === "function") {
+      if (sound && typeof sound.play === "function") {
         sound.play();
       }
     }
@@ -82,14 +82,14 @@ class MoveableObject extends DrawableObject {
 
   pushIntervalIds() {
     this.intervalIds.forEach((id) => {
-      window.gameIntervalIds.push(id)
-    })
+      window.gameIntervalIds.push(id);
+    });
   }
 
   stopInterval() {
     this.intervalIds.forEach((id) => {
-      clearInterval(id)
-    })
+      clearInterval(id);
+    });
   }
 
   moveRight() {
@@ -124,6 +124,12 @@ class MoveableObject extends DrawableObject {
 
   hit() {
     this.energy -= 5;
+    if (!allSoundsMute) {
+      if (this.energy > 5) {
+        let hit_sound = new Audio("./audio/hit.mp3");
+        hit_sound.play();
+      }
+    }
     if (this.energy < 0) {
       this.energy = 0;
     } else {

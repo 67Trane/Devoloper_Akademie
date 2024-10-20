@@ -110,7 +110,7 @@ class Character extends MoveableObject {
   walking_sound = new Audio("./audio/steps.mp3");
   jump_sound = new Audio("./audio/jump.mp3");
   dead_sound = new Audio("./audio/dead.mp3")
-  hit_sound = new Audio("./audio/hit.mp3")
+ 
 
   constructor() {
     super().loadImage("img/chracter/black_ninja/PNG/PNG_sequences/Running/Running_000.png");
@@ -127,7 +127,6 @@ class Character extends MoveableObject {
     allSounds.push(this.walking_sound)
     allSounds.push(this.jump_sound)
     allSounds.push(this.dead_sound)
-    allSounds.push(this.hit_sound)
   }
 
 
