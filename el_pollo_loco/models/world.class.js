@@ -1,10 +1,11 @@
+backgroundMusic = new Audio("./audio/background_music.mp3")
 class World {
   character = new Character();
   level
   canvas;
   ctx;
   isMobile = window.isMobile
-  backgroundMusic = new Audio("./audio/background_music.mp3")
+  
   bottleSound= new Audio("./audio/bottle-shatter.mp3")
   keyboard;
   camera_x = 0;
@@ -17,7 +18,7 @@ class World {
   collectibleBottles = [];
   groundlevel = 400;
   explosions = [];
-  
+ 
 
   constructor(canvas, keyboard) {
     this.level = new Level(
@@ -52,14 +53,14 @@ class World {
   }
 
   pushAllSounds() {
-    allSounds.push(this.backgroundMusic)
+    allSounds.push(backgroundMusic)
     allSounds.push(this.bottleSound)
   }
     
   playBackgroundMusic() {
-    this.backgroundMusic.play()
-    this.backgroundMusic.volume = 0.1
-    this.backgroundMusic.loop = true
+    backgroundMusic.play()
+    backgroundMusic.volume = 0.1
+    backgroundMusic.loop = true
   }
 
   setWorld() {
@@ -147,6 +148,8 @@ class World {
     this.checkBottles();
   }
 
+
+
   checkBottles() {
     this.bottleBar.setPercentage(this.character.thorws);
     this.collectibleBottles.some((bottle, index) => {
@@ -160,11 +163,15 @@ class World {
   }
 
   checkCoins() {
+    let collectCoinSound = new Audio("./audio/collect-coin.mp3")
     this.coinBar.setPercentage(this.character.coins);
     this.allCoins.some((coin, index) => {
       if (this.collectItem(coin)) {
         this.allCoins.splice(index, 1);
         this.character.coins += 20;
+        if(!allSoundsMute) {
+          collectCoinSound.play()
+        }
         this.coinBar.setPercentage(this.character.coins);
       }
     });
