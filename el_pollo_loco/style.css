@@ -14,16 +14,16 @@ html {
   font-family: "PirataOne", sans-serif;
   margin: unset;
   box-sizing: border-box;
-  color: rgb(179, 2, 2);
+  color: white
 }
 
 body {
-    user-select: none;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .loading-screen {
@@ -35,9 +35,9 @@ body {
 }
 
 .options-wrapper {
-    width: 720px;
-    height: 480px;
-    position: absolute;
+  width: 720px;
+  height: 480px;
+  position: absolute;
 }
 
 .options {
@@ -54,12 +54,11 @@ body {
 }
 
 .mobile-wrapper {
-    width: 720px;
-    height: 480px;
-    position: absolute;
-    z-index: 0;
+  width: 720px;
+  height: 480px;
+  position: absolute;
+  z-index: 0;
 }
-
 
 .mobile-movement {
   display: flex;
@@ -119,7 +118,6 @@ body {
   align-items: center;
 }
 
-
 .start-btn {
   position: relative;
   width: 90px !important;
@@ -128,15 +126,64 @@ body {
   left: calc(50% - 80px);
 }
 
+.info-field-wrapper {
+  position: absolute;
+  width: 720px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.info-field {
+  width: 70%;
+  height: 70%;
+  background-image: url("./img/infoField.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.info-field span {
+  padding-top: 13px;
+}
+
+
+.info-text {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  margin-top: 40px;
+  position: absolute;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+#close-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  right: 10px;
+}
+
+#close-btn:hover {
+  cursor: pointer;
+}
 canvas {
   background-color: black;
   display: block;
 }
 
 @media only screen and (max-width: 720px) {
-    .mobile-wrapper{
-        width: 100%;
-    }
+  .mobile-wrapper {
+    width: 100%;
+  }
 
   canvas {
     width: 100%;
@@ -144,13 +191,13 @@ canvas {
 }
 
 @media only screen and (max-height: 480px) {
-    .start-screen {
-        height: 100%;
-    }
+  .start-screen {
+    height: 100%;
+  }
 
-    .mobile-wrapper{
-        height: 100%;
-    }
+  .mobile-wrapper {
+    height: 100%;
+  }
 
   canvas {
     height: 100vh;
@@ -179,10 +226,10 @@ canvas {
 }
 
 #fullscreen {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-height: 720px) {
@@ -242,4 +289,3 @@ canvas {
 .start-btn:hover span {
   background: none;
 }
-

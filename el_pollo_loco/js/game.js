@@ -144,3 +144,11 @@ function changeHud() {
 }
 
 changeHud()
+
+function closeInfo() {
+  document.getElementById("info-field-wrapper").classList.add("d-none")
+}
+
+function openInfo() {
+  document.getElementById("info-field-wrapper").classList.remove("d-none")
+}
