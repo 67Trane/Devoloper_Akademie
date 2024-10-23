@@ -41,3 +41,11 @@ document.getElementById("molotov-btn").addEventListener("touchend", function (ev
   event.preventDefault();
   keyboard.F = false;
 });
+
+function isOnMobile() {
+  if (window.innerWidth > window.innerHeight) {
+    document.getElementById("mobile-movement").classList.add("d-none");
+  }
+}
+
+isOnMobile();

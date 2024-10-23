@@ -5,37 +5,35 @@ let keyboard = new Keyboard();
 function init() {
   let checkStart = setInterval(() => {
     if (gameStart) {
-      loadingScreen()
+      loadingScreen();
       clearInterval(checkStart);
       startGame();
     }
   }, 500);
 }
 
-
 function startButton() {
-  document.getElementById("start-screen").classList.add("d-none")
-  gameStart = true
+  document.getElementById("start-screen").classList.add("d-none");
+  gameStart = true;
 }
 
 function loadingScreen() {
-  loadingScreenDiv = document.getElementById("loading-screen")
-  loadingScreenImg = document.getElementById("loading-screen-img")
-  loadingScreenDiv.classList.remove("d-none")
+  loadingScreenDiv = document.getElementById("loading-screen");
+  loadingScreenImg = document.getElementById("loading-screen-img");
+  loadingScreenDiv.classList.remove("d-none");
   count = 0;
   amountOfPics = 26;
 
   intervalId = setInterval(() => {
-    i = (count % amountOfPics) + 1
-    formatedNumber = smallerThenTen(i)
-    loadingScreenImg.src = `./img/text-animation/PNG/LoadGame/LoadGame_${formatedNumber}.png`
-    count++
-    console.log(loaded)
-    if(loaded) {
-      loadingScreenDiv.classList.add("d-none")
-      clearInterval(intervalId)
+    i = (count % amountOfPics) + 1;
+    formatedNumber = smallerThenTen(i);
+    loadingScreenImg.src = `./img/text-animation/PNG/LoadGame/LoadGame_${formatedNumber}.png`;
+    count++;
+    if (loaded) {
+      loadingScreenDiv.classList.add("d-none");
+      clearInterval(intervalId);
     }
-  }, 60)
+  }, 60);
 }
 
 function smallerThenTen(number) {
@@ -44,26 +42,20 @@ function smallerThenTen(number) {
 
 function startGame() {
   canvas = document.getElementById("canvas");
-  
   world = new World(canvas, keyboard);
-
-  console.log("my chracter is", world.character);
 }
-
-
 
 document.addEventListener("keydown", (event) => {
   if (event.keyCode == 80) {
     stopAllIntervals();
   }
-  
-  if(event.keyCode == 82) {
+
+  if (event.keyCode == 82) {
     restartGame();
   }
 
   if (event.keyCode == 70) {
     keyboard.F = true;
-    
   }
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;
@@ -119,20 +111,19 @@ function stopAllIntervals() {
 }
 
 function isMobileRotate() {
-  let rotate = document.getElementById("rotate")
+  let rotate = document.getElementById("rotate");
   if (window.innerWidth < window.innerHeight) {
-    rotate.style.display = "flex"
+    rotate.style.display = "flex";
   } else {
-    rotate.style.display = "none"
+    rotate.style.display = "none";
   }
 }
 
-window.addEventListener("resize", isMobileRotate)
-window.addEventListener("load", isMobileRotate)
+window.addEventListener("resize", isMobileRotate);
+window.addEventListener("load", isMobileRotate);
 
 function isMobileDevice() {
-  console.log(navigator.userAgent)
-  return /Mobi|Android|iPhonei|iPad|iPod/i.test(navigator.userAgent)
+  return /Mobi|Android|iPhonei|iPad|iPod/i.test(navigator.userAgent);
 }
 
 function changeHud() {
@@ -143,12 +134,14 @@ function changeHud() {
   }
 }
 
-changeHud()
+changeHud();
 
 function closeInfo() {
-  document.getElementById("info-field-wrapper").classList.add("d-none")
+  document.getElementById("info-field-wrapper").classList.add("d-none");
 }
 
 function openInfo() {
-  document.getElementById("info-field-wrapper").classList.remove("d-none")
+  document.getElementById("info-field-wrapper").classList.remove("d-none");
 }
+
+
